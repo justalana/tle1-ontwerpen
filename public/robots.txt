@@ -1,2 +1,4 @@
+# N-E-S-T-E-L niet vergeten!
+
 User-agent: *
 Disallow:

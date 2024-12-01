@@ -1,0 +1,52 @@
+models:
+  Branch:
+    id: id
+    name: string
+    company_id: bigInteger unsigned foreign:companies.id
+    description: text
+    street_name: string
+    street_number: string
+    city: string
+  Company:
+    id: id
+    name: bigInteger
+  Vacancy:
+    id: id
+    branch_id: bigInteger unsigned foreign:branches.id
+    salary_min: float
+    salary_max: float nullable
+    work_hours: tinyInteger nullable
+    contract_duration: smallInteger unsigned
+    description: text
+    image_file_path: string
+  RequirementVacancy:
+    id: false
+    requirement_id: bigInteger unsigned foreign:requirements.id
+    vacancy_id: bigInteger unsigned foreign:vacancies.id
+  Requirement:
+    id: id
+    user_id: bigInteger unsigned foreign:users.id
+    name: string
+  Day:
+    id: id
+    name: string
+  TimeSlot:
+    id: id
+    day_id: bigInteger unsigned foreign:days.id
+    vacancy_id: bigInteger unsigned foreign:vacancies.id
+    start_time: time
+    end_time: time
+    optional: boolean
+  Application:
+    id: id
+    user_id: bigInteger unsigned foreign:users.id
+    vacancy_id: bigInteger unsigned foreign:vacancies.id
+    status: tinyInteger
+    start_date: dateTime nullable
+  Review:
+    id: id
+    user_id: bigInteger unsigned foreign:users.id
+    branch_id: bigInteger unsigned foreign:branches.id
+    rating: tinyInteger
+    description: text
+

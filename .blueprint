@@ -1,0 +1,39 @@
+created:
+    - database/factories/BranchFactory.php
+    - database/factories/CompanyFactory.php
+    - database/factories/VacancyFactory.php
+    - database/factories/RequirementVacancyFactory.php
+    - database/factories/RequirementFactory.php
+    - database/factories/DayFactory.php
+    - database/factories/TimeSlotFactory.php
+    - database/factories/ApplicationFactory.php
+    - database/factories/ReviewFactory.php
+    - database/migrations/2024_12_01_190631_create_branches_table.php
+    - database/migrations/2024_12_01_190632_create_companies_table.php
+    - database/migrations/2024_12_01_190633_create_vacancies_table.php
+    - database/migrations/2024_12_01_190634_create_requirement_vacancies_table.php
+    - database/migrations/2024_12_01_190635_create_requirements_table.php
+    - database/migrations/2024_12_01_190636_create_days_table.php
+    - database/migrations/2024_12_01_190637_create_time_slots_table.php
+    - database/migrations/2024_12_01_190638_create_applications_table.php
+    - database/migrations/2024_12_01_190639_create_reviews_table.php
+    - app/Models/Branch.php
+    - app/Models/Company.php
+    - app/Models/Vacancy.php
+    - app/Models/RequirementVacancy.php
+    - app/Models/Requirement.php
+    - app/Models/Day.php
+    - app/Models/TimeSlot.php
+    - app/Models/Application.php
+    - app/Models/Review.php
+models:
+    User: { name: string, email: string, email_verified_at: 'datetime nullable', password: string, phone_number: 'integer nullable', branch_id: 'integer nullable', role: integer, remember_token: 'string nullable' }
+    Branch: { id: id, name: string, company_id: 'bigInteger unsigned foreign:companies.id', description: text, street_name: string, street_number: string, city: string }
+    Company: { id: id, name: bigInteger }
+    Vacancy: { id: id, branch_id: 'bigInteger unsigned foreign:branches.id', salary_min: float, salary_max: 'float nullable', work_hours: 'tinyInteger nullable', contract_duration: 'smallInteger unsigned', description: text, image_file_path: string }
+    RequirementVacancy: { id: false, requirement_id: 'bigInteger unsigned foreign:requirements.id', vacancy_id: 'bigInteger unsigned foreign:vacancies.id' }
+    Requirement: { id: id, user_id: 'bigInteger unsigned foreign:users.id', name: string }
+    Day: { id: id, name: string }
+    TimeSlot: { id: id, day_id: 'bigInteger unsigned foreign:days.id', vacancy_id: 'bigInteger unsigned foreign:vacancies.id', start_time: time, end_time: time, optional: boolean }
+    Application: { id: id, user_id: 'bigInteger unsigned foreign:users.id', vacancy_id: 'bigInteger unsigned foreign:vacancies.id', status: tinyInteger, start_date: 'dateTime nullable' }
+    Review: { id: id, user_id: 'bigInteger unsigned foreign:users.id', branch_id: 'bigInteger unsigned foreign:branches.id', rating: tinyInteger, description: text }
