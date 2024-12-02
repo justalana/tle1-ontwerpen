@@ -1,0 +1,87 @@
+
+/* COLORS */
+:root {
+    --violet: #AA0160;
+    --violet-dark: #7C1A51;
+    --yellow: #FAEC02;
+    --moss-medium: #92AA83;
+    --moss-light: #E2ECC8;
+    --moss-dark: #2E342A;
+    --white: #FFFFFF;
+    --cream: #FBFCF6;
+    --stroke-thin: #DFDFDF;
+}
+
+/* FONT SIZES */
+@font-face {
+    font-family: 'radikal';
+    src: url('./fonts/Radikal.otf');
+}
+
+@font-face {
+    font-family: 'radikal-bold';
+    src: url('./fonts/RadikalBold.otf');
+}
+
+@font-face {
+    font-family: 'radikal-black';
+    src: url('./fonts/RadikalBlack.otf');
+}
+
+@font-face {
+    font-family: 'radikal-light';
+    src: url('./fonts/RadikalLight.otf');
+}
+
+body {
+    font-family: 'radikal', sans-serif;
+    color: var(--moss-dark);
+    background-color: var(--cream);
+    margin: 0;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: 'radikal-black', sans-serif;
+}
+
+h1{
+    font-size: 3rem;
+    text-align: center;
+}
+
+p {
+    font-family: 'radikal-light', sans-serif;
+    line-height: 1.6;
+    font-weight: lighter;
+    font-size: 1.2rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--white);
+    background-color: var(--violet);
+    padding: 1vh;
+}
+
+nav div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+
+nav a:hover {
+    border-bottom: 3px solid var(--white);
+}
+
+main {
+    margin: 5vw;
+}
+
+footer {
+    padding: 3vw;
+    background-color: var(--moss-dark);
+    color: var(--yellow);
+}

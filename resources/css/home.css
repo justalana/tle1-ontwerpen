@@ -1,0 +1,8 @@
+header {
+    display: flex;
+    margin: 0 10vw;
+}
+
+header div {
+    margin: 2vw;
+}
