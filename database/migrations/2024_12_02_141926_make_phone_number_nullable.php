@@ -9,23 +9,20 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone_number')->nullable()->change();
         });
-
     }
 
     /**
      * Reverse the migrations.
      */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('phone_number')->nullable(false)->change();
+        });
     }
 };
-
-// Zelfs als het telefoonnummer bij registratie niet wordt ingevuld, kunnen gebruikers het later aanvullen of wijzigen.
-// Het hebben van een veld in de database maakt dit eenvoudig mogelijk. (nullable)
-
