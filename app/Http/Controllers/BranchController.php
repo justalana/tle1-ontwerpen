@@ -59,7 +59,7 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        return view('branches.show', ['branch' => $branch]);
     }
 
     /**
