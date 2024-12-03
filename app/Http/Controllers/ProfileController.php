@@ -10,8 +10,11 @@ class ProfileController extends Controller
 {
     public function edit()
     {
-        // Return de profiel-edit-blade
-        return view('profile.edit');
+        // Haal de ingelogde gebruiker op
+        $user = auth()->user();
+
+        // Retourneer de profiel-edit-blade met de gebruiker
+        return view('profile.edit', compact('user'));
     }
 
     public function updatePassword(Request $request)
@@ -43,7 +46,7 @@ class ProfileController extends Controller
         // Validatie van invoer
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . auth()->id(),
+            'email' => 'required|email|max:255|unique:users,email,' . auth()->id(), // Zorg ervoor dat het huidige e-mailadres wordt uitgesloten
             'phone_number' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
         ]);
