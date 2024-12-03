@@ -10,7 +10,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/vacancies', VacancyController::class)->name('index', 'vacancies.index');
+Route::resource('/vacancies', VacancyController::class)->only(['index', 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
