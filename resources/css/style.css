@@ -40,19 +40,33 @@ body {
     margin: 0;
 }
 
+section {
+    margin: 10vw;
+}
+
 h1,h2,h3,h4,h5{
     font-family: 'radikal-black', sans-serif;
+    text-align: center;
+    line-height: 1;
 }
 
 h1{
+    font-size: 4rem;
+}
+
+h2{
     font-size: 3rem;
-    text-align: center;
 }
 
 p {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
-    font-weight: lighter;
+    font-size: 1.2rem;
+}
+
+b {
+    font-family: 'radikal-bold', sans-serif;
+    line-height: 1.6;
     font-size: 1.2rem;
 }
 
@@ -86,13 +100,25 @@ footer {
     color: var(--yellow);
 }
 
+/* === BUTTON STYLING === */
+.button-light {
+    padding: 1vw;
+    border-radius: 10vw;
+    border: 3px solid var(--moss-dark);
+    transition: ease-in-out 0.2s;
+}
+.button-light:hover{
+    background-color: var(--moss-dark);
+    color: var(--white);
+}
+
 /* === MOBILE === */
 @media (max-width: 767px) {
-    header {
-        flex-direction: row;
-    }
-
     nav {
         flex-direction: column;
+    }
+
+    main {
+        margin: 0;
     }
 }
