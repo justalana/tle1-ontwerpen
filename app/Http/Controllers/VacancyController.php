@@ -12,7 +12,9 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        //
+        $vacancies = Vacancy::all();
+//        dd($vacancies);
+        return view('vacancies.detail-test', ['vacancies' => $vacancies]);
     }
 
     /**
@@ -36,7 +38,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        //
+        return view('vacancies.details', ['vacancy' => $vacancy]);
     }
 
     /**
