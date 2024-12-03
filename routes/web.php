@@ -21,13 +21,8 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
 Route::resource('vacancies', VacancyController::class);
-
-Route::get('/test', [VacancyController::class, 'index']) ->name('vacancies.detail-test');
-
-
-require __DIR__.'/auth.php';
-
 
 Route::middleware('can:admin')->group(function () {
 
