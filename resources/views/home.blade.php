@@ -9,7 +9,7 @@
     </header>
 
     <section id="stories">
-        <h2>Hoe jouw verhaal verschil maakt</h2>
+        <h2>Hoe jouw verhaal het verschil maakt</h2>
         <div class="articles-div">
             <article class="werknemer">
                 <b class="violet">WERKNEMER</b>
