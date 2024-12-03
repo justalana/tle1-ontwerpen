@@ -60,7 +60,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 2rem;
-            background-color: #FBFCF6; /* Set background to #FBFCF6 */
+            background-color: #FFFFFF;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -92,7 +92,8 @@
         .welcome-text {
             font-family: 'Arial', sans-serif;
             color: #92AA83; /* Green color */
-            font-size: 2rem;
+            font-size: 50px;
+            font-weight: bold;
             text-align: center;
         }
 
@@ -111,8 +112,8 @@
         }
 
         .register-button {
-            background-color: #AA0160; /* Set button background to #AA0160 */
-            color: #FFFFFF; /* White text */
+            background-color: #AA0160;
+            color: #FFFFFF;
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
             font-weight: bold;
@@ -121,7 +122,7 @@
         }
 
         .register-button:hover {
-            background-color: #8a0151; /* Slightly darker shade on hover */
+            background-color: #8a0151;
         }
 
         .register-button:focus {
