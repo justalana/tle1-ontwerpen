@@ -14,19 +14,19 @@ class VacancyController extends Controller
     public function index()
     {
         //
-        $searchTerm = $request->query('query');
-        Log::info('Search Term:', ['query' => $searchTerm]); // Log the search term
-
-        if ($request->has('query')) {
-            $animals = Vacancy::where('name', 'like', '%' . $searchTerm . '%')
-                ->orWhereHas('user', function ($query) use ($searchTerm) {
-                    $query->where('name', 'like', '%' . $searchTerm . '%');
-                })
-                ->get();
-
-        } else {
+//        $searchTerm = $request->query('query');
+//        Log::info('Search Term:', ['query' => $searchTerm]); // Log the search term
+//
+//        if ($request->has('query')) {
+//            $animals = Vacancy::where('name', 'like', '%' . $searchTerm . '%')
+//                ->orWhereHas('user', function ($query) use ($searchTerm) {
+//                    $query->where('name', 'like', '%' . $searchTerm . '%');
+//                })
+//                ->get();
+//
+//        } else {
             $vacancies = Vacancy::all();
-        }
+//        }
 
         return view('vacancies.index', compact('vacancies'));
     }
