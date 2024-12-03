@@ -39,7 +39,7 @@ class CompanyController extends Controller
             'name' => $request->name
         ]);
 
-        return view('branches.devpage');
+        return to_route('branchDevPage');
 
     }
 
