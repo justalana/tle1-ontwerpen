@@ -4,10 +4,10 @@
     </x-slot>
 
     <div class="content">
-        <!-- Succesmelding -->
-        @if (session('status'))
-            <div class="alert">
-                {{ session('status') }}
+        <!-- Succesmelding na profiel update -->
+        @if (session('profile_updated'))
+            <div class="alert alert-success">
+                {{ session('profile_updated') }}
             </div>
         @endif
 
@@ -67,13 +67,20 @@
             <p>We respecteren je privacy en anonimiteit. Zelfs wanneer je je profielgegevens bijwerkt, blijven je gegevens anoniem en worden ze niet gedeeld met anderen. Alleen jij hebt toegang tot je eigen gegevens en ze blijven privé.</p>
         </div>
 
-        <!-- Activiteiten -->
+        <!-- Recente Activiteiten -->
         <div class="activities">
             <h3>Recente activiteiten</h3>
             <ul>
                 <li>Je bent geregistreerd op: {{ auth()->user()->created_at->format('d F Y') }}</li>
-                <li>Aantal vacatures: 5 (voorbeeld)</li>
+                <li>Aantal vacatures bekeken: 5 (voorbeeld)</li>
+                <li>Op aantal vacatures gereageerd: 5 (voorbeeld)</li>
             </ul>
+        </div>
+
+        <!-- Laatste Update -->
+        <div class="last-update">
+            <h3>Laatste Profiel Update</h3>
+            <p>Je profiel is voor het laatst bijgewerkt op: {{ auth()->user()->updated_at->format('d F Y H:i') }}</p>
         </div>
     </div>
 
@@ -143,6 +150,18 @@
 
         .activities li {
             margin-bottom: 10px;
+        }
+
+        .anonimity-info {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .last-update {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #343a40;
         }
     </style>
 </x-app-layout>
