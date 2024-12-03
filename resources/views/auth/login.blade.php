@@ -3,8 +3,7 @@
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <div class="text-center">
-        <h2 class="welcome-text">Hi!
-            Welkom</h2>
+        <h2 class="welcome-text">Hi! Welkom</h2>
     </div>
 
     <form method="POST" action="{{ route('login') }}" class="login-form">
@@ -42,7 +41,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="ms-3 login-btn">
+            <x-primary-button class="login-btn">
                 {{ __('Inloggen') }}
             </x-primary-button>
         </div>
@@ -120,8 +119,6 @@
             cursor: pointer;
             font-size: 20px;
             width: 100%;
-            max-width: 400px;
-            margin-left: -25%;
         }
 
         .login-btn:hover {
