@@ -2,59 +2,53 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-
         <div class="mb-6 text-sm text-gray-500">
-            This information is private and will not be visible to others.
+            Deze informatie is privé en zal niet zichtbaar zijn voor anderen.
         </div>
 
-        <!-- Name -->
+        <!-- Naam -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+            <x-input-label for="name" :value="__('Naam')" />
+            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-        <!-- Email Address -->
+        <!-- E-mailadres -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+            <x-input-label for="email" :value="__('E-mail')" />
+            <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
-        <!-- Phone Number -->
+        <!-- Telefoonnummer -->
         <div class="mt-4">
-            <x-input-label for="phone_number" :value="__('Phone Number')" />
-            <x-text-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" />
-            <p class="text-sm text-gray-500 mt-1">Optional: You can leave this field blank if you prefer.</p>
+            <x-input-label for="phone_number" :value="__('Telefoonnummer')" />
+            <x-text-input id="phone_number" type="text" name="phone_number" :value="old('phone_number')" />
+            <p class="text-sm text-gray-500 mt-1">Optioneel: Je kunt dit veld leeg laten als je dat wilt.</p>
             <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
         </div>
 
-        <!-- Password -->
+        <!-- Wachtwoord -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full"
-                          type="password"
-                          name="password"
-                          required autocomplete="new-password" />
+            <x-input-label for="password" :value="__('Wachtwoord')" />
+            <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Confirm Password -->
+        <!-- Bevestig Wachtwoord -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                          type="password"
-                          name="password_confirmation" required autocomplete="new-password" />
+            <x-input-label for="password_confirmation" :value="__('Bevestig Wachtwoord')" />
+            <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
+            <a href="{{ route('login') }}">
+                {{ __('Al geregistreerd?') }}
             </a>
 
             <x-primary-button class="ms-4">
-                {{ __('Register') }}
+                {{ __('Registreren') }}
             </x-primary-button>
         </div>
     </form>
