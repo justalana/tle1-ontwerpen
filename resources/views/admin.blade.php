@@ -1,6 +1,6 @@
-<x-site-layout title="Branch and company administration">
+<x-site-layout title="Open Hiring Admin">
 
-    <h1>Branch and company administration</h1>
+    <h1>Open Hiring admin page</h1>
 
     <section>
 

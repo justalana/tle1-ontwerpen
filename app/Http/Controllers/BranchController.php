@@ -51,7 +51,7 @@ class BranchController extends Controller
             'city' => $request->city
         ]);
 
-        return to_route('branchDevPage');
+        return to_route('admin');
     }
 
     /**

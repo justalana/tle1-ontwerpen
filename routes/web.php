@@ -24,10 +24,10 @@ require __DIR__ . '/auth.php';
 
 Route::middleware('can:admin')->group(function () {
 
-    Route::get('/branch-dev', function () {
-        return view('branches.devpage');
+    Route::get('/admin', function () {
+        return view('admin');
     })
-        ->name('branchDevPage');
+        ->name('admin');
 
     Route::resource('branches', BranchController::class)->only('create', 'store', 'destory');
     Route::resource('companies', CompanyController::class);

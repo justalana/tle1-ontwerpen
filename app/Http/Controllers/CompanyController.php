@@ -39,7 +39,7 @@ class CompanyController extends Controller
             'name' => $request->name
         ]);
 
-        return to_route('branchDevPage');
+        return to_route('admin');
 
     }
 
