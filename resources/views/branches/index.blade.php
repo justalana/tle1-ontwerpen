@@ -1,8 +1,8 @@
 @props(['branches' => ''])
 
-<x-site-layout>
+<x-site-layout title="Branch overview">
 
-    <h1>Branch index</h1>
+    <h1>Branch overview</h1>
 
     @if(!empty($branches))
 
@@ -22,6 +22,10 @@
             @endforeach
 
         </div>
+
+    @else
+
+        <h2>No branches found</h2>
 
     @endif
 

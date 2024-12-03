@@ -1,6 +1,6 @@
 @props(['branch'])
 
-<x-site-layout>
+<x-site-layout title="{{ $branch->name }} details">
 
     <h1>{{ $branch->name }}</h1>
     <p>{{ $branch->company->name }}</p>

@@ -1,6 +1,6 @@
 @props(['companies' => ''])
 
-<x-site-layout>
+<x-site-layout title="Create branch">
 
     <h1>Create branch</h1>
 
