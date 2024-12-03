@@ -36,7 +36,7 @@
     </section>
     <section id="jobs-preview">
         <h2>Openstaande vacatures voor iedereen</h2>
-        <p>Momenteel zijn er geen openstaande facatures beschikbaar.</p>
+        <p>Momenteel zijn er geen openstaande vacatures beschikbaar.</p>
         <a class="button-light">Bekijk alle vacatures</a>
     </section>
 
