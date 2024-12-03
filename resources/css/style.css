@@ -1,5 +1,5 @@
 
-/* COLORS */
+/* === COLORS === */
 :root {
     --violet: #AA0160;
     --violet-dark: #7C1A51;
@@ -12,7 +12,7 @@
     --stroke-thin: #DFDFDF;
 }
 
-/* FONT SIZES */
+/* === FONT SIZES === */
 @font-face {
     font-family: 'radikal';
     src: url('./fonts/Radikal.otf');
@@ -84,4 +84,15 @@ footer {
     padding: 3vw;
     background-color: var(--moss-dark);
     color: var(--yellow);
+}
+
+/* === MOBILE === */
+@media (max-width: 767px) {
+    header {
+        flex-direction: row;
+    }
+
+    nav {
+        flex-direction: column;
+    }
 }
