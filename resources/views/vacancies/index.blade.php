@@ -1,12 +1,12 @@
 <x-site-layout>
+    @vite(['resources/css/vacancies-index.css'])
     <header>
     <h1>Open Vacatures</h1>
     </header>
-    <main>
     @if($vacancies->isNotEmpty())
             @foreach($vacancies as $vacancy)
-                <div class="column, item">
-                <div class="row">
+                <div class="item">
+                <div class="essentials">
                     <img src="{{ asset('storage/' . $vacancy->image_file_path) }}" alt="afbeelding van {{$vacancy->name}}">
                     <div class="column">
                         <h2>{{$vacancy->title}}</h2>
@@ -26,5 +26,4 @@
     @else
         <p>Helaas, geen open vacatures</p>
     @endif
-    </main>
 </x-site-layout>
