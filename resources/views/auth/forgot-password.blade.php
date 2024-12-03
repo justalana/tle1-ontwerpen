@@ -1,7 +1,15 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    <!-- Oops! Text -->
+    <div class="text-4xl text-center font-bold" style="color: #92AA83;">
+        Oops!
     </div>
+
+    <!-- Description Text -->
+    <div class="text-sm text-center" style="color: #2F3A31;">
+        Geef je naam, email of telefoonnummer op, zodat wij een link kunnen sturen om je wachtwoord te veranderen.
+    </div>
+
+
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -17,7 +25,7 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
+            <x-primary-button class="w-full" style="background-color: #8a0151; color: white;">
                 {{ __('Email Password Reset Link') }}
             </x-primary-button>
         </div>

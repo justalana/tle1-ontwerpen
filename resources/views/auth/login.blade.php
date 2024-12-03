@@ -111,8 +111,8 @@
         }
 
         .login-btn {
-            background-color: #FAEC02;
-            color: #2E342A; /* Moss Dark */
+            background-color: #8a0151; /* Violet color */
+            color: white;
             padding: 1rem 2rem;
             border-radius: 4px;
             font-weight: bold;
@@ -125,7 +125,7 @@
         }
 
         .login-btn:hover {
-            background-color: #e0c800;
+            background-color: #7a0146; /* Slightly darker violet on hover */
         }
 
         .login-btn:focus {

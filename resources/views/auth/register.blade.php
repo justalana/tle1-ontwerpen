@@ -2,7 +2,12 @@
     <form method="POST" action="{{ route('register') }}" class="register-form">
         @csrf
 
-        <div class="mb-6 text-sm text-gray-500">
+        <div class="welcome-text">
+            <span class="hi-welcome">Hi! Welkom.</span><br>
+            <span class="create-account">Laten we een account aanmaken!</span>
+        </div>
+
+        <div class="info-text">
             Deze informatie is privé en zal niet zichtbaar zijn voor anderen.
         </div>
 
@@ -42,12 +47,9 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a href="{{ route('login') }}" class="login-link">
-                {{ __('Al geregistreerd?') }}
-            </a>
-
-            <x-primary-button class="register-button ms-4">
+        <div class="flex flex-col items-center justify-between mt-4 h-full">
+            <!-- Registreren Button -->
+            <x-primary-button class="register-button">
                 {{ __('Registreren') }}
             </x-primary-button>
         </div>
@@ -58,7 +60,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 2rem;
-            background-color: #fff;
+            background-color: #FBFCF6; /* Set background to #FBFCF6 */
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -87,27 +89,30 @@
             outline: none;
         }
 
-        .text-sm {
+        .welcome-text {
+            font-family: 'Arial', sans-serif;
+            color: #92AA83; /* Green color */
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .create-account {
+            font-family: 'Arial', sans-serif;
+            color: #2F3A31; /* Moss black color */
             font-size: 0.875rem;
+            text-align: center;
         }
 
-        .text-gray-500 {
-            color: #6b7280;
-        }
-
-        .login-link {
-            color: #007bff;
-            text-decoration: none;
+        .info-text {
+            font-family: 'Arial', sans-serif;
+            color: #2F3A31; /* Moss black color */
             font-size: 0.875rem;
-        }
-
-        .login-link:hover {
-            text-decoration: underline;
+            margin-top: 1rem;
         }
 
         .register-button {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #AA0160; /* Set button background to #AA0160 */
+            color: #FFFFFF; /* White text */
             padding: 0.75rem 1.5rem;
             border-radius: 4px;
             font-weight: bold;
@@ -116,7 +121,7 @@
         }
 
         .register-button:hover {
-            background-color: #0056b3;
+            background-color: #8a0151; /* Slightly darker shade on hover */
         }
 
         .register-button:focus {
