@@ -29,7 +29,7 @@ Route::middleware('can:admin')->group(function () {
     })
         ->name('admin');
 
-    Route::resource('branches', BranchController::class)->only('create', 'store', 'destory');
+    Route::resource('branches', BranchController::class)->only('create', 'store', 'destroy');
     Route::resource('companies', CompanyController::class);
 
 });
