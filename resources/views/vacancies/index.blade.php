@@ -8,7 +8,7 @@
     @if($vacancies->isNotEmpty())
             @foreach($vacancies as $vacancy)
 
-                <div class="item">
+                <div class="article">
 
                 <div class="essentials">
 
