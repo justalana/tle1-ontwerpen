@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\Company;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
@@ -12,7 +13,9 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        $branches = Branch::all();
+
+        return view('branches.index', ['branches' => $branches]);
     }
 
     /**
@@ -20,7 +23,9 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        $companies = Company::all();
+
+        return view('branches.create', ['companies' => $companies]);
     }
 
     /**
@@ -28,7 +33,25 @@ class BranchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'company' => ['required', 'integer'],
+            'description' => ['required', 'string'],
+            'streetName' => ['required', 'string', 'max:255'],
+            'streetNumber' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255']
+        ]);
+
+        Branch::create([
+            'name' => $request->name,
+            'company_id' => $request->company,
+            'description' => $request->description,
+            'street_name' => $request->streetName,
+            'street_number' => $request->streetNumber,
+            'city' => $request->city
+        ]);
+
+        return to_route('branchDevPage');
     }
 
     /**
@@ -36,7 +59,7 @@ class BranchController extends Controller
      */
     public function show(Branch $branch)
     {
-        //
+        return view('branches.show', ['branch' => $branch]);
     }
 
     /**
