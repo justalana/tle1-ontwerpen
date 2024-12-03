@@ -30,7 +30,7 @@ header div {
     background-color: var(--moss-light);
 }
 
-#stories div {
+#stories .articles-div, .buttons {
     display: flex;
     gap: 5vw;
 }
@@ -55,4 +55,13 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.violet {
+    color: var(--violet);
+}
+
+.author p, .author b {
+    font-size: 1rem;
+    margin: 0;
 }

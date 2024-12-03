@@ -10,18 +10,22 @@
 
     <section id="stories">
         <h2>Hoe jouw verhaal verschil maakt</h2>
-        <div>
+        <div class="articles-div">
             <article class="werknemer">
-                <b>WERKNEMER</b>
+                <b class="violet">WERKNEMER</b>
                 <p>"Zonder sollicitatiegesprek is het makkelijker om aan het werk te gaan. Het is leuk, iedereen is aardig. Ik heb het hier naar mijn zin."</p>
-                <b>Adela</b>
-                <p>Vulploegmedewerker</p>
+                <div class="author">
+                    <b>Adela</b>
+                    <p>Vulploegmedewerker</p>
+                </div>
             </article>
             <article class="werkgever">
-                <b>WERKGEVER</b>
+                <b class="violet">WERKGEVER</b>
                 <p>“Je moet je vooroordelen en aannames kunnen loslaten, maar dan zul je vaak verrast worden door de kwaliteit en de persoon zelf.”</p>
-                <b>Gaby Westelaken</b>
-                <p>GWS dé schoonmaker</p>
+                <div class="author">
+                    <b>Gaby Westelaken</b>
+                    <p>GWS dé schoonmaker</p>
+                </div>
             </article>
         </div>
         <div class="buttons">
