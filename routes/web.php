@@ -3,6 +3,7 @@
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,6 +21,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+Route::resource('vacancies', VacancyController::class);
+
+Route::get('/test', [VacancyController::class, 'index']) ->name('vacancies.detail-test');
+
+
+require __DIR__.'/auth.php';
 
 
 Route::middleware('can:admin')->group(function () {
