@@ -15,7 +15,12 @@
                     <h2>{{ $branch->name }}</h2>
 
                     <a href="{{ route('branches.show', $branch) }}">Details</a>
-                    <a href="{{ route('branches.edit', $branch) }}">Edit</a>
+
+                    @can('edit-branch', $branch)
+
+                        <a href="{{ route('branches.edit', $branch) }}">Edit</a>
+
+                    @endcan
 
                 </article>
 
