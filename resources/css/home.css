@@ -20,12 +20,6 @@ header div {
     margin: 2vw;
 }
 
-@media (max-width: 767px) {
-    header div {
-        flex-direction: column;
-    }
-}
-
 .werknemer {
     background-color: var(--moss-light);
 }
@@ -64,4 +58,15 @@ article {
 .author p, .author b {
     font-size: 1rem;
     margin: 0;
+}
+
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        margin: 5vw;
+    }
+
+    .articles-div, .buttons {
+        flex-direction: column;
+    }
 }

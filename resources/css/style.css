@@ -121,4 +121,8 @@ footer {
     main {
         margin: 0;
     }
+
+    section {
+        margin: 5vw;
+    }
 }
