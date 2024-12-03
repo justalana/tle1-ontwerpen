@@ -24,9 +24,7 @@
     </div>
 
     <div>
-        <a href="">
-            <button class="button-light">Schrijf je in!</button>
-        </a>
+        <a class="button-light" href="">Schrijf je in!</a>
     </div>
 
 </x-site-layout>
