@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
 });
+
+Route::resource('vacancy', VacancyController::class)->name('index', 'vacancies.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
