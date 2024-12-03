@@ -29,8 +29,17 @@ Route::middleware('can:admin')->group(function () {
     })
         ->name('branchDevPage');
 
-    Route::resource('branches', BranchController::class);
+    Route::resource('branches', BranchController::class)->only('create', 'store', 'destory');
     Route::resource('companies', CompanyController::class);
 
 });
+
+
+Route::middleware('can:edit-branch,branch')->group(function () {
+
+    Route::resource('branches', BranchController::class)->only('edit', 'update');
+
+});
+
+Route::resource('branches', BranchController::class)->only('index', 'show');
 
