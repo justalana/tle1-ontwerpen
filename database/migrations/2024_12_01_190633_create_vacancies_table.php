@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('branch_id');
             $table->foreign('branch_id')->references('id')->on('branches');
+            $table->string('title');
             $table->float('salary_min');
             $table->float('salary_max')->nullable();
             $table->tinyInteger('work_hours')->nullable();

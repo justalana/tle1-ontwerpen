@@ -36,7 +36,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        //
+        return view('vacancies.details', ['vacancy' => $vacancy]);
     }
 
     /**
