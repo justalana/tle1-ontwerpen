@@ -1,4 +1,6 @@
 @props(['branches' => ''])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="Branch overview">
 
@@ -6,7 +8,7 @@
 
     @if(!empty($branches))
 
-        <div>
+        <div id="branchArticleContainer">
 
             @foreach($branches as $branch)
 

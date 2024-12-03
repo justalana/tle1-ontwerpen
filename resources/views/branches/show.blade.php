@@ -1,15 +1,29 @@
 @props(['branch'])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="{{ $branch->name }} details">
 
-    <h1>{{ $branch->name }}</h1>
-    <p>{{ $branch->company->name }}</p>
+    <div id="branchDetailContainer">
 
-    <p>{{ $branch->description }}</p>
+        <div id="branchNameContainer">
 
-    <div>
-        <p>Adress:</p>
-        <p>{{ $branch->street_name }} {{ $branch->street_number }}, {{ $branch->city }}</p>
+            <h1>{{ $branch->name }}</h1>
+            <p>{{ $branch->company->name }}</p>
+
+        </div>
+
+        <div>
+            <p>{{ $branch->description }}</p>
+        </div>
+
+        <div id="branchDetailAdressContainer">
+
+            <p>Adress:</p>
+            <p>{{ $branch->street_name }} {{ $branch->street_number }}, {{ $branch->city }}</p>
+
+        </div>
+
     </div>
 
 </x-site-layout>

@@ -1,10 +1,12 @@
 @props(['branch'])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="Edit {{ $branch->name }}">
 
     <h1>Edit {{ $branch->name }}</h1>
 
-    <form action="{{ route('branches.update', $branch) }}" method="POST">
+    <form action="{{ route('branches.update', $branch) }}" method="POST" id="branchForm">
         @csrf
         @method('PUT')
 
