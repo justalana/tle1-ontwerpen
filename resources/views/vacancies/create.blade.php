@@ -1,10 +1,11 @@
 @props(['requirements'])
+@vite(['resources/css/vacancies.css'])
 
 <x-site-layout title="Create vacancy">
 
     <h1>Create vacancy</h1>
 
-    <form action="{{ route('vacancies.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('vacancies.store') }}" method="POST" enctype="multipart/form-data" id="vacancyForm">
         @csrf
 
         <div>
