@@ -25,7 +25,9 @@
 
 <main>{{ $slot }}</main>
 
-<footer></footer>
+<footer>
+    <p>footer</p>
+</footer>
 
 </body>
 </html>
