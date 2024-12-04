@@ -17,9 +17,9 @@
     <a>Over Open Hiring</a>
     <a>Contact</a>
     <div>
-        <a>Log in</a>
+        <a href="{{ route('login') }}">Log in</a>
         <p>|</p>
-        <a>Registreer</a>
+        <a href="{{ route('register') }}">Registreer</a>
     </div>
 </nav>
 
