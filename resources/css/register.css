@@ -1,3 +1,4 @@
+/* Root Variables */
 :root {
     --violet: #AA0160;
     --violet-dark: #7C1A51;
@@ -10,6 +11,7 @@
     --stroke-thin: #DFDFDF;
 }
 
+/* Register Form */
 .register-form {
     max-width: 500px;
     margin: 0 auto;
@@ -45,6 +47,7 @@
     outline: none;
 }
 
+/* Welcome Text */
 .welcome-text {
     text-align: center;
     font-family: 'radikal', sans-serif;
@@ -54,10 +57,12 @@
     margin-bottom: 1rem;
 }
 
+/* Info Text */
 .info-text {
     font-size: 0.875rem;
     color: #2F3A31;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem; /* Reduced margin to move it up */
+    margin-top: -0.5rem; /* Negative margin to push it further up */
 }
 
 .info-text-small {
@@ -92,4 +97,53 @@
     font-size: 0.875rem;
 }
 
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+    .register-form {
+        padding: 2rem; /* Keep padding consistent */
+    }
 
+    .welcome-text {
+        font-size: 56px; /* Make text bigger */
+    }
+
+    .info-text {
+        font-size: 1rem; /* Increase text size */
+        margin-bottom: 0.5rem; /* Reduced bottom margin */
+        margin-top: -0.5rem; /* Negative margin to move it up */
+    }
+
+    .info-text-small {
+        font-size: 1rem; /* Adjust text size */
+    }
+
+    .register-button {
+        font-size: 1.1rem; /* Increase font size */
+        padding: 1rem; /* More padding for the button */
+    }
+}
+
+@media (max-width: 480px) {
+    .register-form {
+        padding: 2rem;
+    }
+
+    .welcome-text {
+        font-size: 64px;
+    }
+
+    .info-text {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        margin-top: -0.5rem;
+    }
+
+    .info-text-small {
+        font-size: 1rem;
+    }
+
+    .register-button {
+        font-size: 1.2rem;
+        padding: 1.2rem;
+    }
+}

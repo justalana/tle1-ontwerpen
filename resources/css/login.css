@@ -10,8 +10,6 @@
     --stroke-thin: #DFDFDF;
 }
 
-
-
 .login-form {
     max-width: 400px;
     margin: 0 auto;
@@ -23,7 +21,6 @@
     border: none;
     margin-top: 3rem;
 }
-
 
 .form-group {
     margin-bottom: 1.5rem;
@@ -123,43 +120,53 @@
     margin-bottom: 1rem;
 }
 
+/* Media Queries for responsiveness */
 @media (max-width: 768px) {
     .login-form {
-        padding: 1.5rem;
-        font-family: 'radikal', sans-serif;
+        padding: 2rem;
     }
 
     .welcome-text {
-        font-size: 35px;
-        font-family: 'radikal', sans-serif;
+        font-size: 56px;
     }
 
     .login-btn {
-        font-size: 18px;
-        padding: 0.8rem 1.5rem;
-        font-family: 'radikal', sans-serif;
+        font-size: 1.1rem;
+        padding: 1rem 1.8rem; /* Adjust padding for larger buttons */
+    }
+
+    .form-label {
+        font-size: 1rem;
+    }
+
+    .input-field {
+        padding: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .login-form {
-        padding: 1rem;
+        padding: 2rem;
     }
 
     .welcome-text {
-        font-size: 28px;
+        font-size: 64px;
     }
 
     .login-btn {
-        font-size: 16px;
-        padding: 0.8rem 1.2rem;
+        font-size: 1.2rem;
+        padding: 1.2rem 2rem;
     }
 
     .form-label {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .input-field {
-        padding: 0.8rem;
+        padding: 1.2rem;
+    }
+
+    .forgot-password-link, .no-account-link {
+        font-size: 1rem;
     }
 }
