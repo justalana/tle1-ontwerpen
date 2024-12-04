@@ -84,6 +84,10 @@ nav {
     padding: 1vh;
 }
 
+nav img {
+    width: 4vw;
+}
+
 nav div {
     display: flex;
     flex-direction: row;

@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav>
-    <a href="{{ '/'}}">Home</a>
+    <a href="{{ '/'}}"><img src="images/logo.png" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
     <a>Over Open Hiring</a>
     <a>Contact</a>
