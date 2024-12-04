@@ -16,6 +16,7 @@ class Vacancy extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
         'branch_id',
         'salary_min',
         'salary_max',
@@ -23,6 +24,7 @@ class Vacancy extends Model
         'contract_duration',
         'description',
         'image_file_path',
+        'image_alt_text'
     ];
 
     /**
