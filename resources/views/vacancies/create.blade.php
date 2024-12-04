@@ -1,4 +1,4 @@
-@props(['requirements'])
+@props(['requirements', 'days'])
 @vite(['resources/css/vacancies.css'])
 
 <x-site-layout title="Create vacancy">
@@ -108,6 +108,43 @@
             @error('contractDuration')
             <p>{{ $message }}</p>
             @enderror
+        </div>
+
+        <div id="timeSlotContainer">
+
+            <div class="timeSlot" id="timeSlot1">
+
+                <div>
+
+                    <select name="days[1]" id="timeSlot1" required>
+                        @foreach($days as $day)
+
+                            <option value="{{ $day->id }}">{{ $day->name }}</option>
+
+                        @endforeach
+                    </select>
+
+                </div>
+
+                <div>
+                    <label for="startTimes[1]">Start Time</label>
+                    <input type="time" name="startTimes[1]" id="timeSlot1" value="{{ old('startTimes[1]') ?? ''}}">
+                </div>
+
+                <div>
+                    <label for="endTimes[1]">End Time</label>
+                    <input type="time" name="endTimes[1]" id="timeSlot1" value="{{ old('endTimes[1]') ?? ''}}">
+                </div>
+
+                <div>
+                    <label for="optional[1]">Optional</label>
+                    <input type="checkbox" name="optional[1]" id="timeSlot1">
+                </div>
+
+            </div>
+
+            <button class="addTimeSlot">+ Add new time slot</button>
+
         </div>
 
         <div>

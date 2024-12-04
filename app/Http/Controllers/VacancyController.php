@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Day;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -40,8 +41,9 @@ class VacancyController extends Controller implements HasMiddleware
     public function create()
     {
         $requirements = Requirement::all();
+        $days = Day::all();
 
-        return view('vacancies.create', ['requirements' => $requirements]);
+        return view('vacancies.create', ['requirements' => $requirements, 'days' => $days]);
     }
 
     /**
@@ -60,6 +62,7 @@ class VacancyController extends Controller implements HasMiddleware
             'image' => ['required', 'image', 'mimes:jpeg,png,webp,gif,avif,apng', 'max:5000'],
             'imageAltText' => ['required', 'max:255']
         ]);
+
 
         //Double check to make sure that the branch id matches the one linked to the current user (unless they are an admin)
         $branchId = $request->branch;
