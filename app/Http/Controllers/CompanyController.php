@@ -12,7 +12,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+
+        return view('companies.index', ['companies' => $companies]);
     }
 
     /**
@@ -20,7 +22,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -28,7 +30,17 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => ['required', 'string']
+        ]);
+
+        Company::create([
+            'name' => $request->name
+        ]);
+
+        return to_route('admin');
+
     }
 
     /**

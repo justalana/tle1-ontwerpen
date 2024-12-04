@@ -1,0 +1,40 @@
+html, body, main {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #AA0160;
+    text-align: center;
+    width: 100%;
+}
+
+#details-header {
+    padding: 5vh 0;
+    color: white;
+    margin: 0 0 3vh 0;
+}
+
+#detail-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#vacancy-image {
+    border-radius: 5%;
+    height: 15vh;
+    width: 30vw;
+}
+
+#description {
+    margin: 3vh 5vw;
+    padding: 1vh 2vw;
+    border: solid #2E342A;
+    border-radius: 5%;
+}
+
+#description-text {
+    padding: 0 3vw;
+}
+

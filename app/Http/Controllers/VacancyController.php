@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Log;
 
 class VacancyController extends Controller
 {
@@ -12,7 +13,11 @@ class VacancyController extends Controller
      */
     public function index()
     {
-        //
+
+        $vacancies = Vacancy::all();
+
+        return view('vacancies.index', compact('vacancies'));
+
     }
 
     /**
@@ -36,7 +41,7 @@ class VacancyController extends Controller
      */
     public function show(Vacancy $vacancy)
     {
-        //
+        return view('vacancies.details', ['vacancy' => $vacancy]);
     }
 
     /**

@@ -11,8 +11,17 @@
     @vite(['resources/css/style.css'])
 </head>
 <body>
-
-<nav></nav>
+<nav>
+    <a href="{{ '/'}}">Home</a>
+    <a href="{{ route('vacancies.index') }}">Vacatures</a>
+    <a>Over Open Hiring</a>
+    <a>Contact</a>
+    <div>
+        <a>Log in</a>
+        <p>|</p>
+        <a>Registreer</a>
+    </div>
+</nav>
 
 <main>{{ $slot }}</main>
 
