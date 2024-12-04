@@ -1,3 +1,5 @@
+@props(['requirements'])
+
 <x-site-layout title="Create vacancy">
 
     <h1>Create vacancy</h1>
@@ -56,6 +58,16 @@
             @error('description')
             <p>{{ $message }}</p>
             @enderror
+        </div>
+
+        <div id="checkboxContainer">
+
+            @foreach($requirements as $requirement)
+                <label> {{ $requirement->name }}
+                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}">
+                </label>
+            @endforeach
+
         </div>
 
         <div>

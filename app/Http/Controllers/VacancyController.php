@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -38,7 +39,9 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        return view('vacancies.create');
+        $requirements = Requirement::all();
+
+        return view('vacancies.create', ['requirements' => $requirements]);
     }
 
     /**
@@ -51,8 +54,8 @@ class VacancyController extends Controller implements HasMiddleware
             'branch' => ['required', 'numeric'],
             'description' => ['required'],
             'salaryMin' => ['required', 'min:0', 'numeric'],
-            'salaryMax' => ['min:0', 'numeric'],
-            'workHours' => ['min:0', 'numeric'],
+            'salaryMax' => ['min:0', 'numeric', 'nullable'],
+            'workHours' => ['min:0', 'numeric', 'nullable'],
             'contractDuration' => ['required', 'min:1', 'numeric'],
             'image' => ['required', 'image', 'mimes:jpeg,png,webp,gif,avif,apng', 'max:5000'],
             'imageAltText' => ['required', 'max:255']
@@ -64,7 +67,7 @@ class VacancyController extends Controller implements HasMiddleware
             $branchId = Auth::getUser()->branch_id;
         }
 
-        //Store the image in the correct folder and get the hashed filename
+        //Store the image in the correct folder and get a random filename
         $storagePath = public_path('storage/uploads/vacancyImages');
         $newName = Str::random(64) . '.' . $request->image->extension();
 
@@ -82,6 +85,11 @@ class VacancyController extends Controller implements HasMiddleware
         ]);
 
         $request->image->move($storagePath, $newName);
+
+        //Bind the selected requirements to the created vacancy
+        foreach ($request->requirements as $requirement) {
+            $vacancy->requirements()->attach($requirement);
+        }
 
         return to_route('vacancies.show', $vacancy);
     }
