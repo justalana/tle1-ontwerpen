@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-site-layout>
+    @vite(['resources/css/profile.css'])
     <x-slot name="header">
         <h2>Profiel</h2>
     </x-slot>
@@ -164,4 +165,4 @@
             color: #343a40;
         }
     </style>
-</x-app-layout>
+</x-site-layout>
