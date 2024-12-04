@@ -14,7 +14,7 @@
             <ul id="detail-list">
                 <li>Werkuren: {{$vacancy->work_hours}} uur per week</li>
                 <li>Contractduur: {{$vacancy->contract_duration}} dagen</li>
-                <li>Salaris: {{$vacancy->salary_min}} t/m {{$vacancy->salary_max}} euro per uur</li>
+                <li>Salaris: €{{$vacancy->salary_min}} t/m €{{$vacancy->salary_max}} euro per uur</li>
             </ul>
         </div>
     </div>
