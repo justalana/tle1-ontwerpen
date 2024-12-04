@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @vite(['resources/css/register.css'])
     <form method="POST" action="{{ route('register') }}" class="register-form">
         @csrf
 
@@ -63,81 +64,4 @@
         </div>
     </form>
 
-    <style>
-        .register-form {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        .input-field:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        .welcome-text {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            color: #92AA83;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .info-text {
-            font-size: 0.875rem;
-            color: #2F3A31;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-text-small {
-            font-size: 0.8rem;
-            color: #555;
-            margin-top: 0.5rem;
-        }
-
-        .register-button {
-            width: 100%;
-            background-color: #AA0160;
-            color: #fff;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .register-button:hover {
-            background-color: #8a0151;
-        }
-
-        .error-message {
-            color: red;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-    </style>
 </x-guest-layout>
