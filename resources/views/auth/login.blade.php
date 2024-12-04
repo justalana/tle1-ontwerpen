@@ -63,8 +63,6 @@
     </div>
 
     <style>
-
-
         .login-form {
             max-width: 400px;
             margin: 0 auto;
@@ -132,7 +130,7 @@
         }
 
         .login-btn:hover {
-            background-color: #7a0146; /* Slightly darker violet on hover */
+            background-color: #7a0146;
         }
 
         .login-btn:focus {
@@ -164,6 +162,46 @@
             color: green;
             font-weight: bold;
             margin-bottom: 1rem;
+        }
+
+
+        @media (max-width: 768px) {
+            .login-form {
+                padding: 1.5rem;
+            }
+
+            .welcome-text {
+                font-size: 35px;
+            }
+
+            .login-btn {
+                font-size: 18px;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            .login-form {
+                padding: 1rem;
+            }
+
+            .welcome-text {
+                font-size: 28px;
+            }
+
+            .login-btn {
+                font-size: 16px;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .input-field {
+                padding: 0.8rem;
+            }
         }
     </style>
 </x-guest-layout>
