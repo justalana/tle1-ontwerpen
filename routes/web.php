@@ -24,16 +24,26 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
+Route::resource('vacancies', VacancyController::class);
 
 Route::middleware('can:admin')->group(function () {
 
-    Route::get('/branch-dev', function () {
-        return view('branches.devpage');
+    Route::get('/admin', function () {
+        return view('admin');
     })
-        ->name('branchDevPage');
+        ->name('admin');
 
-    Route::resource('branches', BranchController::class);
+    Route::resource('branches', BranchController::class)->only('create', 'store', 'destroy');
     Route::resource('companies', CompanyController::class);
 
 });
+
+
+Route::middleware('can:edit-branch,branch')->group(function () {
+
+    Route::resource('branches', BranchController::class)->only('edit', 'update');
+
+});
+
+Route::resource('branches', BranchController::class)->only('index', 'show');
 

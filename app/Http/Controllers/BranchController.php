@@ -51,7 +51,7 @@ class BranchController extends Controller
             'city' => $request->city
         ]);
 
-        return to_route('branchDevPage');
+        return to_route('admin');
     }
 
     /**
@@ -67,7 +67,7 @@ class BranchController extends Controller
      */
     public function edit(Branch $branch)
     {
-        //
+        return view('branches.edit', ['branch' => $branch]);
     }
 
     /**
@@ -75,7 +75,23 @@ class BranchController extends Controller
      */
     public function update(Request $request, Branch $branch)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'streetName' => ['required', 'string', 'max:255'],
+            'streetNumber' => ['required', 'string', 'max:255'],
+            'city' => ['required', 'string', 'max:255']
+        ]);
+
+        $branch->name = $request->name;
+        $branch->description = $request->description;
+        $branch->street_name = $request->streetName;
+        $branch->street_number = $request->streetNumber;
+        $branch->city = $request->city;
+
+        $branch->save();
+
+        return to_route('branches.show', $branch);
     }
 
     /**

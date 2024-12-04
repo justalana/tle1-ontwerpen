@@ -1,0 +1,62 @@
+#branchForm,
+#companyForm {
+
+    padding: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 20vw;
+    margin: auto;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2vw;
+    }
+
+}
+
+#branchArticleContainer {
+
+    width: 70vw;
+    margin: auto;
+    padding: 1vw;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2vw;
+
+    article {
+        padding: 0.5vw;
+    }
+}
+
+#branchDetailContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 1vw;
+
+    >div {
+        padding: 1vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+
+@media only screen and (max-width: 450px) {
+
+    #branchForm,
+    #companyForm {
+        width: 95vw;
+    }
+
+    #branchArticleContainer {
+        width: 95vw;
+        gap: 1vw;
+    }
+
+}

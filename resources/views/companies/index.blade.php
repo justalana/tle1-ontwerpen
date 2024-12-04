@@ -1,4 +1,6 @@
 @props(['companies' => ''])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="Company overview">
 
