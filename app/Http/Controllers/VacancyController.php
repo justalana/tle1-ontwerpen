@@ -4,20 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Log;
 
-class VacancyController extends Controller
+class VacancyController extends Controller implements HasMiddleware
 {
+    /**
+     * Get the middleware that should be assigned to the controller.
+     */
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:create-vacancy', only: ['create', 'store']),
+            new Middleware('can:manage-vacancy,vacancy', only: ['edit', 'update', 'delete']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
         $vacancies = Vacancy::all();
 
         return view('vacancies.index', compact('vacancies'));
-
     }
 
     /**
@@ -25,7 +36,7 @@ class VacancyController extends Controller
      */
     public function create()
     {
-        //
+        return view('vacancies.create');
     }
 
     /**
@@ -33,7 +44,12 @@ class VacancyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'max:255'],
+            'branch' => ['required'. 'numeric']
+        ]);
+
+
     }
 
     /**
