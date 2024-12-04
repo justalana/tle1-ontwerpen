@@ -12,7 +12,8 @@
 </head>
 <body>
 <nav>
-    <a>Vacatures</a>
+    <a href="{{ '/'}}">Home</a>
+    <a href="{{ route('vacancies.index') }}">Vacatures</a>
     <a>Over Open Hiring</a>
     <a>Contact</a>
     <div>

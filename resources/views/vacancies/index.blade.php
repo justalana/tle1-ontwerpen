@@ -35,7 +35,7 @@
 
                     <div class="column">
                         <p>{{$vacancy->description}}</p>
-                        <a href="">Bekijk vacature</a>
+                        <a class="button-pink" href="{{ route('vacancies.show', $vacancy -> id) }}">Bekijk vacature</a>
                     </div>
 
                 </div>

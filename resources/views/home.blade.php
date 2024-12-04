@@ -29,7 +29,7 @@
             </article>
         </div>
         <div class="buttons">
-            <a class="button-light">Vind ook een baan</a>
+            <a class="button-light" href="{{ route('vacancies.index') }}">Vind ook een baan</a>
             <a class="button-light">Een vacature plaatsen</a>
         </div>
 
@@ -37,7 +37,7 @@
     <section id="jobs-preview">
         <h2>Openstaande vacatures voor iedereen</h2>
         <p>Momenteel zijn er geen openstaande vacatures beschikbaar.</p>
-        <a class="button-light">Bekijk alle vacatures</a>
+        <a class="button-light" href="{{ route('vacancies.index') }}">Bekijk alle vacatures</a>
     </section>
 
 </x-site-layout>
