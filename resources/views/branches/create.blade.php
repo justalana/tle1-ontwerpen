@@ -1,4 +1,6 @@
 @props(['companies' => ''])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="Create branch">
 
@@ -11,7 +13,7 @@
 
     @else
 
-        <form action="{{ route('branches.store') }}" method="POST">
+        <form action="{{ route('branches.store') }}" method="POST" id="branchForm">
             @csrf
 
             <div>

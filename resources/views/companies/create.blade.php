@@ -1,8 +1,11 @@
+@vite(['resources/css/companiesAndBranches.css'])
+
+
 <x-site-layout title="Create company">
 
     <h1>Create company</h1>
 
-    <form action="{{ route('companies.store') }}" method="POST">
+    <form action="{{ route('companies.store') }}" method="POST" id="companyForm">
         @csrf
 
         <div>

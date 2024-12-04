@@ -1,4 +1,6 @@
 @props(['branches' => ''])
+@vite(['resources/css/companiesAndBranches.css'])
+
 
 <x-site-layout title="Branch overview">
 
@@ -6,7 +8,7 @@
 
     @if(!empty($branches))
 
-        <div>
+        <div id="branchArticleContainer">
 
             @foreach($branches as $branch)
 
@@ -15,7 +17,12 @@
                     <h2>{{ $branch->name }}</h2>
 
                     <a href="{{ route('branches.show', $branch) }}">Details</a>
-                    <a href="{{ route('branches.edit', $branch) }}">Edit</a>
+
+                    @can('edit-branch', $branch)
+
+                        <a href="{{ route('branches.edit', $branch) }}">Edit</a>
+
+                    @endcan
 
                 </article>
 

@@ -20,8 +20,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        /*
+        Role quick references:
+        1 = normal user
+        42 = admin
+        */
+
         Gate::define('admin', function ($user) {
             return $user->role === 42;
         });
+
+        Gate::define('edit-branch', function ($user, $branch) {
+            return $user->role === 42 || $user->branch_id === $branch->id;
+        });
+
+
     }
 }

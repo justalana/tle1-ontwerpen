@@ -39,6 +39,10 @@ class Vacancy extends Model
         'contract_duration' => 'integer',
     ];
 
+    public static function find(mixed $id)
+    {
+    }
+
     public function branch(): BelongsTo
     {
         return $this->belongsTo(Branch::class);
