@@ -1,6 +1,10 @@
 <x-guest-layout>
     <!-- Sessie Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <div class="mb-4">
+        @if (session('status'))
+            <div class="session-status">{{ session('status') }}</div>
+        @endif
+    </div>
 
     <div class="text-center">
         <h2 class="welcome-text">Hi! Welkom</h2>
@@ -11,23 +15,27 @@
 
         <!-- E-mailadres -->
         <div class="form-group">
-            <x-input-label for="email" :value="__('E-mail')" />
-            <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" class="input-field"/>
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <label for="email" class="form-label">{{ __('E-mail') }}</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus class="input-field">
+            @error('email')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- Wachtwoord -->
         <div class="form-group mt-4">
-            <x-input-label for="password" :value="__('Wachtwoord')" />
-            <x-text-input id="password" type="password" name="password" required autocomplete="current-password" class="input-field"/>
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <label for="password" class="form-label">{{ __('Wachtwoord') }}</label>
+            <input id="password" type="password" name="password" required class="input-field">
+            @error('password')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- Onthoud mij -->
         <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
+            <label for="remember_me" class="inline-label">
                 <input id="remember_me" type="checkbox" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Onthoud mij') }}</span>
+                <span class="ms-2 small-text">{{ __('Onthoud mij') }}</span>
             </label>
         </div>
 
@@ -41,9 +49,9 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <x-primary-button class="login-btn">
+            <button type="submit" class="login-btn">
                 {{ __('Inloggen') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
 
@@ -68,7 +76,7 @@
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
             font-weight: bold;
             margin-bottom: 0.5rem;
@@ -137,6 +145,23 @@
 
         .no-account-link:hover {
             text-decoration: underline;
+        }
+
+        .small-text {
+            font-size: 0.875rem;
+            color: #333;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .session-status {
+            color: green;
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
     </style>
 </x-guest-layout>

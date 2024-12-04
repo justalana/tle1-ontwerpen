@@ -13,45 +13,53 @@
 
         <!-- Naam -->
         <div class="form-group">
-            <x-input-label for="name" :value="__('Naam')" />
-            <x-text-input id="name" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <label for="name" class="form-label">{{ __('Naam') }}</label>
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" class="input-field">
+            @error('name')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- E-mailadres -->
-        <div class="form-group mt-4">
-            <x-input-label for="email" :value="__('E-mail')" />
-            <x-text-input id="email" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="form-group">
+            <label for="email" class="form-label">{{ __('E-mail') }}</label>
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username" class="input-field">
+            @error('email')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- Telefoonnummer -->
-        <div class="form-group mt-4">
-            <x-input-label for="phone_number" :value="__('Telefoonnummer')" />
-            <x-text-input id="phone_number" type="text" name="phone_number" :value="old('phone_number')" />
-            <p class="text-sm text-gray-500 mt-1">Optioneel: Je kunt dit veld leeg laten als je dat wilt.</p>
-            <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+        <div class="form-group">
+            <label for="phone_number" class="form-label">{{ __('Telefoonnummer') }}</label>
+            <input id="phone_number" type="text" name="phone_number" value="{{ old('phone_number') }}" class="input-field">
+            <p class="info-text-small">Optioneel: Je kunt dit veld leeg laten als je dat wilt.</p>
+            @error('phone_number')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- Wachtwoord -->
-        <div class="form-group mt-4">
-            <x-input-label for="password" :value="__('Wachtwoord')" />
-            <x-text-input id="password" type="password" name="password" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="form-group">
+            <label for="password" class="form-label">{{ __('Wachtwoord') }}</label>
+            <input id="password" type="password" name="password" required autocomplete="new-password" class="input-field">
+            @error('password')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
         <!-- Bevestig Wachtwoord -->
-        <div class="form-group mt-4">
-            <x-input-label for="password_confirmation" :value="__('Bevestig Wachtwoord')" />
-            <x-text-input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div class="form-group">
+            <label for="password_confirmation" class="form-label">{{ __('Bevestig Wachtwoord') }}</label>
+            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="input-field">
+            @error('password_confirmation')
+            <div class="error-message">{{ $message }}</div>
+            @enderror
         </div>
 
-        <div class="flex flex-col items-center justify-between mt-4 h-full">
-            <!-- Registreren Button -->
-            <x-primary-button class="register-button">
-                {{ __('Registreren') }}
-            </x-primary-button>
+        <!-- Registreren Button -->
+        <div class="form-group">
+            <button type="submit" class="register-button">{{ __('Registreren') }}</button>
         </div>
     </form>
 
@@ -60,7 +68,7 @@
             max-width: 500px;
             margin: 0 auto;
             padding: 2rem;
-            background-color: #FFFFFF;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
@@ -69,14 +77,14 @@
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
             font-weight: bold;
             margin-bottom: 0.5rem;
             color: #333;
         }
 
-        .form-group input {
+        .input-field {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #ccc;
@@ -84,40 +92,41 @@
             box-sizing: border-box;
         }
 
-        .form-group input:focus {
+        .input-field:focus {
             border-color: #007bff;
             outline: none;
         }
 
         .welcome-text {
-            font-family: 'Arial', sans-serif;
-            color: #92AA83; /* Green color */
-            font-size: 50px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: #92AA83;
+            font-size: 24px;
             font-weight: bold;
-            text-align: center;
-        }
-
-        .create-account {
-            font-family: 'Arial', sans-serif;
-            color: #2F3A31; /* Moss black color */
-            font-size: 0.875rem;
-            text-align: center;
+            margin-bottom: 1rem;
         }
 
         .info-text {
-            font-family: 'Arial', sans-serif;
-            color: #2F3A31; /* Moss black color */
             font-size: 0.875rem;
-            margin-top: 1rem;
+            color: #2F3A31;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-text-small {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 0.5rem;
         }
 
         .register-button {
+            width: 100%;
             background-color: #AA0160;
-            color: #FFFFFF;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            font-weight: bold;
+            color: #fff;
+            padding: 0.75rem;
             border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
             cursor: pointer;
         }
 
@@ -125,8 +134,10 @@
             background-color: #8a0151;
         }
 
-        .register-button:focus {
-            outline: none;
+        .error-message {
+            color: red;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
         }
     </style>
 </x-guest-layout>
