@@ -59,7 +59,7 @@ h2{
     font-size: 3rem;
 }
 
-p, button, label, input {
+p, button, label, input, li {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;

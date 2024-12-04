@@ -1,10 +1,35 @@
+/* === COLORS === */
+:root {
+    --violet: #AA0160;
+    --violet-dark: #7C1A51;
+    --yellow: #FAEC02;
+    --moss-medium: #92AA83;
+    --moss-light: #E2ECC8;
+    --moss-dark: #2E342A;
+    --white: #FFFFFF;
+    --cream: #FBFCF6;
+    --stroke-thin: #DFDFDF;
+}
+
 button {
     padding: 0.5vw;
-    width: 15vw;
+    min-width: 15vw;
 }
 
 form div {
     display: flex;
     flex-direction: column;
     padding: 1vw;
+}
+
+.note {
+    font-size: 1rem;
+    color: var(--moss-medium);
+}
+
+@media (max-width: 767px) {
+    button {
+        padding: 2vw;
+        margin: 2vw;
+    }
 }

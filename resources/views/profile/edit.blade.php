@@ -3,8 +3,6 @@
     <x-slot name="header">
         <h2>Profiel</h2>
     </x-slot>
-
-    <div class="content">
         <!-- Succesmelding na profiel update -->
         @if (session('profile_updated'))
             <div class="alert alert-success">
@@ -15,7 +13,13 @@
         <!-- Profiel Informatie -->
         <section>
             <header>
-                <h2>Profiel</h2>
+                <h2>
+                    {{ __('Profiel') }}
+                </h2>
+
+                <p>
+                    {{ __("Wijzig hier je profiel gegevens door de nieuwe informatie in te voeren en op 'opslaan' te klikken. Niemand kan deze informatie zien, behalve jij.") }}
+                </p>
             </header>
             <form method="POST" action="{{ route('profile.update') }}">
                 @csrf
@@ -39,7 +43,7 @@
 
                 <button type="submit">Profiel Bijwerken</button>
             </form>
-        </div>
+        </section>
 
         <!-- Wachtwoord Wijzigen -->
         <section>
@@ -67,27 +71,22 @@
 
                 <button type="submit">Wachtwoord Bijwerken</button>
             </form>
-        </div>
-
-        <!-- Anonimiteit Uitleg -->
-        <div class="anonimity-info">
-            <p>We respecteren je privacy en anonimiteit. Zelfs wanneer je je profielgegevens bijwerkt, blijven je gegevens anoniem en worden ze niet gedeeld met anderen. Alleen jij hebt toegang tot je eigen gegevens en ze blijven privé.</p>
-        </div>
+        </section>
 
         <!-- Recente Activiteiten -->
-        <div class="activities">
-            <h3>Recente activiteiten</h3>
+        <section>
+            <h2>Recente activiteiten</h2>
             <ul>
                 <li>Je bent geregistreerd op: {{ auth()->user()->created_at->format('d F Y') }}</li>
                 <li>Aantal vacatures bekeken: 5 (voorbeeld)</li>
                 <li>Op aantal vacatures gereageerd: 5 (voorbeeld)</li>
             </ul>
-        </div>
-
-        <!-- Laatste Update -->
-        <div class="last-update">
-            <h3>Laatste Profiel Update</h3>
             <p>Je profiel is voor het laatst bijgewerkt op: {{ auth()->user()->updated_at->format('d F Y H:i') }}</p>
-        </div>
-    </div>
+        </section>
+
+        <!-- Anonimiteit Uitleg -->
+        <section>
+            <h2>Privacy</h2>
+            <p>We respecteren je privacy en anonimiteit. Zelfs wanneer je je profielgegevens bijwerkt, blijven je gegevens anoniem en worden ze niet gedeeld met anderen. Alleen jij hebt toegang tot je eigen gegevens en ze blijven privé.</p>
+        </section>
 </x-site-layout>
