@@ -1,6 +1,13 @@
 <x-guest-layout>
     @vite(['resources/css/login.css'])
 
+    <!-- Succesbericht tonen na registratie -->
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <form method="POST" action="{{ route('login') }}" class="login-form">
         @csrf
 
