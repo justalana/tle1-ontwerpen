@@ -2,13 +2,13 @@
     @vite(['resources/css/details.css'])
     <header>
         <div>
-            <h1 id="details-header">{{$vacancy->title}}</h1>
+            <h1 id="details-header">{{$vacancy->name}}</h1>
         </div>
     </header>
 
     <div id="detail-flexbox">
         <div>
-            <img id="vacancy-image" src="{{asset('images/' . $vacancy->image_file_path)}}" alt="{{ $vacancy->image_file_path }}">
+            <img id="vacancy-image" src="{{asset('storage/uploads/vacancyImages/' . $vacancy->image_file_path)}}" alt="{{ $vacancy->image_alt_text }}">
         </div>
         <div>
             <ul id="detail-list">

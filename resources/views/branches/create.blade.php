@@ -6,7 +6,7 @@
 
     <h1>Create branch</h1>
 
-    @if(empty($companies))
+    @if($companies->isEmpty())
 
         <p>There are no companies yet! Go make one</p>
         <a href="{{ route('companies.create') }}">Create company</a>
