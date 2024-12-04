@@ -16,6 +16,10 @@ header {
     margin: 10vw;
 }
 
+header img {
+    width: 35vw;
+}
+
 header div {
     margin: 2vw;
 }
