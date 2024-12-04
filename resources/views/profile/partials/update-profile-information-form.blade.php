@@ -47,6 +47,12 @@
             @endif
         </div>
 
+{{--        <div>--}}
+{{--            <label for="phone_number">Telefoonnummer (Optioneel)</label>--}}
+{{--            <input type="text" id="phone_number" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}">--}}
+{{--            <p class="note">Je kunt dit veld leeg laten als je je telefoonnummer niet wilt opgeven.</p>--}}
+{{--        </div>--}}
+
         <div>
             <x-primary-button>{{ __('Opslaan') }}</x-primary-button>
 
