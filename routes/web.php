@@ -10,7 +10,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/vacancies', VacancyController::class)->only(['index', 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,7 +23,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('vacancies', VacancyController::class);
+Route::resource('/vacancies', VacancyController::class)->only(['index', 'show']);
+
+Route::middleware('can:create-vacancy')->group(function () {
+
+    Route::resource('vacancies', VacancyController::class)->only('create', 'store');
+
+});
+
+Route::middleware('can:manage-vacancy,vacancy')->group(function () {
+
+    Route::resource('vacancies', VacancyController::class)->only('edit', 'update', 'destroy');
+
+});
 
 Route::middleware('can:admin')->group(function () {
 
