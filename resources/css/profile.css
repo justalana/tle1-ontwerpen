@@ -1,0 +1,10 @@
+button {
+    padding: 0.5vw;
+    width: 15vw;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}

@@ -26,7 +26,7 @@
                                 @endif
                             </li>
                             <li>{{$vacancy->work_hours}} werkuren</li>
-                            <li>{{$vacancy->contract_duration}} maanden</li>
+                            <li>{{$vacancy->contract_duration}} dagen</li>
                         </ul>
 
                     </div>
