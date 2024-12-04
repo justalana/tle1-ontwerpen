@@ -79,6 +79,10 @@ nav {
     padding: 1vh;
 }
 
+nav a {
+    padding: 1vh 0;
+}
+
 nav div {
     display: flex;
     flex-direction: row;
@@ -109,6 +113,20 @@ footer {
 }
 .button-light:hover{
     background-color: var(--moss-dark);
+    color: var(--white);
+}
+
+.button-pink {
+        text-decoration: none;
+        background: var(--violet);
+        border-radius: 4px;
+        text-align: center;
+        padding: 1vh;
+        color: var(--white);
+}
+
+.button-light:hover{
+    background-color: var(--violet-dark);
     color: var(--white);
 }
 

@@ -24,8 +24,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('vacancies', VacancyController::class);
-
 Route::middleware('can:admin')->group(function () {
 
     Route::get('/admin', function () {

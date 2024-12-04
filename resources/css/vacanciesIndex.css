@@ -38,14 +38,6 @@ header {
     flex-direction: column;
 }
 
-a {
-    text-decoration: none;
-    background: #AA0160;
-    border-radius: 4px;
-    text-align: center;
-    padding: 1vh;
-    color: black;
-}
 
 /* Base styles - default for larger screens (1920+) */
 .container {
