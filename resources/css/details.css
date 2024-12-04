@@ -3,7 +3,7 @@ html, body, main {
     padding: 0;
 }
 
-@media (max-width: 414px) {
+@media (max-width: 480px) {
     header {
         background-color: #AA0160;
         text-align: center;
