@@ -13,7 +13,10 @@
         @endif
 
         <!-- Profiel Informatie -->
-        <div class="profile-info">
+        <section>
+            <header>
+                <h2>Profiel</h2>
+            </header>
             <form method="POST" action="{{ route('profile.update') }}">
                 @csrf
                 @method('PUT')
@@ -39,7 +42,10 @@
         </div>
 
         <!-- Wachtwoord Wijzigen -->
-        <div class="password-change">
+        <section>
+            <header>
+                <h2>Wachtwoord Wijzigen</h2>
+            </header>
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf
                 @method('PUT')
