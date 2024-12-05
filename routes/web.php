@@ -11,8 +11,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('/vacancies', VacancyController::class)->only(['index', 'show']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -23,26 +21,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
-// Admin Routes
+Route::resource('vacancies', VacancyController::class);
+Route::resource('branches', BranchController::class);
+
 Route::middleware('can:admin')->group(function () {
     Route::get('/admin', function () {
         return view('admin');
     })->name('admin');
 
-    Route::resource('branches', BranchController::class)->only(['create', 'store', 'destroy']);
     Route::resource('companies', CompanyController::class);
 });
 
-// Branch Editor Routes
-Route::middleware('can:edit-branch,branch')->group(function () {
-    Route::resource('branches', BranchController::class)->only(['edit', 'update']);
-});
+require __DIR__ . '/auth.php';
 
-// Public Branch Routes
-Route::resource('branches', BranchController::class)->only(['index', 'show']);
-
-require __DIR__.'/auth.php';

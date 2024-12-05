@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Vacancy extends Model
 {
@@ -16,6 +17,7 @@ class Vacancy extends Model
      * @var array
      */
     protected $fillable = [
+        'name',
         'branch_id',
         'salary_min',
         'salary_max',
@@ -23,6 +25,7 @@ class Vacancy extends Model
         'contract_duration',
         'description',
         'image_file_path',
+        'image_alt_text'
     ];
 
     /**
@@ -47,4 +50,10 @@ class Vacancy extends Model
     {
         return $this->belongsTo(Branch::class);
     }
+
+    public function requirements(): BelongsToMany
+    {
+        return $this->belongsToMany(Requirement::class);
+    }
+
 }

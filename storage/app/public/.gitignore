@@ -1,2 +1,6 @@
 *
 !.gitignore
+!/uploads
+!/uploads/.gitkeep
+!/uploads/vacancyImages
+!/uploads/vacancyImages/.gitkeep

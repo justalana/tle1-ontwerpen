@@ -35,6 +35,14 @@ class AppServiceProvider extends ServiceProvider
             return $user->role === 42 || $user->branch_id === $branch->id;
         });
 
+        Gate::define('create-vacancy', function ($user) {
+           return  $user->role === 42 || isset($user->branch_id);
+        });
+
+        Gate::define('manage-vacancy', function ($user, $vacancy) {
+           return  $user->role === 42 || $user->branch_id === $vacancy->branch_id;
+        });
+
 
     }
 }
