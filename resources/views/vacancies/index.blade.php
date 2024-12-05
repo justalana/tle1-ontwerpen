@@ -26,7 +26,7 @@
                                 @endif
                             </li>
                             <li>{{$vacancy->work_hours}} werkuren</li>
-                            <li>{{$vacancy->contract_duration}} maanden</li>
+                            <li>{{$vacancy->contract_duration}} dagen</li>
                         </ul>
 
                     </div>
@@ -35,7 +35,7 @@
 
                     <div class="column">
                         <p>{{$vacancy->description}}</p>
-                        <a href="">Bekijk vacature</a>
+                        <a class="button-pink" href="{{ route('vacancies.show', $vacancy -> id) }}">Bekijk vacature</a>
                     </div>
 
                 </div>

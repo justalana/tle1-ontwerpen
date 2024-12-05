@@ -12,19 +12,39 @@
 </head>
 <body>
 <nav>
-    <a>Vacatures</a>
+    <a href="{{ '/'}}"><img src="images/logo.png" alt="home"></a>
+    <a href="{{ route('vacancies.index') }}">Vacatures</a>
     <a>Over Open Hiring</a>
     <a>Contact</a>
-    <div>
-        <a>Log in</a>
-        <p>|</p>
-        <a>Registreer</a>
-    </div>
+
+    @guest
+        <div>
+            <a href="{{ route('login') }}">Log in</a>
+            <p>|</p>
+            <a href="{{ route('register') }}">Registreer</a>
+        </div>
+    @endguest
+
+    @auth
+        @if(auth()->user()->role === 1)
+            <div>
+                <a href="{{ route('profile.edit') }}">Profiel</a>
+                <p>|</p>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">Log uit</button>
+                </form>
+            </div>
+        @endif
+    @endauth
+
 </nav>
 
 <main>{{ $slot }}</main>
 
-<footer></footer>
+<footer>
+    <p>footer</p>
+</footer>
 
 </body>
 </html>

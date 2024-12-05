@@ -16,6 +16,11 @@ header {
     margin: 10vw;
 }
 
+header img {
+    width: 35vw;
+    margin: auto;
+}
+
 header div {
     margin: 2vw;
 }
@@ -68,5 +73,9 @@ article {
 
     .articles-div, .buttons {
         flex-direction: column;
+    }
+
+    header img {
+        width: 90vw;
     }
 }

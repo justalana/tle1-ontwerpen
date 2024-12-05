@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers\Auth;
+<?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
@@ -11,37 +9,39 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
-    /**
-     * Display the login view.
-     */
-    public function create(): View
-    {
-        return view('auth.login');
-    }
+/**
+* Display the login view.
+*/
+public function create(): View
+{
+return view('auth.login');
+}
 
-    /**
-     * Handle an incoming authentication request.
-     */
-    public function store(LoginRequest $request): RedirectResponse
-    {
-        $request->authenticate();
+/**
+* Handle an incoming authentication request.
+*/
+public function store(LoginRequest $request): RedirectResponse
+{
+$request->authenticate();
 
-        $request->session()->regenerate();
+$request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
-    }
+// Redirect naar profielpagina na succesvolle login
+return redirect()->intended(route('profile', absolute: false)); // Zorg ervoor dat de route 'profile' bestaat
+}
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
+/**
+* Destroy an authenticated session.
+*/
+public function destroy(Request $request): RedirectResponse
+{
+Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+$request->session()->invalidate();
 
-        $request->session()->regenerateToken();
+$request->session()->regenerateToken();
 
-        return redirect('/');
-    }
+// Redirect naar loginpagina na uitloggen
+return redirect(route('login')); // Redirect naar loginpagina na uitloggen
+}
 }

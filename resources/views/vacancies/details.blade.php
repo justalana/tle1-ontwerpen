@@ -14,7 +14,11 @@
             <ul id="detail-list">
                 <li>Werkuren: {{$vacancy->work_hours}} uur per week</li>
                 <li>Contractduur: {{$vacancy->contract_duration}} dagen</li>
-                <li>Salaris: {{ number_format((float)$vacancy->salary_min, 2) }} t/m {{$vacancy->salary_max ? number_format((float)$vacancy->salary_max, 2) : number_format((float)$vacancy->salary_min, 2) }} euro per uur</li>
+                @if($vacancy->salary_max)
+                    <li>Salaris tussen: €{{ number_format((float)$vacancy->salary_min, 2) }},- en €{{ number_format((float)$vacancy->salary_max, 2) }},- euro per uur</li>
+                @else
+                    <li>Minimum salaris: €{{ number_format((float)$vacancy->salary_min, 2) }} euro per uur</li>
+                @endif
             </ul>
         </div>
     </div>
