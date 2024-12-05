@@ -26,7 +26,7 @@
     @endguest
 
     @auth
-        @if(auth()->user()->role === 1)
+        @if(auth()->user())
             <div>
                 <a href="{{ route('profile.edit') }}">Profiel</a>
                 <p>|</p>
