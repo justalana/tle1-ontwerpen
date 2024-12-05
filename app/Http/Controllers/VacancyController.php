@@ -74,7 +74,6 @@ class VacancyController extends Controller implements HasMiddleware
         $storagePath = public_path('storage/uploads/vacancyImages');
         $newName = Str::random(64) . '.' . $request->image->extension();
 
-
         $vacancy = Vacancy::create([
             'name' => $request->name,
             'branch_id' => $branchId,
