@@ -1,5 +1,4 @@
-#branchForm,
-#companyForm {
+#branchForm {
 
     padding: 1vw;
     display: flex;
@@ -49,8 +48,7 @@
 
 @media only screen and (max-width: 450px) {
 
-    #branchForm,
-    #companyForm {
+    #branchForm {
         width: 95vw;
     }
 

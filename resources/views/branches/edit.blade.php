@@ -1,5 +1,5 @@
 @props(['branch'])
-@vite(['resources/css/companiesAndBranches.css'])
+@vite(['resources/css/branches.css'])
 
 
 <x-site-layout title="Edit {{ $branch->name }}">
