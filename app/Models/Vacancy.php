@@ -56,4 +56,14 @@ class Vacancy extends Model
         return $this->belongsToMany(Requirement::class);
     }
 
+    public function timeSlots(): BelongsToMany
+    {
+        return $this->belongsToMany(TimeSlot::class);
+    }
+
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(Application::class);
+    }
+
 }
