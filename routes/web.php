@@ -9,11 +9,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+//A permanent redirect so no user can access Laravel's goofy ahh dashboard
+Route::permanentRedirect('/dashboard', '/');
 
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
@@ -24,9 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
+//Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
 
+//Admin only routes
 Route::middleware('can:admin')->group(function () {
     Route::get('/admin', function () {
         return view('admin');
@@ -36,4 +41,3 @@ Route::middleware('can:admin')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
-
