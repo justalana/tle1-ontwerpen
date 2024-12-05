@@ -8,7 +8,7 @@
                 Zonder sollicitatiegesprek, zonder brief, zonder vragen. Met één druk op de knop. Open Hiring draait
                 namelijk niet om diploma’s, maar om mensen. Niet om praatjes, maar om aanpakken.</p>
         </div>
-        <img src="images/homeheaderimage.png" alt="decorative image">
+        <img src="{{ asset('images/homeHeaderImage.png') }}" alt="decorative image">
     </header>
 
     <section id="stories">
