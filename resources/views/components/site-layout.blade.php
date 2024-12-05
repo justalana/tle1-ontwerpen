@@ -14,26 +14,26 @@
 
 <nav>
 
-    <a href="{{ to_route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
-    <a href="{{ to_route('vacancies.index') }}">Vacatures</a>
+    <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
+    <a href="{{ route('vacancies.index') }}">Vacatures</a>
     <a href="">Over Open Hiring</a>
     <a href="">Contact</a>
 
     @can('admin')
-        <a href="{{ to_route('admin') }}">Admin</a>
+        <a href="{{ route('admin') }}">Admin</a>
     @endcan
 
     @guest
         <div>
-            <a href="{{ to_route('login') }}">Log in</a>
+            <a href="{{ route('login') }}">Log in</a>
             <p>|</p>
-            <a href="{{ to_route('register') }}">Registreer</a>
+            <a href="{{ route('register') }}">Registreer</a>
         </div>
     @endguest
 
     @auth
             <div>
-                <a href="{{ to_route('profile.edit') }}">Profiel</a>
+                <a href="{{ route('profile.edit') }}">Profiel</a>
                 <p>|</p>
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
