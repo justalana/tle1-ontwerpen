@@ -95,12 +95,12 @@ nav div {
     gap: 1vw;
 }
 
-nav a {
+nav a, nav button {
     padding: 1vh 0;
     color: var(--white);
 }
 
-nav a:hover {
+nav a:hover, nav button:hover {
     border-bottom: 3px solid var(--white);
 }
 
