@@ -133,6 +133,16 @@ footer {
     color: var(--yellow);
 }
 
+.image-container {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+
+    >img {
+        width: 100%;
+    }
+}
+
 /* === BUTTON STYLING === */
 .button-light, button {
     padding: 1vw;
