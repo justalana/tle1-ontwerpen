@@ -53,8 +53,7 @@
 
         <div>
             <label for="description">Beschrijving*</label>
-            <textarea name="description" id="description"
-                      cols="30" rows="10" required>{{ old('description') ?? '' }}</textarea>
+            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>

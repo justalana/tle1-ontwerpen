@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="column">
-                    <p>{{$vacancy->description}}</p>
+                    <p>{!! $vacancy->description !!}</p>
                     <a class="button-pink" href="{{ route('vacancies.show', $vacancy->id) }}">Bekijk vacature</a>
                 </div>
 

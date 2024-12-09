@@ -28,7 +28,7 @@
     </div>
 
     <div id="description">
-        <p id="description-text">{!!$vacancy->description!!}</p>
+        <p id="description-text">{!! $vacancy->description !!}</p>
     </div>
 
     <div>
