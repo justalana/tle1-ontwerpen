@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Branch extends Model
 {
     use HasFactory;
+    use HasRichText;
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +34,14 @@ class Branch extends Model
     protected $casts = [
         'id' => 'integer',
         'company_id' => 'integer',
+    ];
+
+    /**
+     * The attributes that use rich text
+     *
+     */
+    Protected $richTextAttributes = [
+        'description'
     ];
 
     public function company(): BelongsTo
