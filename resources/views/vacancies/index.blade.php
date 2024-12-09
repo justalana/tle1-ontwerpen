@@ -7,7 +7,7 @@
             <h1>Uw Vacatures</h1>
         @else
             <h1>Open Vacatures</h1>
-        @endif
+        @endcan
     </header>
 
     @if($vacancies->isNotEmpty())
@@ -55,6 +55,9 @@
                 <div class="column">
                     <p>{{$vacancy->description}}</p>
                     <a class="button-pink" href="{{ route('vacancies.show', $vacancy->id) }}">Bekijk vacature</a>
+                    @can('create-vacancy', auth()->user())
+                        <a class="button-pink" href="{{ route('vacancies.edit', $vacancy->id) }}">Bewerk vacature</a>
+                    @endcan
                 </div>
 
             </div>
