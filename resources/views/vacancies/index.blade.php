@@ -3,7 +3,7 @@
 <x-site-layout>
 
     <header>
-        @if(auth()->user()->role === 2)
+        @can('create-vacancy', auth()->user())
             <h1>Uw Vacatures</h1>
         @else
             <h1>Open Vacatures</h1>
