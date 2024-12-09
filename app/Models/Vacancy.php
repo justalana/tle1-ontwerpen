@@ -6,10 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Vacancy extends Model
 {
     use HasFactory;
+    use HasRichText;
 
     /**
      * The attributes that are mass assignable.
@@ -40,6 +42,14 @@ class Vacancy extends Model
         'salary_max' => 'float',
         'work_hours' => 'integer',
         'contract_duration' => 'integer',
+    ];
+
+    /**
+     * The attributes that use rich text
+     *
+     */
+    Protected $richTextAttributes = [
+        'description'
     ];
 
     public static function find(mixed $id)
