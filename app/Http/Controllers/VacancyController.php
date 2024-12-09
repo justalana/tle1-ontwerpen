@@ -29,7 +29,14 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $vacancies = Vacancy::all();
+        if (auth()->user()->role === 2 && \auth()->user()->branch_id)
+        {
+            $vacancies = Vacancy::where('branch_id', auth()->user()->branch_id)->get();
+        }
+        else {
+            $vacancies = Vacancy::all();
+        }
+
 
         return view('vacancies.index', compact('vacancies'));
     }

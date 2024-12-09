@@ -3,7 +3,11 @@
 <x-site-layout>
 
     <header>
-        <h1>Open Vacatures</h1>
+        @if(auth()->user()->role === 2)
+            <h1>Uw Vacatures</h1>
+        @else
+            <h1>Open Vacatures</h1>
+        @endif
     </header>
 
     @if($vacancies->isNotEmpty())
