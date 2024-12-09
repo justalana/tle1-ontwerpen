@@ -1,5 +1,6 @@
+@vite(['resources/css/profile.css'])
+
 <x-guest-layout>
-    @vite(['resources/css/register.css'])
     <form method="POST" action="{{ route('register') }}" class="register-form">
         @csrf
 
@@ -15,7 +16,8 @@
         <!-- Naam -->
         <div class="form-group">
             <label for="name" class="form-label">{{ __('Naam') }}</label>
-            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" class="input-field">
+            <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name"
+                   class="input-field">
             @error('name')
             <div class="error-message">{{ $message }}</div>
             @enderror
@@ -24,7 +26,8 @@
         <!-- E-mailadres -->
         <div class="form-group">
             <label for="email" class="form-label">{{ __('E-mail') }}</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username" class="input-field">
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username"
+                   class="input-field">
             @error('email')
             <div class="error-message">{{ $message }}</div>
             @enderror
@@ -33,7 +36,8 @@
         <!-- Telefoonnummer -->
         <div class="form-group">
             <label for="phone_number" class="form-label">{{ __('Telefoonnummer') }}</label>
-            <input id="phone_number" type="text" name="phone_number" value="{{ old('phone_number') }}" class="input-field">
+            <input id="phone_number" type="text" name="phone_number" value="{{ old('phone_number') }}"
+                   class="input-field">
             <p class="info-text-small">Optioneel: Je kunt dit veld leeg laten als je dat wilt.</p>
             @error('phone_number')
             <div class="error-message">{{ $message }}</div>
@@ -43,7 +47,8 @@
         <!-- Wachtwoord -->
         <div class="form-group">
             <label for="password" class="form-label">{{ __('Wachtwoord') }}</label>
-            <input id="password" type="password" name="password" required autocomplete="new-password" class="input-field">
+            <input id="password" type="password" name="password" required autocomplete="new-password"
+                   class="input-field">
             @error('password')
             <div class="error-message">{{ $message }}</div>
             @enderror
@@ -52,7 +57,8 @@
         <!-- Bevestig Wachtwoord -->
         <div class="form-group">
             <label for="password_confirmation" class="form-label">{{ __('Bevestig Wachtwoord') }}</label>
-            <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="input-field">
+            <input id="password_confirmation" type="password" name="password_confirmation" required
+                   autocomplete="new-password" class="input-field">
             @error('password_confirmation')
             <div class="error-message">{{ $message }}</div>
             @enderror

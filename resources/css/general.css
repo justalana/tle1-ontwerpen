@@ -1,16 +1,3 @@
-/* === COLORS === */
-:root {
-    --violet: #AA0160;
-    --violet-dark: #7C1A51;
-    --yellow: #FAEC02;
-    --moss-medium: #92AA83;
-    --moss-light: #E2ECC8;
-    --moss-dark: #2E342A;
-    --white: #FFFFFF;
-    --cream: #FBFCF6;
-    --stroke-thin: #DFDFDF;
-}
-
 header {
     display: flex;
     margin: 10vw;
@@ -39,12 +26,6 @@ header div {
     margin: 2vw;
 }
 
-.button-light {
-    padding: 1vw;
-    border-radius: 10vw;
-    border: 3px solid var(--moss-dark);
-}
-
 article {
     border-radius: 2vh;
     padding: 2vw;
@@ -54,15 +35,6 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.violet {
-    color: var(--violet);
-}
-
-.author p, .author b {
-    font-size: 1rem;
-    margin: 0;
 }
 
 @media (max-width: 767px) {
