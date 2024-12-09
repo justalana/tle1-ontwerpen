@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VacancyQueued;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
