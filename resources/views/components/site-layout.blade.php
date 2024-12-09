@@ -11,11 +11,17 @@
     @vite(['resources/css/style.css'])
 </head>
 <body>
+
 <nav>
-    <a href="{{ '/'}}"><img src="{{asset('/images/logo.png')}}" alt="home"></a>
+
+    <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
-    <a>Over Open Hiring</a>
-    <a>Contact</a>
+    <a href="">Over Open Hiring</a>
+    <a href="">Contact</a>
+
+    @can('admin')
+        <a href="{{ route('admin') }}">Admin</a>
+    @endcan
 
     @guest
         <div>
@@ -26,7 +32,6 @@
     @endguest
 
     @auth
-        @if(auth()->user())
             <div>
                 <a href="{{ route('profile.edit') }}">Profiel</a>
                 <p>|</p>
@@ -35,7 +40,6 @@
                     <button type="submit">Log uit</button>
                 </form>
             </div>
-        @endif
     @endauth
 
 </nav>

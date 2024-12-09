@@ -1,4 +1,4 @@
-@vite(['resources/css/vacanciesIndex.css'])
+@vite(['resources/css/vacancies.css'])
 
 <x-site-layout>
 
