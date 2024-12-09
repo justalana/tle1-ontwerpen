@@ -144,25 +144,26 @@ footer {
 }
 
 /* === BUTTON STYLING === */
-.button-light, button {
+.button-light {
     padding: 1vw;
     border-radius: 10vw;
     border: 3px solid var(--moss-dark);
     color: var(--moss-dark);
     transition: ease-in-out 0.2s;
 }
-.button-light:hover, button:hover{
+.button-light:hover{
     background-color: var(--moss-dark);
     color: var(--white);
 }
 
 .button-pink {
-        text-decoration: none;
-        background: var(--violet);
-        border-radius: 4px;
-        text-align: center;
-        padding: 1vh;
-        color: var(--white);
+    text-decoration: none;
+    background: var(--violet);
+    border: 3px solid var(--violet);
+    border-radius: 4px;
+    text-align: center;
+    padding: 1vh;
+    color: var(--white);
 }
 
 .button-pink:hover{

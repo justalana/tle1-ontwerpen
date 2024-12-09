@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <a class="button-light" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
+        <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
     </div>
 
 </x-site-layout>
