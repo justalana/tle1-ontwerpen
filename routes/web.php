@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function () {
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
+Route::resource('mails', CompanyController::class);
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
@@ -39,5 +40,7 @@ Route::middleware('can:admin')->group(function () {
 
     Route::resource('companies', CompanyController::class);
 });
+
+Route::get('/test', function () { return view('test'); })->name('test');
 
 require __DIR__ . '/auth.php';
