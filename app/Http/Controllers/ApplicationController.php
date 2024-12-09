@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Requirement;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -18,9 +20,11 @@ class ApplicationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Vacancy $vacancy)
     {
-        //
+        $requirements = $vacancy->requirements;
+
+        return view('vacancies.applications', ['vacancy' => $vacancy, 'requirements' => $requirements]);
     }
 
     /**

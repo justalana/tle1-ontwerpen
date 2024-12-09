@@ -32,6 +32,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;  /* Centers items vertically */
+    word-wrap: break-word;
 }
 
 .article {
@@ -70,6 +71,41 @@ header {
 .item {
     flex-direction: row;
 }
+
+/*DETAIL PAGINA*/
+
+
+#details-header {
+    padding: 5vh 0;
+    color: white;
+    margin: 0 0 3vh 0;
+}
+
+#detail-flexbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5vh 5vw;
+}
+
+#vacancy-image {
+    border-radius: 10px;
+    height: 50vh;
+    width: 40vw;
+    object-fit: cover;
+}
+
+#description {
+    margin: 3vh 5vw;
+    padding: 1vh 2vw;
+    border: solid #2E342A;
+    border-radius: 15px;
+}
+
+#description-text {
+    padding: 0 3vw;
+}
+
 
 /* For 1440 - 1919px screens */
 @media (max-width: 1919px) {
@@ -115,6 +151,7 @@ header {
     }
 }
 
+/*Mobile view CSS*/
 @media only screen and (max-width: 480px) {
 
     #vacancyForm {
@@ -122,42 +159,11 @@ header {
         gap: 8vw;
     }
 
-    header {
-        background-color: #AA0160;
-        text-align: center;
-        width: 100%;
-        word-wrap: break-word;
-    }
-
-    #details-header {
-        padding: 5vh 0;
-        color: white;
-        margin: 0 0 3vh 0;
-    }
-
-    #detail-flexbox {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin: 5vh 5vw;
-    }
-
     #vacancy-image {
-        border-radius: 5%;
+        border-radius: 5px;
         height: 25vh;
         width: 35vw;
         object-fit: cover;
-    }
-
-    #description {
-        margin: 3vh 5vw;
-        padding: 1vh 2vw;
-        border: solid #2E342A;
-        border-radius: 15px;
-    }
-
-    #description-text {
-        padding: 0 3vw;
     }
 
 }

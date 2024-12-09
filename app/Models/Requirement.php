@@ -40,4 +40,9 @@ class Requirement extends Model
     {
         return $this->belongsToMany(Vacancy::class);
     }
+
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(Application::class);
+    }
 }
