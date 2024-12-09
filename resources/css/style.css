@@ -128,6 +128,7 @@ main {
 }
 
 footer {
+    margin-top: 2vw;
     padding: 2vw;
     background-color: var(--moss-dark);
     color: var(--yellow);
