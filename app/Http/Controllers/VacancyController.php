@@ -9,6 +9,8 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 use Log;
 
 class VacancyController extends Controller implements HasMiddleware
@@ -71,10 +73,17 @@ class VacancyController extends Controller implements HasMiddleware
         $storagePath = public_path('storage/uploads/vacancyImages');
         $newName = Str::random(64) . '.' . $request->image->extension();
 
+        //Clean the description before storing it to avoid any unsafe html
+        $htmlSanitizer = new HtmlSanitizer(
+            (new HtmlSanitizerConfig())->allowSafeElements()
+        );
+
+        $description = $htmlSanitizer->sanitize($request->description);
+
         $vacancy = Vacancy::create([
             'name' => $request->name,
             'branch_id' => $branchId,
-            'description' => $request->description,
+            'description' => $description,
             'salary_min' => $request->salaryMin,
             'salary_max' => $request->salaryMax ?? null,
             'work_hours' => $request->workHours ?? null,
@@ -86,7 +95,6 @@ class VacancyController extends Controller implements HasMiddleware
         $request->image->move($storagePath, $newName);
 
         //Bind the selected requirements to the created vacancy if there are any
-
         if (isset($request->requirements)) {
 
             foreach ($request->requirements as $requirement) {

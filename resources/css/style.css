@@ -171,6 +171,10 @@ footer {
     color: var(--white);
 }
 
+trix-toolbar .trix-button-group--file-tools {
+    display: none;
+}
+
 /* === MOBILE === */
 @media (max-width: 767px) {
     nav {
