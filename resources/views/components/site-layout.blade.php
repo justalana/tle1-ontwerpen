@@ -11,20 +11,44 @@
     @vite(['resources/css/style.css'])
 </head>
 <body>
+
 <nav>
-    <a>Vacatures</a>
-    <a>Over Open Hiring</a>
-    <a>Contact</a>
-    <div>
-        <a>Log in</a>
-        <p>|</p>
-        <a>Registreer</a>
-    </div>
+
+    <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
+    <a href="{{ route('vacancies.index') }}">Vacatures</a>
+    <a href="">Over Open Hiring</a>
+    <a href="">Contact</a>
+
+    @can('admin')
+        <a href="{{ route('admin') }}">Admin</a>
+    @endcan
+
+    @guest
+        <div>
+            <a href="{{ route('login') }}">Log in</a>
+            <p>|</p>
+            <a href="{{ route('register') }}">Registreer</a>
+        </div>
+    @endguest
+
+    @auth
+            <div>
+                <a href="{{ route('profile.edit') }}">Profiel</a>
+                <p>|</p>
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="submit">Log uit</button>
+                </form>
+            </div>
+    @endauth
+
 </nav>
 
 <main>{{ $slot }}</main>
 
-<footer></footer>
+<footer>
+    <p>footer</p>
+</footer>
 
 </body>
 </html>

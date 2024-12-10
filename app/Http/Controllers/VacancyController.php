@@ -88,9 +88,14 @@ class VacancyController extends Controller implements HasMiddleware
 
         $request->image->move($storagePath, $newName);
 
-        //Bind the selected requirements to the created vacancy
-        foreach ($request->requirements as $requirement) {
-            $vacancy->requirements()->attach($requirement);
+        //Bind the selected requirements to the created vacancy if there are any
+
+        if (isset($request->requirements)) {
+
+            foreach ($request->requirements as $requirement) {
+                $vacancy->requirements()->attach($requirement);
+            }
+
         }
 
         return to_route('vacancies.show', $vacancy);

@@ -38,6 +38,7 @@ body {
     color: var(--moss-dark);
     background-color: var(--cream);
     margin: 0;
+    min-height: 100vh;
 }
 
 section {
@@ -58,7 +59,7 @@ h2{
     font-size: 3rem;
 }
 
-p {
+p, button, label, input, li {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;
@@ -70,6 +71,10 @@ b {
     font-size: 1.2rem;
 }
 
+a {
+    text-decoration: none;
+}
+
 nav {
     display: flex;
     justify-content: space-evenly;
@@ -79,6 +84,10 @@ nav {
     padding: 1vh;
 }
 
+nav img {
+    width: 4vw;
+}
+
 nav div {
     display: flex;
     flex-direction: row;
@@ -86,29 +95,78 @@ nav div {
     gap: 1vw;
 }
 
-nav a:hover {
+nav a, nav button {
+    padding: 1vh 0;
+    color: var(--white);
+}
+
+nav button, nav button:hover {
+    all: unset;
+    padding: 1vh 0;
+}
+
+nav a:hover, nav button:hover {
     border-bottom: 3px solid var(--white);
 }
 
+input, textarea {
+    border: 2px solid var(--stroke-thin);
+    border-radius: 2vh;
+    transition: ease-in-out 0.2s;
+    outline: none;
+    height: 5vh;
+    padding: 1vh;
+}
+
+input:focus{
+    border: 2px solid var(--moss-medium);
+}
+
 main {
-    margin: 5vw;
+    margin: 5vw 5vw 0 5vw;
+    min-height: 70vh;
 }
 
 footer {
-    padding: 3vw;
+    padding: 2vw;
     background-color: var(--moss-dark);
     color: var(--yellow);
 }
 
+.image-container {
+    width: 40vw;
+    height: 40vw;
+    object-fit: cover;
+
+    >img {
+        width: 100%;
+    }
+}
+
 /* === BUTTON STYLING === */
-.button-light {
+.button-light, button {
     padding: 1vw;
     border-radius: 10vw;
     border: 3px solid var(--moss-dark);
+    color: var(--moss-dark);
     transition: ease-in-out 0.2s;
 }
-.button-light:hover{
+.button-light:hover, button:hover{
     background-color: var(--moss-dark);
+    color: var(--white);
+}
+
+.button-pink {
+        text-decoration: none;
+        background: var(--violet);
+        border-radius: 4px;
+        text-align: center;
+        padding: 1vh;
+        color: var(--white);
+}
+
+.button-pink:hover{
+    background-color: var(--violet-dark);
     color: var(--white);
 }
 
@@ -124,5 +182,9 @@ footer {
 
     section {
         margin: 5vw;
+    }
+
+    nav img {
+        width: 25vw;
     }
 }
