@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\VacancyQueued;
+use App\Mail\ApplicationQueued;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
@@ -95,8 +95,7 @@ class VacancyController extends Controller implements HasMiddleware
             }
 
         }
-
-        \Mail::to('essetijdelijk@gmail.com')->send(new VacancyQueued());
+        \Mail::to('essetijdelijk@gmail.com')->send(new ApplicationQueued());
 
         return to_route('vacancies.show', $vacancy);
     }
