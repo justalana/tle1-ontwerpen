@@ -39,14 +39,6 @@ class ApplicationController extends Controller
             'status' => 1, //pending=1 accepted=2 denied=3
         ]);
 
-//        if (isset($request->requirements)) {
-//
-//            foreach ($request->requirements as $requirement) {
-//                $application->requirements()->attach($requirement);
-//            }
-//
-//        }
-
         $application->requirements()->sync($request->requirements ?? []);
 
         $application->save();
