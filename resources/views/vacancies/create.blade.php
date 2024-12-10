@@ -10,7 +10,7 @@
 
         <div>
             <label for="name">Naam van de vacature*</label>
-            <input type="text" id="name" name="name" maxlength="255" required value="{{ old('name') ?? '' }}">
+            <input type="text" id="name" name="name" maxlength="50" required value="{{ old('name') ?? '' }}">
 
             @error('name')
             <p>{{ $message }}</p>
@@ -53,8 +53,7 @@
 
         <div>
             <label for="description">Beschrijving*</label>
-            <textarea name="description" id="description"
-                      cols="30" rows="10" required>{{ old('description') ?? '' }}</textarea>
+            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>

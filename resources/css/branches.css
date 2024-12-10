@@ -7,7 +7,7 @@
     width: 20vw;
     margin: auto;
 
-    div {
+    >div {
         display: flex;
         flex-direction: column;
         gap: 0.2vw;

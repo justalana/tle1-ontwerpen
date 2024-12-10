@@ -7,6 +7,8 @@ use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
+use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
 
 class BranchController extends Controller implements HasMiddleware
 {
@@ -55,10 +57,17 @@ class BranchController extends Controller implements HasMiddleware
             'city' => ['required', 'string', 'max:255']
         ]);
 
+        //Clean the description before storing it to avoid any unsafe html
+        $htmlSanitizer = new HtmlSanitizer(
+            (new HtmlSanitizerConfig())->allowSafeElements()
+        );
+
+        $description = $htmlSanitizer->sanitize($request->description);
+
         Branch::create([
             'name' => $request->name,
             'company_id' => $request->company,
-            'description' => $request->description,
+            'description' => $description,
             'street_name' => $request->streetName,
             'street_number' => $request->streetNumber,
             'city' => $request->city
@@ -96,8 +105,15 @@ class BranchController extends Controller implements HasMiddleware
             'city' => ['required', 'string', 'max:255']
         ]);
 
+        //Clean the description before storing it to avoid any unsafe html
+        $htmlSanitizer = new HtmlSanitizer(
+            (new HtmlSanitizerConfig())->allowSafeElements()
+        );
+
+        $description = $htmlSanitizer->sanitize($request->description);
+
         $branch->name = $request->name;
-        $branch->description = $request->description;
+        $branch->description = $description;
         $branch->street_name = $request->streetName;
         $branch->street_number = $request->streetNumber;
         $branch->city = $request->city;

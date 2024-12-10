@@ -28,12 +28,22 @@
     </div>
 
     <div id="description">
-        <p id="description-text">{!!$vacancy->description!!}</p>
+        <p id="description-text">{!! $vacancy->description !!}</p>
     </div>
 
-    <div>
-        <a class="button-light" href="">Schrijf je in!</a>
-    </div>
+    @can('manage-vacancy', $vacancy)
+
+        <div>
+            <a class="button-pink" href="{{ route('vacancies.edit', $vacancy) }}">Bewerk vacature</a>
+        </div>
+
+    @else
+
+        <div>
+            <a class="button-light" href="">Schrijf je in!</a>
+        </div>
+
+    @endcan
 
 </x-site-layout>
 
