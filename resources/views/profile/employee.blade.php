@@ -49,13 +49,9 @@
             </header>
             <ul>
                 <li><strong>Bedrijfsnaam:</strong> {{ auth()->user()->company_name ?? 'Bedrijf niet opgegeven' }}</li>
-                <li><strong>Aantal vacatures geplaatst: Bijvoorbeeld</strong>
-
+                <li><strong>Aantal vacatures geplaatst:</strong>
+                    {{ auth()->user()->vacancies ? auth()->user()->vacancies->count() : 0 }}
                 </li>
-
-
-                </li>
-
             </ul>
         </section>
 
@@ -65,7 +61,7 @@
                 <h2>Vacaturebeheer</h2>
             </header>
 
-            <a href="/vacatures/create" class="btn btn-primary">Nieuwe vacature toevoegen</a>
+            <a href="/vacancies/create" class="btn btn-primary">Nieuwe vacature toevoegen</a>
         </section>
 
     @else
