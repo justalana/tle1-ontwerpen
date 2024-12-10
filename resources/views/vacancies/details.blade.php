@@ -12,6 +12,7 @@
             <img id="vacancy-image" src="{{asset('storage/uploads/vacancyImages/' . $vacancy->image_file_path)}}"
                  alt="{{ $vacancy->image_alt_text }}">
         </div>
+
         <div>
             <ul id="detail-list">
                 <li>Werkuren: {{$vacancy->work_hours}} uur per week</li>
@@ -38,15 +39,17 @@
         </div>
 
     @else
-        @if(isset(auth()->user()->role))
+        @auth
             <div>
                 <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
             </div>
-        @else
+        @endauth
+
+        @guest
             <div>
                 <a class="button-pink" href="{{ route('login') }}">Log in om je in te schrijven!</a>
             </div>
-        @endif
+        @endguest
 
     @endcan
 
