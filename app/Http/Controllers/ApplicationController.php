@@ -30,19 +30,22 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Application $application, Vacancy $vacancy)
+    public function store(Request $request, Vacancy $vacancy)
     {
-        $application->user_id = auth()->user()->id;
-        $application->vacancy_id = $vacancy->id;
-        $application->status = 1; //pending=1 accepted=2 denied=3
 
-//        if (isset($request->requirements)) {
-//
-//            foreach ($request->requirements as $requirement) {
-//                $application->requirements()->attach($requirement);
-//            }
-//
-//        }
+        $application = Application::create([
+            'user_id' => auth()->user()->id,
+            'vacancy_id' => $vacancy->id,
+            'status' => 1, //pending=1 accepted=2 denied=3
+        ]);
+
+        if (isset($request->requirements)) {
+
+            foreach ($request->requirements as $requirement) {
+                $application->requirements()->attach($requirement);
+            }
+
+        }
 
         $application->save();
         return redirect()->route('vacancies.index');
