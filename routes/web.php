@@ -31,6 +31,17 @@ Route::middleware('auth')->group(function () {
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
 
+
+// werkgever profile
+Route::middleware('auth')->group(function () {
+    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
+});
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
+
+
+
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
     Route::get('/admin', function () {

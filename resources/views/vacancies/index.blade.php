@@ -51,6 +51,8 @@
                 <div class="column">
                     <p>{{$vacancy->description}}</p>
                     <a class="button-pink" href="{{ route('vacancies.show', $vacancy->id) }}">Bekijk vacature</a>
+
+
                 </div>
 
             </div>
@@ -59,6 +61,15 @@
 
     @else
         <p>Helaas, geen open vacatures</p>
+
     @endif
+
+    @foreach ($vacancies as $vacancy)
+        <div class="vacancy-item">
+            <h2>{{ $vacancy->name }}</h2>
+            <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
+        </div>
+    @endforeach
+
 
 </x-site-layout>

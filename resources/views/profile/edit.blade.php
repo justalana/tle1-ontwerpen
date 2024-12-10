@@ -37,10 +37,10 @@
             </div>
 
             <div class="form-group">
-                <label for="phone_number">Telefoonnummer (Optioneel)</label>
+                <label for="phone_number">Telefoonnummer</label>
                 <input type="text" id="phone_number" name="phone_number"
                        value="{{ old('phone_number', $user->phone_number) }}">
-                <p class="note">Je kunt dit veld leeg laten als je je telefoonnummer niet wilt opgeven.</p>
+
             </div>
 
             <button type="submit">Profiel Bijwerken</button>

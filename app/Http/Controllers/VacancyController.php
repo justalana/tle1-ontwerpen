@@ -5,32 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Log;
 
-class VacancyController extends Controller implements HasMiddleware
+class VacancyController extends Controller
 {
-    /**
-     * Get the middleware that should be assigned to the controller.
-     */
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('can:create-vacancy', only: ['create', 'store']),
-            new Middleware('can:manage-vacancy,vacancy', only: ['edit', 'update', 'delete']),
-        ];
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vacancies = Vacancy::all();
 
+        // Haal alle vacatures op en voeg het aantal sollicitaties toe aan elke vacature
+        $vacancies = Vacancy::all()->map(function ($vacancy) {
+            $vacancy->application_count = $vacancy->applications()->count(); // Tel het aantal sollicitaties
+            return $vacancy;
+        });
+
+        // Geef de vacatures en hun sollicitatieaantal door aan de view
         return view('vacancies.index', compact('vacancies'));
     }
 
@@ -39,8 +31,10 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function create()
     {
+        // Haal alle vereisten op voor de vacature
         $requirements = Requirement::all();
 
+        // Toon de view voor het aanmaken van een vacature
         return view('vacancies.create', ['requirements' => $requirements]);
     }
 
@@ -49,6 +43,7 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
+        // Valideer de ingevoerde gegevens
         $request->validate([
             'name' => ['required', 'max:255'],
             'branch' => ['required', 'numeric'],
@@ -61,16 +56,17 @@ class VacancyController extends Controller implements HasMiddleware
             'imageAltText' => ['required', 'max:255']
         ]);
 
-        //Double check to make sure that the branch id matches the one linked to the current user (unless they are an admin)
+        // Check de juiste branch voor de werkgever
         $branchId = $request->branch;
-        if ($request->branch !== Auth::getUser()->branch_id && Auth::getUser()->role !== 42) {
-            $branchId = Auth::getUser()->branch_id;
+        if ($request->branch !== Auth::user()->branch_id && Auth::user()->role !== 'admin') {
+            $branchId = Auth::user()->branch_id;
         }
 
-        //Store the image in the correct folder and get a random filename
+        // Behandel de afbeelding
         $storagePath = public_path('storage/uploads/vacancyImages');
         $newName = Str::random(64) . '.' . $request->image->extension();
 
+        // Maak de nieuwe vacature aan
         $vacancy = Vacancy::create([
             'name' => $request->name,
             'branch_id' => $branchId,
@@ -83,16 +79,14 @@ class VacancyController extends Controller implements HasMiddleware
             'image_alt_text' => $request->imageAltText
         ]);
 
+        // Sla de afbeelding op
         $request->image->move($storagePath, $newName);
 
-        //Bind the selected requirements to the created vacancy if there are any
-
+        // Voeg vereisten toe aan de vacature
         if (isset($request->requirements)) {
-
             foreach ($request->requirements as $requirement) {
                 $vacancy->requirements()->attach($requirement);
             }
-
         }
 
         return to_route('vacancies.show', $vacancy);
@@ -103,7 +97,13 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function show(Vacancy $vacancy)
     {
-        return view('vacancies.details', ['vacancy' => $vacancy]);
+
+        $applicationCount = $vacancy->applications()->count();
+
+        return view('vacancies.details', [
+            'vacancy' => $vacancy,
+            'applicationCount' => $applicationCount
+        ]);
     }
 
     /**
