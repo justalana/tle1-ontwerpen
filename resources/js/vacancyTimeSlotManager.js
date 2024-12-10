@@ -45,12 +45,54 @@ function addTimeSlot(e) {
     //Increment the counter for next time
     timeSlotCounter++;
 
+    //Collect all the elements in a usable array
+    let elements = [];
+
+    for (const child of article.children) {
+        elements.push(child.children[0]);
+        elements.push(child.children[1]);
+    }
+
     //Replace all the relevant ids, names, labels with the new id
-    // article.id = article.id.replace(/\d/g, id);
     article.id = 'timeSlot' + id;
 
+    //Replace text in h3
+    //Fancy regular expression
+    //It just replaces all the numbers it can find (in this case only 0) in the string with the given id
+    elements[0].innerHTML = elements[0].innerHTML.replace(/\d/g, id);
+
+    //Change id of the delete button
+    elements[1].id = elements[1].id.replace(/\d/g, id);
+
+    //Change the 'for' in day label
+    elements[2].htmlFor = elements[2].htmlFor.replace(/\d/g, id);
+
+    //Change the name and id of day select
+    elements[3].id = elements[3].id.replace(/\d/g, id);
+    elements[3].name = elements[3].name.replace(/\d/g, id);
+
+    //Change the 'for' in start time label
+    elements[4].htmlFor = elements[4].htmlFor.replace(/\d/g, id);
+
+    //Change the name and id of start time input
+    elements[5].id = elements[5].id.replace(/\d/g, id);
+    elements[5].name = elements[5].name.replace(/\d/g, id);
+
+    //Change the 'for' in end time label
+    elements[6].htmlFor = elements[6].htmlFor.replace(/\d/g, id);
+
+    //Change the name and id of end time input
+    elements[7].id = elements[7].id.replace(/\d/g, id);
+    elements[7].name = elements[7].name.replace(/\d/g, id);
+
+    //Change the 'for' in optional label
+    elements[8].htmlFor = elements[8].htmlFor.replace(/\d/g, id);
+
+    //Change the name and id of optional input
+    elements[9].id = elements[9].id.replace(/\d/g, id);
+    elements[9].name = elements[9].name.replace(/\d/g, id);
+
     //Finally, add the article to the document
-    console.log(article.children)
     timeSlotContainer.appendChild(article);
 
 }
@@ -67,6 +109,7 @@ function removeTimeSlot(e) {
 
     //Fancy regular expression
     //It just replaces everything in the string that isn't a digit with an empty string
+    //Note that it's case-sensitive
     let timeSlotId = e.target.id.replace(/\D/g, '');
 
     //Get the correct timeslot

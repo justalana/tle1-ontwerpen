@@ -11,6 +11,12 @@
         flex-direction: column;
     }
 
+    #timeSlotContainer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5%;
+    }
+
     >#checkboxContainer {
         flex-direction: row;
         flex-wrap: wrap;

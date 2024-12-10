@@ -125,7 +125,7 @@
                 <div>
 
                     <label for="days[0]">Selecteer een dag*</label>
-                    <select name="days[0]" id="days[0]" class="timeSlot0" required>
+                    <select name="days[0]" id="days[0]" required>
                         @foreach($days as $day)
 
                             <option value="{{ $day->id }}">{{ $day->name }}</option>
@@ -137,17 +137,17 @@
 
                 <div>
                     <label for="startTimes[0]">Start tijd*</label>
-                    <input type="time" name="startTimes[0]" id="startTimes[0]" class="timeSlot0" required>
+                    <input type="time" name="startTimes[0]" id="startTimes[0]" required>
                 </div>
 
                 <div>
                     <label for="endTimes[0]">Eind tijd*</label>
-                    <input type="time" name="endTimes[0]" id="endTimes[0]" class="timeSlot0" required>
+                    <input type="time" name="endTimes[0]" id="endTimes[0]" required>
                 </div>
 
                 <div class="timeSlotCheckboxContainer">
                     <label for="optional[0]">Optioneel</label>
-                    <input type="checkbox" name="optional[0]" id="optional[0]" class="timeSlot0">
+                    <input type="checkbox" name="optional[0]" id="optional[0]">
                 </div>
 
             </article>
