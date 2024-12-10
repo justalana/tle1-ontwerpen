@@ -48,6 +48,7 @@ function addTimeSlot(e) {
     //Collect all the elements in a usable array
     let elements = [];
 
+    //This will break if any of the divs gain or lose any children
     for (const child of article.children) {
         elements.push(child.children[0]);
         elements.push(child.children[1]);

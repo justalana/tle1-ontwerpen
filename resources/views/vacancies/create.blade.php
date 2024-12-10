@@ -115,7 +115,7 @@
 
         <div id="timeSlotContainer">
 
-            <article class="timeSlot" id="timeSlot0">
+            <article class="timeSlot" id="timeSlot0" style="display: none">
 
                 <div class="timeSlotTitleContainer">
                     <h3>Tijd slot 0</h3>
