@@ -25,6 +25,39 @@
 
 }
 
+.timeSlot {
+    padding: 0.5vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 25%;
+    border: solid var(--moss-dark) 1px;
+    border-radius: 6px;
+    align-items: center;
+
+    >div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeSlotTitleContainer {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .timeSlotCheckboxContainer {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .deleteTimeSlot {
+        font-size: 1vw;
+        padding: 0.5vw;
+    }
+}
+
 header {
     text-align: center;
     background: #AA0160;

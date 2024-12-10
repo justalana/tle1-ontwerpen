@@ -13,6 +13,7 @@ export default defineConfig({
                 'resources/css/profile.css',
                 'resources/css/style.css',
                 'resources/css/vacancies.css',
+                'resources/js/vacancyTimeSlotManager.js'
             ],
             refresh: true,
         }),

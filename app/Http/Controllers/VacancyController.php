@@ -53,6 +53,7 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
+        dd($request);
         $request->validate([
             'name' => ['required', 'max:50'],
             'branch' => ['required', 'numeric'],
@@ -98,13 +99,7 @@ class VacancyController extends Controller implements HasMiddleware
         $request->image->move($storagePath, $newName);
 
         //Bind the selected requirements to the created vacancy if there are any
-        if (isset($request->requirements)) {
-
-            foreach ($request->requirements as $requirement) {
-                $vacancy->requirements()->attach($requirement);
-            }
-
-        }
+        $vacancy->requirements()->sync($request->requirements ?? []);
 
         return to_route('vacancies.show', $vacancy);
     }
@@ -123,8 +118,9 @@ class VacancyController extends Controller implements HasMiddleware
     public function edit(Vacancy $vacancy)
     {
         $requirements = Requirement::all();
+        $days = Day::all();
 
-        return view('vacancies.edit', ['requirements' => $requirements, 'vacancy' => $vacancy]);
+        return view('vacancies.edit', ['requirements' => $requirements, 'vacancy' => $vacancy, 'days' => $days]);
     }
 
     /**

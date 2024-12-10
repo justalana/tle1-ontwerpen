@@ -1,5 +1,5 @@
-@props(['requirements', 'vacancy'])
-@vite(['resources/css/vacancies.css'])
+@props(['requirements', 'vacancy', 'days'])
+@vite(['resources/css/vacancies.css', 'resources/js/vacancyTimeSlotManager.js'])
 
 <x-site-layout title="Bewerk vacature">
 

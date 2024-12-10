@@ -1,5 +1,5 @@
 @props(['requirements', 'days'])
-@vite(['resources/css/vacancies.css'])
+@vite(['resources/css/vacancies.css', 'resources/js/vacancyTimeSlotManager.js'])
 
 <x-site-layout title="Maak nieuwe vacature aan">
 
@@ -53,7 +53,8 @@
 
         <div>
             <label for="description">Beschrijving*</label>
-            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
+            <x-trix-input id="description" name="description"
+                          value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>
@@ -93,7 +94,8 @@
         </div>
 
         <div>
-            <label for="workHours">Werkuren per week (optioneel, laat dit vak leeg als de uren nog onbekend zijn)</label>
+            <label for="workHours">Werkuren per week (optioneel, laat dit vak leeg als de uren nog onbekend
+                zijn)</label>
             <input type="number" step="1" min="0" id="workHours" name="workHours" value="{{ old('workHours') ?? '' }}">
 
             @error('workHours')
@@ -113,11 +115,17 @@
 
         <div id="timeSlotContainer">
 
-            <div class="timeSlot" id="timeSlot1">
+            <article class="timeSlot" id="timeSlot0">
+
+                <div class="timeSlotTitleContainer">
+                    <h3>Tijd slot 0</h3>
+                    <button class="deleteTimeSlot">- Verwijder</button>
+                </div>
 
                 <div>
 
-                    <select name="days[1]" id="timeSlot1" required>
+                    <label for="days[0]">Selecteer een dag*</label>
+                    <select name="days[0]" id="days[0]" class="timeSlot0" required>
                         @foreach($days as $day)
 
                             <option value="{{ $day->id }}">{{ $day->name }}</option>
@@ -128,25 +136,26 @@
                 </div>
 
                 <div>
-                    <label for="startTimes[1]">Start Time</label>
-                    <input type="time" name="startTimes[1]" id="timeSlot1" value="{{ old('startTimes[1]') ?? ''}}">
+                    <label for="startTimes[0]">Start tijd*</label>
+                    <input type="time" name="startTimes[0]" id="startTimes[0]" class="timeSlot0" required>
                 </div>
 
                 <div>
-                    <label for="endTimes[1]">End Time</label>
-                    <input type="time" name="endTimes[1]" id="timeSlot1" value="{{ old('endTimes[1]') ?? ''}}">
+                    <label for="endTimes[0]">Eind tijd*</label>
+                    <input type="time" name="endTimes[0]" id="endTimes[0]" class="timeSlot0" required>
                 </div>
 
-                <div>
-                    <label for="optional[1]">Optional</label>
-                    <input type="checkbox" name="optional[1]" id="timeSlot1">
+                <div class="timeSlotCheckboxContainer">
+                    <label for="optional[0]">Optioneel</label>
+                    <input type="checkbox" name="optional[0]" id="optional[0]" class="timeSlot0">
                 </div>
 
-            </div>
+            </article>
 
-            <button class="addTimeSlot">+ Add new time slot</button>
 
         </div>
+
+        <button class="addTimeSlot">+ Voeg een nieuw tijd slot toe</button>
 
         <div>
             <label for="image">Upload afbeelding*</label>
