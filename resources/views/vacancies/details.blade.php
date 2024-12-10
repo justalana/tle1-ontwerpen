@@ -38,10 +38,15 @@
         </div>
 
     @else
-
-        <div>
-            <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
-        </div>
+        @if(isset(auth()->user()->role))
+            <div>
+                <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
+            </div>
+        @else
+            <div>
+                <a class="button-pink" href="{{ route('login') }}">Log in om je in te schrijven!</a>
+            </div>
+        @endif
 
     @endcan
 
