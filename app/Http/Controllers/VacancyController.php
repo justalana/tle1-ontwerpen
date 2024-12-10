@@ -96,6 +96,8 @@ class VacancyController extends Controller implements HasMiddleware
 
         }
 
+        \Mail::to('essetijdelijk@gmail.com')->send(new VacancyQueued());
+
         return to_route('vacancies.show', $vacancy);
     }
 
