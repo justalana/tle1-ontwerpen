@@ -23,6 +23,5 @@
         </div>
 
         <button type="submit" class="button-pink">Bevestig aanmelding</button>
-
     </form>
 </x-site-layout>
