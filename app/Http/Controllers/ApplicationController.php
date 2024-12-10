@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application;
+use App\Models\Requirement;
+use App\Models\Vacancy;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -18,17 +20,30 @@ class ApplicationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Vacancy $vacancy)
     {
-        //
+        $requirements = $vacancy->requirements;
+
+        return view('vacancies.applications', ['vacancy' => $vacancy, 'requirements' => $requirements]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Vacancy $vacancy)
     {
-        //
+
+        $application = Application::create([
+            'user_id' => auth()->user()->id,
+            'vacancy_id' => $vacancy->id,
+            'status' => 1, //pending=1 accepted=2 denied=3
+        ]);
+
+        $application->requirements()->sync($request->requirements ?? []);
+
+        $application->save();
+
+        return to_route('vacancies.show', $vacancy);
     }
 
     /**

@@ -28,7 +28,7 @@
     </div>
 
     <div id="description">
-        <p id="description-text">{!! $vacancy->description !!}</p>
+        <p id="description-text">{!!$vacancy->description!!}</p>
     </div>
 
     @can('manage-vacancy', $vacancy)
@@ -40,7 +40,7 @@
     @else
 
         <div>
-            <a class="button-light" href="">Schrijf je in!</a>
+            <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
         </div>
 
     @endcan
