@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <p>{{ $branch->description }}</p>
+            <p>{!! $branch->description !!}</p>
         </div>
 
         <div id="branchDetailAdressContainer">

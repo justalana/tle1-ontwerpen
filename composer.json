@@ -8,7 +8,9 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "symfony/html-sanitizer": "^7.2",
+        "tonysm/rich-text-laravel": "^3.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -1,59 +1,26 @@
-@props(['requirements'])
+@props(['requirements', 'vacancy'])
 @vite(['resources/css/vacancies.css'])
 
-<x-site-layout title="Maak nieuwe vacature aan">
+<x-site-layout title="Bewerk vacature">
 
-    <h1>Maak nieuwe vacature aan</h1>
+    <h1>Bewerk vacature</h1>
 
-    <form action="{{ route('vacancies.store') }}" method="POST" enctype="multipart/form-data" id="vacancyForm">
+    <form action="{{ route('vacancies.update', $vacancy) }}" method="POST" enctype="multipart/form-data" id="vacancyForm">
         @csrf
+        @method('PUT')
 
         <div>
             <label for="name">Naam van de vacature*</label>
-            <input type="text" id="name" name="name" maxlength="50" required value="{{ old('name') ?? '' }}">
+            <input type="text" id="name" name="name" maxlength="50" required value="{{ old('name') ?? $vacancy->name }}">
 
             @error('name')
             <p>{{ $message }}</p>
             @enderror
         </div>
 
-        @can('admin')
-
-                <?php $branches = App\Models\Branch::all() ?>
-
-            @if($branches->isNotEmpty())
-
-                <div>
-                    <label for="branch">Selecteer filiaal*</label>
-                    <select name="branch" id="branch" required>
-
-                        @foreach($branches as $branch)
-                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
-                        @endforeach
-
-                    </select>
-
-                    @error('branch')
-                    <p>{{ $message }}</p>
-                    @enderror
-                </div>
-
-            @else
-
-                <p>Geen filialen gevonden! Maak een nieuwe aan</p>
-                <a href="{{ route('branches.create') }}" class="button-light">Maak nieuw filiaal</a>
-
-            @endif
-
-        @else
-
-            <input type="hidden" id="branch" name="branch" value="{{ Auth::getUser()->branch_id }}">
-
-        @endcan
-
         <div>
             <label for="description">Beschrijving*</label>
-            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
+            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : $vacancy->description->toTrixHtml() !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>
@@ -64,9 +31,13 @@
 
         <div id="checkboxContainer">
 
+            @php
+                $selectedRequirements = old('requirements') ? collect(old('requirements')) : $vacancy->requirements ?? collect([]);
+            @endphp
+
             @foreach($requirements as $requirement)
                 <label> {{ $requirement->name }}
-                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}">
+                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}" {{ $selectedRequirements->contains($requirement->id) ? 'checked' : '' }}>
                 </label>
             @endforeach
 
@@ -75,7 +46,7 @@
         <div>
             <label for="salaryMin">Minimum salaris*</label>
             <input type="number" step="0.01" min="0.00" id="salaryMin" name="salaryMin" required
-                   value="{{ old('salaryMin') ?? '' }}">
+                   value="{{ old('salaryMin') ?? $vacancy->salary_min }}">
 
             @error('salaryMin')
             <p>{{ $message }}</p>
@@ -85,7 +56,7 @@
         <div>
             <label for="salaryMax">Maximum salaris (optioneel, laat dit vak leeg als er maar 1 salaris is)</label>
             <input type="number" step="0.01" min="0.00" id="salaryMax" name="salaryMax"
-                   value="{{ old('salaryMax') ?? '' }}">
+                   value="{{ old('salaryMax') ?? $vacancy->salary_max ?? '' }}">
 
             @error('salaryMax')
             <p>{{ $message }}</p>
@@ -94,7 +65,7 @@
 
         <div>
             <label for="workHours">Werkuren per week (optioneel, laat dit vak leeg als de uren nog onbekend zijn)</label>
-            <input type="number" step="1" min="0" id="workHours" name="workHours" value="{{ old('workHours') ?? '' }}">
+            <input type="number" step="1" min="0" id="workHours" name="workHours" value="{{ old('workHours') ?? $vacancy->work_hours ?? '' }}">
 
             @error('workHours')
             <p>{{ $message }}</p>
@@ -104,7 +75,7 @@
         <div>
             <label for="contractDuration">Lengte van het contract in dagen*</label>
             <input type="number" step="1" min="1" id="contractDuration" name="contractDuration" required
-                   value="{{ old('contractDuration') ?? '' }}">
+                   value="{{ old('contractDuration') ?? $vacancy->contract_duration }}">
 
             @error('contractDuration')
             <p>{{ $message }}</p>
@@ -112,8 +83,8 @@
         </div>
 
         <div>
-            <label for="image">Upload afbeelding*</label>
-            <input type="file" id="image" name="image" required>
+            <label for="image">Upload afbeelding (Afbeelding wordt alleen veranderd als je een nieuwe upload)</label>
+            <input type="file" id="image" name="image">
 
             @error('image')
             <p>{{ $message }}</p>
@@ -123,7 +94,7 @@
         <div>
             <label for="imageAltText">Omschrijf de inhoud van de afbeelding*</label>
             <input type="text" id="imageAltText" name="imageAltText" maxlength="255" required
-                   value="{{ old('imageAltText') ?? '' }}">
+                   value="{{ old('imageAltText') ?? $vacancy->image_alt_text }}">
 
             @error('imageAltText')
             <p>{{ $message }}</p>
@@ -132,7 +103,7 @@
 
         <p>* = vereist veld</p>
 
-        <button type="submit" class="button-light">Maak vacature aan</button>
+        <button type="submit" class="button-light">Sla bewerkingen op</button>
 
     </form>
 

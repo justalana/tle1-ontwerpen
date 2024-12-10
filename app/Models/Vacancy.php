@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Vacancy extends Model
 {
     use HasFactory;
+    use HasRichText;
 
     /**
      * The attributes that are mass assignable.
@@ -43,11 +44,17 @@ class Vacancy extends Model
         'contract_duration' => 'integer',
     ];
 
+    /**
+     * The attributes that use rich text
+     *
+     */
+    Protected $richTextAttributes = [
+        'description'
+    ];
+
     public static function find(mixed $id)
     {
-        //
     }
-
 
     public function branch(): BelongsTo
     {
@@ -64,9 +71,9 @@ class Vacancy extends Model
         return $this->belongsToMany(TimeSlot::class);
     }
 
-
-    public function applications(): HasMany
+    public function applications(): BelongsToMany
     {
-        return $this->hasMany(Application::class);
+        return $this->belongsToMany(Application::class);
     }
+
 }

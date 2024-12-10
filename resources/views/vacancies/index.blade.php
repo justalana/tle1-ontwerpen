@@ -49,9 +49,14 @@
                 </div>
 
                 <div class="column">
-                    <p>{{$vacancy->description}}</p>
-                    <a class="button-pink" href="{{ route('vacancies.show', $vacancy->id) }}">Bekijk vacature</a>
+                    <p>{!! $vacancy->description !!}</p>
+                    <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
 
+                    @can('manage-vacancy', $vacancy)
+
+                        <a class="button-pink" href="{{ route('vacancies.edit', $vacancy) }}">Bewerk vacature</a>
+
+                    @endcan
 
                 </div>
 
@@ -61,7 +66,6 @@
 
     @else
         <p>Helaas, geen open vacatures</p>
-
     @endif
 
     @foreach ($vacancies as $vacancy)
