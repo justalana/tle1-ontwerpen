@@ -171,6 +171,22 @@ footer {
     color: var(--white);
 }
 
+.button-green {
+    text-decoration: none;
+    background: var(--moss-medium);
+    border: 3px solid var(--moss-medium);
+    border-radius: 4px;
+    text-align: center;
+    padding: 1vh;
+    color: var(--moss-dark);
+}
+
+.button-green:hover{
+    background-color: var(--yellow);
+    border: 3px solid var(--yellow);
+    color: var(--moss-dark);
+}
+
 /* === MOBILE === */
 @media (max-width: 767px) {
     nav {

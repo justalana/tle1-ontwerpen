@@ -9,7 +9,7 @@
         </div>
     </header>
 
-    <form action="{{ route('applications.store') }}" method="POST" id="vacancyForm">
+    <form action="{{ route('applications.store', $vacancy->id) }}" method="POST" id="vacancyForm">
         @csrf
 
         <p>Vink alle eisen aan waar je aan voldoet</p>
@@ -22,6 +22,6 @@
             @endforeach
         </div>
 
-        <button type="submit" class="button-pink">Bevestig aanmelding</button>
+        <button type="submit" class="button-green">Bevestig aanmelding</button>
     </form>
 </x-site-layout>
