@@ -26,6 +26,7 @@ class VacancyController extends Controller
         return view('vacancies.index', compact('vacancies'));
     }
 
+
     /**
      * Show the form for creating a new resource.
      */
