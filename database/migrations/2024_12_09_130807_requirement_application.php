@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('requirement_application', function (Blueprint $table) {
+        Schema::create('application_requirements', function (Blueprint $table) {
             $table->unsignedBigInteger('application_id');
             $table->foreign('application_id')->references('id')->on('applications');
             $table->unsignedBigInteger('requirement_id');
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requirement_vacancies');
+        Schema::dropIfExists('application_requirements');
     }
 };
