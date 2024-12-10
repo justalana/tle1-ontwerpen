@@ -119,7 +119,7 @@
 
                 <div class="timeSlotTitleContainer">
                     <h3>Tijd slot 0</h3>
-                    <button class="deleteTimeSlot">- Verwijder</button>
+                    <button class="deleteTimeSlot" id="deleteTimeSlot0">- Verwijder</button>
                 </div>
 
                 <div>
@@ -155,7 +155,7 @@
 
         </div>
 
-        <button class="addTimeSlot">+ Voeg een nieuw tijd slot toe</button>
+        <button id="addTimeSlot">+ Voeg een nieuw tijd slot toe</button>
 
         <div>
             <label for="image">Upload afbeelding*</label>
