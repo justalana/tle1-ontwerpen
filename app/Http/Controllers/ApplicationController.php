@@ -48,7 +48,7 @@ class ApplicationController extends Controller
         }
 
         $application->save();
-        return redirect()->route('vacancies.index');
+        return redirect()->route('vacancies.show', $vacancy);
     }
 
     /**
