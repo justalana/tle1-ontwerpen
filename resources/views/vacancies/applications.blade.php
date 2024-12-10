@@ -1,6 +1,5 @@
 @vite(['resources/css/vacancies.css'])
-@props(['requirements'])
-@props(['vacancy'])
+@props(['requirements', 'vacancy'])
 
 <x-site-layout>
     <header>

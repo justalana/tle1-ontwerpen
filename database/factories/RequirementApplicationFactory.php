@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Application;
 use App\Models\Requirement;
-use App\Models\RequirementApplication;
+use App\Models\ApplicationRequirement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RequirementApplicationFactory extends Factory
@@ -14,7 +14,7 @@ class RequirementApplicationFactory extends Factory
      *
      * @var string
      */
-    protected $model = RequirementApplication::class;
+    protected $model = ApplicationRequirement::class;
 
     /**
      * Define the model's default state.

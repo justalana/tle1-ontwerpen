@@ -39,16 +39,19 @@ class ApplicationController extends Controller
             'status' => 1, //pending=1 accepted=2 denied=3
         ]);
 
-        if (isset($request->requirements)) {
+//        if (isset($request->requirements)) {
+//
+//            foreach ($request->requirements as $requirement) {
+//                $application->requirements()->attach($requirement);
+//            }
+//
+//        }
 
-            foreach ($request->requirements as $requirement) {
-                $application->requirements()->attach($requirement);
-            }
-
-        }
+        $application->requirements()->sync($request->requirements ?? []);
 
         $application->save();
-        return redirect()->route('vacancies.show', $vacancy);
+
+        return to_route('vacancies.show', $vacancy);
     }
 
     /**

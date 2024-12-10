@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class RequirementApplication extends Pivot
+class ApplicationRequirement extends Pivot
 {
     use HasFactory;
 
