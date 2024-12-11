@@ -35,8 +35,8 @@
 
 body {
     font-family: 'radikal', sans-serif;
-    color: var(--moss-dark);
-    background-color: var(--cream);
+    color: #2E342A;
+    background-color: #FBFCF6;
     margin: 0;
     min-height: 100vh;
 }
@@ -88,8 +88,8 @@ nav {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    color: var(--white);
-    background-color: var(--violet);
+    color: #FFFFFF;
+    background-color: #AA0160;
     padding: 1vh;
 }
 
@@ -106,7 +106,7 @@ nav div {
 
 nav a, nav button {
     padding: 1vh 0;
-    color: var(--white);
+    color: #FFFFFF;
 }
 
 nav button, nav button:hover {
@@ -115,11 +115,11 @@ nav button, nav button:hover {
 }
 
 nav a:hover, nav button:hover {
-    border-bottom: 3px solid var(--white);
+    border-bottom: 3px solid #FFFFFF;
 }
 
 input, textarea {
-    border: 2px solid var(--stroke-thin);
+    border: 2px solid #DFDFDF;
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
     outline: none;
@@ -128,7 +128,7 @@ input, textarea {
 }
 
 input:focus{
-    border: 2px solid var(--moss-medium);
+    border: 2px solid #92AA83;
 }
 
 main {
@@ -147,8 +147,8 @@ main {
 
 footer {
     padding: 2vw;
-    background-color: var(--moss-dark);
-    color: var(--yellow);
+    background-color: #2E342A;
+    color: #FAEC02;
 }
 
 .image-container {
@@ -165,27 +165,27 @@ footer {
 .button-light, button {
     padding: 1vw;
     border-radius: 10vw;
-    border: 3px solid var(--moss-dark);
+    border: 3px solid #2E342A;
     color: var(--moss-dark);
     transition: ease-in-out 0.2s;
 }
 .button-light:hover, button:hover{
-    background-color: var(--moss-dark);
-    color: var(--white);
+    background-color: #2E342A;
+    color: #FFFFFF;
 }
 
 .button-pink {
     text-decoration: none;
-    background: var(--violet);
+    background: #AA0160;
     border-radius: 4px;
     text-align: center;
     padding: 1vh;
-    color: var(--white);
+    color: #FFFFFF;
 }
 
 .button-pink:hover{
-    background-color: var(--violet-dark);
-    color: var(--white);
+    background-color: #7C1A51;
+    color: #FFFFFF;
 }
 
 /* === MOBILE === */

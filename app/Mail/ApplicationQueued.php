@@ -8,6 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Storage;
 
 class ApplicationQueued extends Mailable
 {
@@ -35,9 +36,10 @@ class ApplicationQueued extends Mailable
      */
     public function content(): Content
     {
+
         return new Content(
             markdown: 'mail.vacancy.queued',
-        );
+            );
     }
 
     /**
