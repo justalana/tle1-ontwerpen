@@ -19,6 +19,29 @@ Route::get('/dashboard', function () {
 //A permanent redirect so no user can access Laravel's goofy ahh dashboard
 Route::permanentRedirect('/dashboard', '/');
 
+// Route voor werknemers
+Route::get('/dashboard', function () {
+    if (auth()->check()) {
+        if (auth()->user()->role == 1) {
+            return view('dashboard'); // Werknemers naar dashboard
+        } elseif (auth()->user()->role == 2) {
+            return redirect()->route('profile.employeedash'); // Werkgevers naar employeedash
+        }
+    }
+
+    abort(403, 'Toegang geweigerd.');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route voor werkgevers
+Route::get('/employeedash', function () {
+    if (auth()->check() && auth()->user()->role == 2) {
+        return view('profile.employeedash'); // Alleen werkgevers hebben toegang
+    }
+
+    abort(403, 'Toegang geweigerd. Alleen werkgevers hebben toegang.');
+})->middleware(['auth', 'verified'])->name('profile.employeedash');
+
+
 // Authenticated User Routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
