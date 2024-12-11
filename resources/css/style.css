@@ -114,7 +114,6 @@ input, textarea {
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
     outline: none;
-    height: 5vh;
     padding: 1vh;
 }
 
