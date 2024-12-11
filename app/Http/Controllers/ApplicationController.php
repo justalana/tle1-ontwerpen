@@ -6,11 +6,20 @@ use App\Models\Application;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class ApplicationController extends Controller
+class ApplicationController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:employee', only: ['create', 'store']),
+            new Middleware('can:show-application,application', only: ['show']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
