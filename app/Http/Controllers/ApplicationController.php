@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {
@@ -24,7 +25,7 @@ class ApplicationController extends Controller
     {
         $requirements = $vacancy->requirements;
 
-        return view('vacancies.applications', ['vacancy' => $vacancy, 'requirements' => $requirements]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements]);
     }
 
     /**
@@ -43,7 +44,7 @@ class ApplicationController extends Controller
 
         $application->save();
 
-        return to_route('vacancies.show', $vacancy);
+        return to_route('applications.show', $application);
     }
 
     /**
@@ -51,7 +52,9 @@ class ApplicationController extends Controller
      */
     public function show(Application $application)
     {
-        //
+        $requirements = $application->requirements;
+
+        return view('applications.details', ['application' => $application, 'requirements' => $requirements]);
     }
 
     /**

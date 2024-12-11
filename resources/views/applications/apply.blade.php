@@ -8,7 +8,7 @@
         </div>
     </header>
 
-    <form action="{{ route('applications.store', $vacancy->id) }}" method="POST" id="vacancyForm">
+    <form action="{{ route('applications.store', $vacancy->id) }}" method="POST" id="vacancyForm" onsubmit="return confirm('Are you sure you want to submit?');">
         @csrf
 
         <p>Vink alle eisen aan waar je aan voldoet</p>
