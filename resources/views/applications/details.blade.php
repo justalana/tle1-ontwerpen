@@ -8,12 +8,16 @@
     </header>
 
     <div id="checkboxContainer">
-        <p>Eisen waaraan je voldoet</p>
-        <ul>
-            @foreach($requirements as $requirement)
-                <li>{{$requirement->name}}</li>
-            @endforeach
-        </ul>
+        <h2>Eisen waaraan je voldoet:</h2>
+        @if($requirements->isNotEmpty())
+            <ul>
+                @foreach($requirements as $requirement)
+                    <li>{{$requirement->name}}</li>
+                @endforeach
+            </ul>
+        @else
+            <p>Je hebt geen eisen aangevinkt</p>
+        @endif
 
     </div>
 </x-site-layout>
