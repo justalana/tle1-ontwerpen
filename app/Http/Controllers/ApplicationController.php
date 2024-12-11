@@ -53,8 +53,9 @@ class ApplicationController extends Controller
     public function show(Application $application)
     {
         $requirements = $application->requirements;
+        $vacancy = $application->vacancy;
 
-        return view('applications.details', ['application' => $application, 'requirements' => $requirements]);
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy]);
     }
 
     /**
