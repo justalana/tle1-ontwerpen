@@ -185,6 +185,35 @@ class VacancyController extends Controller implements HasMiddleware
             'imageAltText' => ['required', 'max:255']
         ]);
 
+        //We are assuming the user hasn't fucked with the javascript so a day is always selected for every timeslot
+        //They can deal with a 500 server error, they know why they got it
+        $timeSlots = [];
+        if ($request->days) {
+
+            foreach ($request->days as $id => $day) {
+
+                $timeSlots[$id]['day'] = $day;
+                $timeSlots[$id]['startTime'] = $request->startTimes[$id] ?? null;
+                $timeSlots[$id]['endTime'] = $request->endTimes[$id] ?? null;
+                $timeSlots[$id]['optional'] = $request->optional[$id] ?? null;
+
+            }
+
+        }
+
+        //Manually validate the timeslots
+        foreach ($timeSlots as $timeSlot) {
+
+            if (!$timeSlot['startTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een start tijd nodig']);
+            }
+
+            if (!$timeSlot['endTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een eind tijd nodig']);
+            }
+
+        }
+
         //Store the image in the correct folder and get a random filename if one was uploaded
         if (isset($request->image)) {
             $storagePath = public_path('storage/uploads/vacancyImages');
@@ -219,6 +248,31 @@ class VacancyController extends Controller implements HasMiddleware
 
         //Detach and/or attach the relevant requirements
         $vacancy->requirements()->sync($request->requirements ?? []);
+
+        if (!empty($timeSlots)) {
+            //First, remove all existing time slots
+            $existingTimeSlots = $vacancy->timeSlots;
+
+            foreach ($existingTimeSlots as $existingTimeSlot) {
+                $existingTimeSlot->delete();
+            }
+
+            //Then replace them with new ones
+            //An employer can only edit the timeslots if there are no pending applications, so this is fine
+
+            foreach ($timeSlots as $timeSlot) {
+
+                TimeSlot::create([
+                    'day_id' => $timeSlot['day'],
+                    'vacancy_id' => $vacancy->id,
+                    'start_time' => $timeSlot['startTime'],
+                    'end_time' => $timeSlot['endTime'],
+                    'optional' => (bool)$timeSlot['optional']
+                ]);
+
+            }
+
+        }
 
         return to_route('vacancies.show', $vacancy);
     }

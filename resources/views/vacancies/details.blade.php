@@ -29,7 +29,7 @@
         <div id="timeSlotContainer">
             @foreach($vacancy->timeSlots as $timeSlot)
 
-                <article class="timeSlot">
+                <article class="timeSlotDetail">
 
                     <h3>{{ $timeSlot->day->name }}</h3>
 

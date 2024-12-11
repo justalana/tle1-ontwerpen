@@ -12,6 +12,7 @@ function init() {
 
     //Get the old() data from Laravel
     old = window.old;
+    console.log(old);
 
     //Get the template from the document and store the innerHTML for use later
     let timeSlotElement = document.getElementById('timeSlot0');
@@ -32,6 +33,12 @@ function init() {
     if (!Array.isArray(old)) {
 
         for (const [key, timeSlot] of Object.entries(old)) {
+            addTimeSlot(false, timeSlot);
+        }
+
+    } else if (old.length > 0) {
+
+        for (const timeSlot of old) {
             addTimeSlot(false, timeSlot);
         }
 
@@ -118,7 +125,7 @@ function addTimeSlot(isNew, old) {
         //Select the correct day
         for (const option of elements[3].children) {
 
-            if (option.value === old.day) {
+            if (option.value === old.day.toString()) {
 
                 option.selected = true;
                 break;
