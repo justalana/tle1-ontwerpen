@@ -6,6 +6,7 @@ use App\Models\Application;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
@@ -52,9 +53,9 @@ class ApplicationController extends Controller
      */
     public function show(Application $application)
     {
+        $user = auth()->user();
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
-        $user = auth()->user();
 
         return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
     }
@@ -82,4 +83,5 @@ class ApplicationController extends Controller
     {
         //
     }
+
 }

@@ -29,7 +29,7 @@
     @endauth
 
     @guest
-        <h2>Je hebt geen toegang tot deze pagina</h2>
+            <h2>Je hebt geen toegang tot deze pagina</h2>
     @endguest
 
 </x-site-layout>
