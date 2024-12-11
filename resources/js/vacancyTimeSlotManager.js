@@ -12,7 +12,6 @@ function init() {
 
     //Get the old() data from Laravel
     old = window.old;
-    console.log(old);
 
     //Get the template from the document and store the innerHTML for use later
     let timeSlotElement = document.getElementById('timeSlot0');
