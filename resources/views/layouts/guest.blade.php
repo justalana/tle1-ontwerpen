@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <x-rich-text::styles theme="richtextlaravel" data-turbo-track="false" />
 </head>
 
         {{ $slot }}

@@ -1,3 +1,5 @@
+
+
 @vite(['resources/css/general.css'])
 
 <x-site-layout title="Open Hiring Admin">
