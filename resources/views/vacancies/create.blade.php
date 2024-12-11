@@ -1,6 +1,32 @@
 @props(['requirements', 'days'])
 @vite(['resources/css/vacancies.css', 'resources/js/vacancyTimeSlotManager.js'])
 
+@php
+
+    //Store all the old data in an array
+    $old = [];
+
+    //We are assuming the user hasn't fucked with the javascript so a day is always selected for every timeslot
+    if (old('days')) {
+
+        foreach (old('days') as $id => $day) {
+
+            $old[$id]['day'] = $day;
+            $old[$id]['startTime'] = old('startTimes')[$id];
+            $old[$id]['endTime'] = old('endTimes')[$id];
+            $old[$id]['optional'] = old('optional')[$id] ?? null;
+
+        }
+
+    }
+
+    //Json encode the array so javascript can use it as an object
+    $old = json_encode($old);
+
+@endphp
+
+<script>window.old = JSON.parse('{!! $old !!}')</script>
+
 <x-site-layout title="Maak nieuwe vacature aan">
 
     <h1>Maak nieuwe vacature aan</h1>
@@ -28,7 +54,7 @@
                     <select name="branch" id="branch" required>
 
                         @foreach($branches as $branch)
-                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            <option value="{{ $branch->id }}" {{ old('branch') ? (strval($branch->id) === old('branch')) ? 'selected' : '' : '' }}>{{ $branch->name }}</option>
                         @endforeach
 
                     </select>
@@ -54,7 +80,7 @@
         <div>
             <label for="description">Beschrijving*</label>
             <x-trix-input id="description" name="description"
-                          value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
+                          value="{!! old('description') ? old('description') : '' !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>
@@ -67,7 +93,7 @@
 
             @foreach($requirements as $requirement)
                 <label> {{ $requirement->name }}
-                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}">
+                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}" {{ old('requirements') ? in_array($requirement->id, old('requirements')) ? 'checked' : '' : '' }}>
                 </label>
             @endforeach
 

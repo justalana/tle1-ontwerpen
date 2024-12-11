@@ -53,9 +53,8 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function store(Request $request)
     {
-        dd($request);
         $request->validate([
-            'name' => ['required', 'max:50'],
+            'name' => ['required', 'max:1'],
             'branch' => ['required', 'numeric'],
             'description' => ['required'],
             'salaryMin' => ['required', 'min:0', 'numeric'],
