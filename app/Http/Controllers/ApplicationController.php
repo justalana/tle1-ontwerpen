@@ -8,8 +8,6 @@ use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller implements HasMiddleware
 {
