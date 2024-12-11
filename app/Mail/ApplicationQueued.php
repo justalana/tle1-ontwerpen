@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use AllowDynamicProperties;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -10,15 +11,16 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Storage;
 
-class ApplicationQueued extends Mailable
+#[AllowDynamicProperties] class ApplicationQueued extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($vacancy)
     {
+        $this->vacancy = $vacancy;
     }
 
     /**
@@ -39,6 +41,7 @@ class ApplicationQueued extends Mailable
 
         return new Content(
             markdown: 'mail.vacancy.queued',
+            with: ['vacancy' => $this->vacancy]
             );
     }
 

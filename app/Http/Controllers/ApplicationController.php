@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApplicationQueued;
 use App\Models\Application;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Mail;
 
 class ApplicationController extends Controller
 {
@@ -42,6 +44,8 @@ class ApplicationController extends Controller
         $application->requirements()->sync($request->requirements ?? []);
 
         $application->save();
+
+        Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 
         return to_route('vacancies.show', $vacancy);
     }
