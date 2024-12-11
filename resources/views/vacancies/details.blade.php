@@ -25,6 +25,28 @@
                 @endif
             </ul>
         </div>
+
+        <div id="timeSlotContainer">
+            @foreach($vacancy->timeSlots as $timeSlot)
+
+                <article class="timeSlot">
+
+                    <h3>{{ $timeSlot->day->name }}</h3>
+
+                    <div>
+                        <p>Start tijd: {{ $timeSlot->start_time }}</p>
+                        <p>Eind tijd: {{ $timeSlot->end_time }}</p>
+                    </div>
+
+                    @if($timeSlot->optional)
+                        <p>Optioneel</p>
+                    @endif
+
+                </article>
+
+            @endforeach
+        </div>
+
     </div>
 
     <div id="description">

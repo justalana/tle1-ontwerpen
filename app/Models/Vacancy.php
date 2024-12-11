@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Tonysm\RichTextLaravel\Models\Traits\HasRichText;
 
 class Vacancy extends Model
@@ -66,14 +67,14 @@ class Vacancy extends Model
         return $this->belongsToMany(Requirement::class);
     }
 
-    public function timeSlots(): BelongsToMany
+    public function timeSlots(): HasMany
     {
-        return $this->belongsToMany(TimeSlot::class);
+        return $this->hasMany(TimeSlot::class);
     }
 
-    public function applications(): BelongsToMany
+    public function applications(): HasMany
     {
-        return $this->belongsToMany(Application::class);
+        return $this->hasMany(Application::class);
     }
 
 }

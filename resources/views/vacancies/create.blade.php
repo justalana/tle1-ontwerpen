@@ -54,7 +54,8 @@
                     <select name="branch" id="branch" required>
 
                         @foreach($branches as $branch)
-                            <option value="{{ $branch->id }}" {{ old('branch') ? (strval($branch->id) === old('branch')) ? 'selected' : '' : '' }}>{{ $branch->name }}</option>
+                            <option
+                                value="{{ $branch->id }}" {{ old('branch') ? (strval($branch->id) === old('branch')) ? 'selected' : '' : '' }}>{{ $branch->name }}</option>
                         @endforeach
 
                     </select>
@@ -93,7 +94,8 @@
 
             @foreach($requirements as $requirement)
                 <label> {{ $requirement->name }}
-                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}" {{ old('requirements') ? in_array($requirement->id, old('requirements')) ? 'checked' : '' : '' }}>
+                    <input type="checkbox" name="requirements[]"
+                           value="{{ $requirement->id }}" {{ old('requirements') ? in_array($requirement->id, old('requirements')) ? 'checked' : '' : '' }}>
                 </label>
             @endforeach
 
@@ -178,8 +180,11 @@
 
             </article>
 
-
         </div>
+
+        @error('timeSlot')
+        <p>{{ $message }}</p>
+        @enderror
 
         <button id="addTimeSlot">+ Voeg een nieuw tijd slot toe</button>
 
