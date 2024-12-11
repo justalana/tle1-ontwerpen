@@ -7,14 +7,14 @@
 
     <section id="userContainer">
 
-        <table>
+        <table id="userOverview">
             <tr>
                 <th>Naam</th>
                 <th>Email</th>
                 <th>Telefoon nummer</th>
                 <th>Filiaal naam</th>
                 <th>Rol</th>
-                <th>Edit</th>
+                <th>Bewerk</th>
             </tr>
 
         @foreach($users as $user)
@@ -25,7 +25,10 @@
                 <td>{{ $user->phone_number ?? 'geen nummer' }}</td>
                 <td>{{ $user->branch->name ?? 'geen filiaal' }}</td>
                 <td>{{ $user->role }}</td>
-                <td><a href="{{ route('admin-user-edit') }}">Edit {{ $user->name }}</a></td>
+
+                <td>
+                    <a class="button-pink" href="{{ route('admin.user-edit', $user) }}">Bewerk {{ $user->name }}</a>
+                </td>
             </tr>
 
         @endforeach
