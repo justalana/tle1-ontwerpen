@@ -54,8 +54,9 @@ class ApplicationController extends Controller
     {
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
+        $user = auth()->user();
 
-        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy]);
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
     }
 
     /**
