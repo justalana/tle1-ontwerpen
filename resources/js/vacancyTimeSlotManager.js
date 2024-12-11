@@ -12,7 +12,6 @@ function init() {
 
     //Get the old() data from Laravel
     old = window.old;
-    console.log(old);
 
     //Get the template from the document and store the innerHTML for use later
     let timeSlotElement = document.getElementById('timeSlot0');
@@ -27,12 +26,27 @@ function init() {
 
     //Get the 'add time slot' button so we can add functionality to it
     let addTimeSlotButton = document.getElementById('addTimeSlot');
-    addTimeSlotButton.addEventListener('click', addTimeSlot);
+    addTimeSlotButton.addEventListener('click', timeSlotAddClickHandler);
+
+    //Create time slots if old() data was given
+    if (!Array.isArray(old)) {
+
+        for (const [key, timeSlot] of Object.entries(old)) {
+            addTimeSlot(false, timeSlot);
+        }
+
+    }
 
 }
 
-function addTimeSlot(e) {
+function timeSlotAddClickHandler(e) {
     e.preventDefault();
+
+    addTimeSlot(true, null)
+
+}
+
+function addTimeSlot(isNew, old) {
 
     //Make sure you don't overwrite or use the existing template by copying it into a new variable
     //Insert the raw innerHTML string from the template into a proper element
@@ -97,6 +111,38 @@ function addTimeSlot(e) {
     //Change the name and id of optional input
     elements[9].id = elements[9].id.replace(/\d/g, id);
     elements[9].name = elements[9].name.replace(/\d/g, id);
+
+    //If old() data is given, fill the values of the input elements
+    if (!isNew && old) {
+
+        //Select the correct day
+        for (const option of elements[3].children) {
+
+            if (option.value === old.day) {
+
+                option.selected = true;
+                break;
+
+            }
+
+        }
+
+        //Add the starting time if it exists
+        if (old.startTime) {
+            elements[5].value = old.startTime;
+        }
+
+        //Add the end time if it exists
+        if (old.endTime) {
+            elements[7].value = old.endTime;
+        }
+
+        //Check the optional box if applicable
+        if (old.optional) {
+            elements[9].checked = true;
+        }
+
+    }
 
     //Finally, add the article to the document
     timeSlotContainer.appendChild(article);
