@@ -1,4 +1,4 @@
-@vite(['resources/css/employeedash.css'])
+@vite(['resources/css/employerdash.css'])
 <x-site-layout>
     <x-slot name="header">
         <h2>{{ __('Welkom op je Dashboard') }}</h2>
@@ -14,7 +14,7 @@
 
                 <!-- Werknemerspagina link -->
                 <div class="text-center mt-4">
-                    <a href="{{ route('employee') }}" class="btn-profile-link">
+                    <a href="{{ route('profile.employee') }}" class="btn-profile-link">
                         Klik hier om naar je profiel te gaan
                     </a>
                 </div>

@@ -11,30 +11,35 @@ class ProfileController extends Controller
     // Toon het profiel van de gebruiker
     public function show()
     {
-        $user = auth()->user();
+        $user = auth()->user();  // Haal de ingelogde gebruiker op
         return view('profile.edit', compact('user'));
     }
 
-    public function showProfile() // Werkgever inloggen
+    // Toon het profiel van de werkgever
+    public function employee()
     {
-        // Haal de ingelogde gebruiker op
         $user = auth()->user();
 
-        // Check of de gebruiker role 2 heeft (voor werkgever)
+        // Check of de gebruiker role 2 heeft (werkgever)
         if ($user->role !== 2) {
-            return redirect()->route('home'); // Of stuur naar een andere pagina, bijvoorbeeld de homepage
+            return redirect()->route('home')->with('error', 'Toegang geweigerd, alleen werkgevers kunnen deze pagina bekijken.');
         }
 
-        // Retourneer de employee.blade.php view als de gebruiker role 2 heeft
         return view('profile.employee', compact('user'));
     }
-
 
     // Bewerk het profiel
     public function edit()
     {
         $user = auth()->user();
-        return view('profile.edit', compact('user'));
+
+        // Controleer of de gebruiker role 2 (werkgever) is en laat hem zijn gegevens bewerken
+        if ($user->role == 2) {
+            return view('profile.edit', compact('user'));  // Werkgever mag zijn gegevens bewerken
+        }
+
+        // Werknemer mag ook zijn gegevens bewerken
+        return view('profile.edit', compact('user'));  // Werknemer mag zijn gegevens bewerken
     }
 
     // Werk het profiel bij
@@ -47,6 +52,8 @@ class ProfileController extends Controller
         ]);
 
         $user = auth()->user();
+
+        // Update gegevens
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -54,6 +61,12 @@ class ProfileController extends Controller
         ]);
 
         session()->flash('status', 'Je profiel is succesvol bijgewerkt.');
+
+        // Controleer de rol en stuur naar de juiste pagina
+        if ($user->role == 2) {
+            return redirect()->route('profile.employee');  // Redirect naar de employee view voor role 2
+        }
+
         return redirect()->route('profile.edit');
     }
 
@@ -67,17 +80,23 @@ class ProfileController extends Controller
 
         $user = auth()->user();
 
+        // Controleer of het huidige wachtwoord klopt
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'Het huidige wachtwoord is onjuist.']);
         }
 
+        // Werk het wachtwoord bij
         $user->update([
             'password' => Hash::make($request->new_password),
         ]);
 
         session()->flash('status', 'Je wachtwoord is succesvol bijgewerkt.');
-        return redirect()->route('profile.edit');
+
+        // Controleer de rol en stuur naar de juiste pagina
+        if ($user->role == 2) {
+            return redirect()->route('profile.employee');  // Redirect naar de employee view voor role 2
+        }
+
+        return redirect()->route('profile.show');  // Redirect naar de edit view voor role 1
     }
 }
-
-

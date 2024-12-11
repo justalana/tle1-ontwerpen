@@ -7,76 +7,49 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-//A permanent redirect so no user can access Laravel's goofy ahh dashboard
+// Permanent redirect to avoid accessing the Laravel dashboard
 Route::permanentRedirect('/dashboard', '/');
 
-// Route voor werknemers
-Route::get('/dashboard', function () {
-    if (auth()->check()) {
-        if (auth()->user()->role == 1) {
-            return view('dashboard'); // Werknemers naar dashboard
-        } elseif (auth()->user()->role == 2) {
-            return redirect()->route('profile.employeedash'); // Werkgevers naar employeedash
-        }
-    }
-
-    abort(403, 'Toegang geweigerd.');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route voor werkgevers
-Route::get('/employeedash', function () {
-    if (auth()->check() && auth()->user()->role == 2) {
-        return view('profile.employeedash'); // Alleen werkgevers hebben toegang
-    }
-
-    abort(403, 'Toegang geweigerd. Alleen werkgevers hebben toegang.');
-})->middleware(['auth', 'verified'])->name('profile.employeedash');
+// Profile routes
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::post('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
 
 
-// Authenticated User Routes
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
-    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
-});
+// Dashboard route - handled by DashboardController
+Route::get('/dashboard', [DashboardController::class, 'redirectToDashboard'])->name('dashboard');
+// Employee profile route (Werkgever)
+// Employee Dashboard Route
+Route::get('/profile/employeedash', [ProfileController::class, 'showEmployeeDashboard'])->name('employee');
+Route::get('/profile/employee', [ProfileController::class, 'employee'])->name('profile.employee');
 
-//Routes that implement middleware in their controller
+
+
+// Logout route
+Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// Routes for resources
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
-Route::resource('applications', ApplicationController::class) -> except(['create', 'store']);
+Route::resource('applications', ApplicationController::class)->except(['create', 'store']);
 
+// Application-specific routes
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
 
+// Admin routes
+Route::get('/admin', function () {
+    return view('admin');
+})->name('admin');
 
-// werkgever profile
-Route::middleware('auth')->group(function () {
-    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
-});
-
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
-
-
-
-//Admin only routes
-Route::middleware('can:admin')->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
-    })->name('admin');
-
-    Route::resource('companies', CompanyController::class);
-});
+Route::resource('companies', CompanyController::class);
 
 require __DIR__ . '/auth.php';
