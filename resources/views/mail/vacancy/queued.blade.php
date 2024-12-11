@@ -1,7 +1,4 @@
 <x-mail::message>
-    <table style="width: 100%; max-width: 600px; background-color: #e0e0e0; padding: 20px;">
-        <tr>
-            <td>
                 <table style="width: 100%; background-color: #ffffff; border-radius: 15px; padding: 20px;">
                     <tr>
                         <td>
@@ -14,8 +11,4 @@
                         </td>
                     </tr>
                 </table>
-            </td>
-        </tr>
-    </table>
-
 </x-mail::message>
