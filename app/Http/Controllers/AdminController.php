@@ -14,4 +14,8 @@ class AdminController extends Controller
         return view('admin.user-index', ['users' => $users]);
     }
 
+    public function userEdit(User $user) {
+
+    }
+
 }
