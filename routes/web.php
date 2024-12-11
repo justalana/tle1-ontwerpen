@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
@@ -54,6 +55,8 @@ Route::middleware('can:admin')->group(function () {
     })->name('admin');
 
     Route::resource('companies', CompanyController::class);
+    Route::get('admin/user-index', [AdminController::class, 'userIndex'])->name('admin.user-index');
+    Route::get('admin/user-edit', [AdminController::class, 'userEdit'])->name('admin.user-edit');
 });
 
 require __DIR__ . '/auth.php';
