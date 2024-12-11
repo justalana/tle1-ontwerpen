@@ -31,7 +31,7 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::where('active', '=', '1')->get();
 
         return view('vacancies.index', compact('vacancies'));
     }

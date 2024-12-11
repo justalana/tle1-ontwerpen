@@ -46,12 +46,12 @@
             @if($vacancy->active)
 
                 <p>Deze vacature is nu zichtbaar voor iedereen</p>
-                <button type="submit">Maak onzichtbaar</button>
+                <button class="button-pink" type="submit">Maak onzichtbaar</button>
 
             @else
 
                 <p>Deze vacature is nu onzichtbaar</p>
-                <button type="submit">Maak zichtbaar</button>
+                <button class="button-pink" type="submit">Maak zichtbaar</button>
 
             @endif
         </form>
