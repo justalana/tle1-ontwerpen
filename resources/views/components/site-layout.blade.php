@@ -1,7 +1,7 @@
 @props(['title' => 'Open Hiring'])
 
 <!doctype html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
