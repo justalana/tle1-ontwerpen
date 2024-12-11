@@ -37,6 +37,25 @@
             <a class="button-pink" href="{{ route('vacancies.edit', $vacancy) }}">Bewerk vacature</a>
         </div>
 
+        <form action="{{ route('vacancies.toggle-active', $vacancy) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <input type="hidden" name="vacancyId" id="vacancyId" value="{{ $vacancy->id }}">
+
+            @if($vacancy->active)
+
+                <p>Deze vacature is nu zichtbaar voor iedereen</p>
+                <button type="submit">Maak onzichtbaar</button>
+
+            @else
+
+                <p>Deze vacature is nu onzichtbaar</p>
+                <button type="submit">Maak zichtbaar</button>
+
+            @endif
+        </form>
+
     @else
 
         <div>

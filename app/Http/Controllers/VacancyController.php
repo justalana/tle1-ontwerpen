@@ -22,7 +22,7 @@ class VacancyController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('can:create-vacancy', only: ['create', 'store']),
-            new Middleware('can:manage-vacancy,vacancy', only: ['edit', 'update', 'delete']),
+            new Middleware('can:manage-vacancy,vacancy', only: ['edit', 'update', 'delete', 'toggleActive']),
         ];
     }
 
@@ -179,4 +179,27 @@ class VacancyController extends Controller implements HasMiddleware
     {
         //
     }
+
+    public function toggleActive(Request $request, Vacancy $vacancy)
+    {
+
+        $request->validate([
+           'vacancyId' => ['required']
+        ]);
+
+        if ($vacancy->active) {
+
+            $vacancy->active = false;
+
+        } else {
+
+            $vacancy->active = true;
+
+        }
+
+        $vacancy->update();
+
+        return to_route('vacancies.show', $vacancy);
+    }
+
 }
