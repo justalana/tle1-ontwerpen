@@ -1,5 +1,6 @@
+@vite(['resources/css/profile.css'])
+
 <x-guest-layout>
-    @vite(['resources/css/forgot-password.css'])
 
     <form method="POST" action="{{ route('password.email') }}" class="login-form">
         <!-- Oops! Text -->
@@ -13,13 +14,14 @@
         </div>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <x-auth-session-status class="mb-4" :status="session('status')"/>
 
         <!-- Email Address -->
         <div class="form-group">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="input-field" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="error-message" />
+            <x-input-label for="email" :value="__('Email')"/>
+            <x-text-input id="email" class="input-field" type="email" name="email" :value="old('email')" required
+                          autofocus/>
+            <x-input-error :messages="$errors->get('email')" class="error-message"/>
         </div>
 
         <!-- Submit Button -->

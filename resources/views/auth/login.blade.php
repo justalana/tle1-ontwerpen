@@ -1,5 +1,6 @@
+@vite(['resources/css/profile.css'])
+
 <x-guest-layout>
-    @vite(['resources/css/login.css'])
 
     <!-- Succesbericht tonen na registratie -->
     @if (session('success'))
@@ -25,7 +26,8 @@
         <!-- E-mailadres -->
         <div class="form-group">
             <label for="email" class="form-label">{{ __('E-mail') }}</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus class="input-field">
+            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus
+                   class="input-field">
             @error('email')
             <div class="error-message">{{ $message }}</div>
             @enderror

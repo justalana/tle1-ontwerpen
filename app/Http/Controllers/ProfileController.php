@@ -15,6 +15,21 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user'));
     }
 
+    public function showProfile() // Werkgever inloggen
+    {
+        // Haal de ingelogde gebruiker op
+        $user = auth()->user();
+
+        // Check of de gebruiker role 2 heeft (voor werkgever)
+        if ($user->role !== 2) {
+            return redirect()->route('home'); // Of stuur naar een andere pagina, bijvoorbeeld de homepage
+        }
+
+        // Retourneer de employee.blade.php view als de gebruiker role 2 heeft
+        return view('profile.employee', compact('user'));
+    }
+
+
     // Bewerk het profiel
     public function edit()
     {
@@ -64,3 +79,5 @@ class ProfileController extends Controller
         return redirect()->route('profile.edit');
     }
 }
+
+

@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,8 +53,24 @@ class User extends Authenticatable
         ];
     }
 
-    public function branch(): HasOne
+    public function requirements(): BelongsToMany
     {
-        return $this->hasOne(Branch::class);
+        return $this->belongsToMany(Requirement::class);
     }
+
+    public function applications(): BelongsToMany
+    {
+        return $this->belongsToMany(Application::class);
+    }
+
+    public function reviews(): BelongsToMany
+    {
+        return $this->belongsToMany(Review::class);
+    }
+
+    public function branch(): BelongsTo
+    {
+        return $this->belongsTo(Branch::class);
+    }
+
 }

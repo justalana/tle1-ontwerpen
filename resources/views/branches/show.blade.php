@@ -1,5 +1,5 @@
 @props(['branch'])
-@vite(['resources/css/companiesAndBranches.css'])
+@vite(['resources/css/branches.css'])
 
 
 <x-site-layout title="{{ $branch->name }} details">
@@ -14,7 +14,7 @@
         </div>
 
         <div>
-            <p>{{ $branch->description }}</p>
+            <p>{!! $branch->description !!}</p>
         </div>
 
         <div id="branchDetailAdressContainer">

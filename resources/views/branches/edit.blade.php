@@ -1,5 +1,5 @@
 @props(['branch'])
-@vite(['resources/css/companiesAndBranches.css'])
+@vite(['resources/css/branches.css'])
 
 
 <x-site-layout title="Edit {{ $branch->name }}">
@@ -15,16 +15,16 @@
             <input type="text" name="name" id="name" value="{{ old('name') ?? $branch->name }}" maxlength="255"
                    required>
             @error('name')
-            <p>{{$errors->name}}</p>
+            <p>{{ $message }}</p>
             @enderror
         </div>
 
         <div>
             <label for="description">Description</label>
-            <textarea name="description" id="description"
-                      required>{{ old('description') ?? $branch->description }}</textarea>
+            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : $branch->description->toTrixHtml() !!}"></x-trix-input>
+
             @error('description')
-            <p>{{$errors->description}}</p>
+            <p>{{ $message }}</p>
             @enderror
         </div>
 
@@ -33,7 +33,7 @@
             <input type="text" name="streetName" id="streetName" value="{{ old('streetName') ?? $branch->street_name }}"
                    maxlength="255" required>
             @error('streetName')
-            <p>{{$errors->streetName}}</p>
+            <p>{{ $message }}</p>
             @enderror
         </div>
 
@@ -42,7 +42,7 @@
             <input type="text" name="streetNumber" id="streetNumber"
                    value="{{ old('streetNumber') ?? $branch->street_number }}" maxlength="255" required>
             @error('streetNumber')
-            <p>{{$errors->streetNumber}}</p>
+            <p>{{ $message }}</p>
             @enderror
         </div>
 
@@ -51,7 +51,7 @@
             <input type="text" name="city" id="city" value="{{ old('city') ?? $branch->city }}" maxlength="255"
                    required>
             @error('city')
-            <p>{{$errors->city}}</p>
+            <p>{{ $message }}</p>
             @enderror
         </div>
 
