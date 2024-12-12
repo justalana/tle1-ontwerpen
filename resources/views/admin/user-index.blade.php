@@ -35,6 +35,14 @@
 
         </table>
 
+        @if($users->links())
+
+        <diV>
+            {{ $users->links() }}
+        </diV>
+
+        @endif
+
 
     </section>
 
