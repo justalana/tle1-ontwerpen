@@ -33,8 +33,21 @@ Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
 Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
 
+Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
+
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
+
+
+// werkgever profile
+Route::middleware('auth')->group(function () {
+    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
+});
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
+
+
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {

@@ -68,4 +68,12 @@
         <p>Helaas, geen open vacatures</p>
     @endif
 
+    @foreach ($vacancies as $vacancy)
+        <div class="vacancy-item">
+            <h2>{{ $vacancy->name }}</h2>
+            <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
+        </div>
+    @endforeach
+
+
 </x-site-layout>

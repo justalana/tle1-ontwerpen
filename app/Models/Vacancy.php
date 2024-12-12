@@ -27,7 +27,8 @@ class Vacancy extends Model
         'contract_duration',
         'description',
         'image_file_path',
-        'image_alt_text'
+        'image_alt_text',
+        'active'
     ];
 
     /**
@@ -42,6 +43,7 @@ class Vacancy extends Model
         'salary_max' => 'float',
         'work_hours' => 'integer',
         'contract_duration' => 'integer',
+        'active' => 'boolean'
     ];
 
     /**

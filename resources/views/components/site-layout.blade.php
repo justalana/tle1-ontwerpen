@@ -1,6 +1,6 @@
 @props(['title' => 'Open Hiring'])
 
-<!doctype html>
+    <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,6 @@
 <body>
 
 <nav>
-
     <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
     <a href="">Over Open Hiring</a>
@@ -34,14 +33,19 @@
     @endguest
 
     @auth
-            <div>
-                <a href="{{ route('profile.edit') }}">Profiel</a>
-                <p>|</p>
-                <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <button type="submit">Log uit</button>
-                </form>
-            </div>
+        <div>
+            @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
+            <a href="{{ route('employee') }}">Profiel</a>
+            @else
+                <a href="{{ route('profile.edit') }}">Profiel</a> <!-- Normaal profiel bewerken voor andere gebruikers -->
+            @endif
+
+            <p>|</p>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit">Log uit</button>
+            </form>
+        </div>
     @endauth
 
 </nav>

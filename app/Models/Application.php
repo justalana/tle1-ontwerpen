@@ -51,3 +51,5 @@ class Application extends Model
         return $this->belongsToMany(Requirement::class);
     }
 }
+
+
