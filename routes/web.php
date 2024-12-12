@@ -57,6 +57,7 @@ Route::middleware('can:admin')->group(function () {
     Route::resource('companies', CompanyController::class);
     Route::get('admin/user-index', [AdminController::class, 'userIndex'])->name('admin.user-index');
     Route::get('admin/user-edit/{user}', [AdminController::class, 'userEdit'])->name('admin.user-edit');
+    Route::put('admin/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user-update');
 });
 
 require __DIR__ . '/auth.php';
