@@ -1,6 +1,6 @@
 @vite(['resources/css/vacancies.css'])
 @props(['requirements', 'vacancy', 'user', 'application'])
-<x-site-layout title="Details {{ $application->name }}">
+<x-site-layout title="Details {{ $vacancy->name }}">
 
     @can('show-application', $application)
 
