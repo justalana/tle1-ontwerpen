@@ -1,7 +1,7 @@
 @vite(['resources/css/vacancies.css'])
 @props(['requirements', 'vacancy'])
 
-<x-site-layout>
+<x-site-layout title="Apply {{ $application->name }}">
     @auth
         <header>
             <div>

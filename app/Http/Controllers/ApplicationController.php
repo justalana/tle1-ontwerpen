@@ -60,20 +60,11 @@ class ApplicationController extends Controller implements HasMiddleware
      */
     public function show(Application $application)
     {
-//
-////
-////        dd(Gate::allows('show-application', $application));
-//        if (Gate::allows('show-application', $application)) {
-            $user = auth()->user();
-            $requirements = $application->requirements;
-            $vacancy = $application->vacancy;
+        $user = auth()->user();
+        $requirements = $application->requirements;
+        $vacancy = $application->vacancy;
 
-            return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
-
-//        } else {
-//            return redirect('login');
-//        }
-
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
     }
 
     /**
