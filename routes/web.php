@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
-Route::resource('applications', ApplicationController::class) -> except(['create', 'store']);
+Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
 
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
 
@@ -56,6 +57,9 @@ Route::middleware('can:admin')->group(function () {
     })->name('admin');
 
     Route::resource('companies', CompanyController::class);
+    Route::get('admin/user-index', [AdminController::class, 'userIndex'])->name('admin.user-index');
+    Route::get('admin/user-edit/{user}', [AdminController::class, 'userEdit'])->name('admin.user-edit');
+    Route::put('admin/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user-update');
 });
 
 require __DIR__ . '/auth.php';
