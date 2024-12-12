@@ -2,7 +2,7 @@
 @props(['requirements', 'vacancy', 'user', 'application'])
 <x-site-layout>
 
-    @can('show-application', $application)
+{{--    @can('show-application', $application)--}}
 
         <header>
             <div>
@@ -25,6 +25,6 @@
 
         </div>
 
-    @endcan
+{{--    @endcan--}}
 
 </x-site-layout>

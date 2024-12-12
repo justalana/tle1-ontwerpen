@@ -8,6 +8,7 @@ use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Gate;
 
 class ApplicationController extends Controller implements HasMiddleware
 {
@@ -41,7 +42,6 @@ class ApplicationController extends Controller implements HasMiddleware
      */
     public function store(Request $request, Vacancy $vacancy)
     {
-
         $application = Application::create([
             'user_id' => auth()->user()->id,
             'vacancy_id' => $vacancy->id,
@@ -60,11 +60,20 @@ class ApplicationController extends Controller implements HasMiddleware
      */
     public function show(Application $application)
     {
-        $user = auth()->user();
-        $requirements = $application->requirements;
-        $vacancy = $application->vacancy;
+//
+////
+////        dd(Gate::allows('show-application', $application));
+//        if (Gate::allows('show-application', $application)) {
+            $user = auth()->user();
+            $requirements = $application->requirements;
+            $vacancy = $application->vacancy;
 
-        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
+            return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
+
+//        } else {
+//            return redirect('login');
+//        }
+
     }
 
     /**
