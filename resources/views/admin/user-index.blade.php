@@ -37,9 +37,7 @@
 
         @if($users->links())
 
-        <diV>
-            {{ $users->links() }}
-        </diV>
+        <x-page-links :items="$users"></x-page-links>
 
         @endif
 
