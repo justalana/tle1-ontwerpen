@@ -45,6 +45,10 @@ section {
     margin: 10vw;
 }
 
+form {
+    margin: 0;
+}
+
 h1,h2,h3,h4,h5{
     font-family: 'radikal-black', sans-serif;
     text-align: center;
