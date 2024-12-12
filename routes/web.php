@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
-Route::resource('applications', ApplicationController::class) -> except(['create', 'store']);
+Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
 
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
 
