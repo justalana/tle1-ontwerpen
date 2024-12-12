@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class Requirement extends Model
+class ApplicationRequirement extends Pivot
 {
     use HasFactory;
 
@@ -17,8 +17,8 @@ class Requirement extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id',
-        'name',
+        'application_id',
+        'requirement_id',
     ];
 
     /**
@@ -27,22 +27,17 @@ class Requirement extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer',
-        'user_id' => 'integer',
+        'application_id' => 'integer',
+        'requirement_id' => 'integer',
     ];
 
-    public function user(): BelongsTo
+    public function requirement(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Requirement::class);
     }
 
-    public function vacancies(): BelongsToMany
+    public function application(): BelongsTo
     {
-        return $this->belongsToMany(Vacancy::class);
-    }
-
-    public function applications(): BelongsToMany
-    {
-        return $this->belongsToMany(Application::class);
+        return $this->belongsTo(Application::class);
     }
 }

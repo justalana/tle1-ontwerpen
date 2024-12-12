@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Application extends Model
 {
@@ -44,4 +45,11 @@ class Application extends Model
     {
         return $this->belongsTo(Vacancy::class);
     }
+
+    public function requirements(): BelongsToMany
+    {
+        return $this->belongsToMany(Requirement::class);
+    }
 }
+
+

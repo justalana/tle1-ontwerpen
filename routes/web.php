@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\ProfileController;
@@ -30,6 +32,23 @@ Route::middleware('auth')->group(function () {
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
+Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
+
+Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
+
+Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
+Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
+
+
+// werkgever profile
+Route::middleware('auth')->group(function () {
+    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
+});
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
+
+
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
@@ -38,6 +57,9 @@ Route::middleware('can:admin')->group(function () {
     })->name('admin');
 
     Route::resource('companies', CompanyController::class);
+    Route::get('admin/user-index', [AdminController::class, 'userIndex'])->name('admin.user-index');
+    Route::get('admin/user-edit/{user}', [AdminController::class, 'userEdit'])->name('admin.user-edit');
+    Route::put('admin/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user-update');
 });
 
 require __DIR__ . '/auth.php';
