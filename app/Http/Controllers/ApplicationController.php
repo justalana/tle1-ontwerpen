@@ -7,10 +7,20 @@ use App\Models\Application;
 use App\Models\Requirement;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Gate;
 use Mail;
 
-class ApplicationController extends Controller
+class ApplicationController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('can:employee', only: ['create', 'store']),
+            new Middleware('can:show-application,application', only: ['show']),
+        ];
+    }
     /**
      * Display a listing of the resource.
      */
@@ -26,7 +36,7 @@ class ApplicationController extends Controller
     {
         $requirements = $vacancy->requirements;
 
-        return view('vacancies.applications', ['vacancy' => $vacancy, 'requirements' => $requirements]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements]);
     }
 
     /**
@@ -34,7 +44,6 @@ class ApplicationController extends Controller
      */
     public function store(Request $request, Vacancy $vacancy)
     {
-
         $application = Application::create([
             'user_id' => auth()->user()->id,
             'vacancy_id' => $vacancy->id,
@@ -47,7 +56,7 @@ class ApplicationController extends Controller
 
         Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 
-        return to_route('vacancies.show', $vacancy);
+        return to_route('applications.show', $application);
     }
 
     /**
@@ -55,7 +64,11 @@ class ApplicationController extends Controller
      */
     public function show(Application $application)
     {
-        //
+        $user = auth()->user();
+        $requirements = $application->requirements;
+        $vacancy = $application->vacancy;
+
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
     }
 
     /**
@@ -81,4 +94,5 @@ class ApplicationController extends Controller
     {
         //
     }
+
 }
