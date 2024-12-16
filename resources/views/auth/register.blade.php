@@ -1,4 +1,4 @@
-@vite(['resources/css/profile.css'])
+@vite(['resources/css/auth.css', 'resources/css/style.css'])
 
 <x-guest-layout>
     <form method="POST" action="{{ route('register') }}" class="register-form">

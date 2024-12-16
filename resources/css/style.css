@@ -138,12 +138,13 @@ footer {
 }
 
 .image-container {
-    width: 40vw;
-    height: 40vw;
-    object-fit: cover;
+    /*width: 40vw;*/
 
     >img {
-        width: 100%;
+        width: 26vw;
+        height: 35vh;
+        border-radius: 1vw;
+        object-fit: cover;
     }
 }
 
@@ -163,9 +164,9 @@ footer {
 .button-pink {
         text-decoration: none;
         background: var(--violet);
-        border-radius: 4px;
+        border-radius: 2vh;
         text-align: center;
-        padding: 1vh;
+        padding: 3vh;
         color: var(--white);
 }
 

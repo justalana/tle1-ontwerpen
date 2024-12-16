@@ -1,3 +1,4 @@
+@vite(['resources/css/profile.css'])
 <x-site-layout>
     @if (auth()->user()->role === 2)
         <x-slot name="header">

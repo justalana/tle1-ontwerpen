@@ -1,4 +1,4 @@
-@vite(['resources/css/general.css'])
+@vite(['resources/css/home.css'])
 
 <x-site-layout>
     <header>
