@@ -1,3 +1,8 @@
+main {
+    margin: 5vw 5vw 0 5vw;
+    min-height: 70vh;
+}
+
 button {
     padding: 0.5vw;
     min-width: 15vw;
