@@ -93,4 +93,12 @@
             anoniem en worden ze niet gedeeld met anderen. Alleen jij hebt toegang tot je eigen gegevens en ze blijven
             privé.</p>
     </section>
+
+    <!-- Account Deletion -->
+    <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="max-w-xl">
+            @include('profile.partials.delete-user-form')
+        </div>
+    </div>
+
 </x-site-layout>

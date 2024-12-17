@@ -41,6 +41,13 @@ body {
     min-height: 100vh;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+}
+
 section {
     margin: 10vw;
 }
@@ -123,7 +130,6 @@ input, textarea {
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
     outline: none;
-    height: 5vh;
     padding: 1vh;
 }
 
@@ -163,6 +169,19 @@ footer {
 .button-light:hover, button:hover{
     background-color: var(--moss-dark);
     color: var(--white);
+}
+
+@media (prefers-color-scheme: dark) {
+    .button-light, button {
+        background: none;
+        border: 3px solid var(--moss-light);
+        color: var(--moss-light);
+    }
+
+    .button-light:hover, button:hover{
+        background-color: var(--moss-light);
+        color: #121212;
+    }
 }
 
 .button-pink {
