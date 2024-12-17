@@ -32,7 +32,7 @@
 
                 <article class="timeSlotDetail">
 
-                    <h3>{{ $timeSlot->day->name }}</h3>
+                    <h3 role="heading" aria-level="3" aria-label="Titel van sectie">{{ $timeSlot->day->name }}</h3>
 
                     <div>
                         <p>Start tijd: {{ $timeSlot->start_time }}</p>

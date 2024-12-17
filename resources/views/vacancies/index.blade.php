@@ -70,7 +70,7 @@
 
     @foreach ($vacancies as $vacancy)
         <div class="vacancy-item">
-            <h2>{{ $vacancy->name }}</h2>
+            <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ $vacancy->name }}</h2>
             <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
         </div>
     @endforeach
