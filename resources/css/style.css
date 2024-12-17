@@ -69,6 +69,11 @@ p, button, label, input, li {
     font-size: 1.2rem;
 }
 
+button:focus, input:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
+}
+
 b {
     font-family: 'radikal-bold', sans-serif;
     line-height: 1.6;
