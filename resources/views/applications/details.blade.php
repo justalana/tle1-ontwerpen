@@ -3,7 +3,7 @@
 
 <x-site-layout title="Details {{ $vacancy->name }}">
 
-    @can('show-application', $application)
+    @can('view-application', $application)
 
         <header>
             <div>
@@ -40,7 +40,6 @@
             @endif
 
         </div>
-
     @endcan
 
 </x-site-layout>

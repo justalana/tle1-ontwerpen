@@ -1,9 +1,8 @@
 @vite(['resources/css/vacancies.css'])
 @props(['requirements', 'vacancy', 'timeSlots'])
-{{--@dd($requirements)--}}
 
 <x-site-layout title="Apply {{ $vacancy->name }}">
-    @auth
+    @can('create-application')
         <header>
             <div>
                 <h1 id="details-header">{{$vacancy->name}}</h1>
@@ -35,10 +34,6 @@
 
             <button type="submit" class="button-green">Bevestig aanmelding</button>
         </form>
-    @endauth
-
-    @guest
-        <h2>Je hebt geen toegang tot deze pagina</h2>
-    @endguest
+    @endcan
 
 </x-site-layout>

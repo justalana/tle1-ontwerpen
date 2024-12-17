@@ -53,12 +53,9 @@ class ApplicationController extends Controller implements HasMiddleware
             'status' => 1, //pending=1 accepted=2 denied=3
         ]);
 
-//        dd($request->requirements);
         $application->requirements()->sync($request->requirements ?? []);
 
         $application->timeSlots()->sync($request->timeSlots ?? []);
-
-
 
         Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 

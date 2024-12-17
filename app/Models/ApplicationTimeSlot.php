@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class ApplicationTimeSlot extends Model
+class ApplicationTimeSlot extends Pivot
 {
     use HasFactory;
 
@@ -16,12 +17,8 @@ class ApplicationTimeSlot extends Model
      * @var array
      */
     protected $fillable = [
-        'day_id',
-        'vacancy_id',
-        'application_id',
-        'start_time',
-        'end_time',
-        'optional',
+        'time_slot_id',
+        'application_id'
     ];
 
     /**
@@ -31,16 +28,9 @@ class ApplicationTimeSlot extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'day_id' => 'integer',
-        'vacancy_id' => 'integer',
+        'time_slot_id' => 'integer',
         'application_id' => 'integer',
-        'optional' => 'boolean',
     ];
-
-    public function day(): BelongsTo
-    {
-        return $this->belongsTo(Day::class);
-    }
 
     public function vacancy(): BelongsTo
     {
