@@ -1,12 +1,4 @@
-/* Algemene body styling */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #fafaf1;
-    color: #333;
-}
+
 
 /* Container styling */
 .container {
@@ -168,4 +160,46 @@ body {
     .principle h1 {
         font-size: 4.5rem;
     }
+}
+
+.rule {
+    margin: 10px auto; /* Centert de box horizontaal */
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafaf1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 30%; /* Zorgt ervoor dat de box een maximale breedte heeft */
+    width: auto;
+    display: block;
+}
+
+
+/* Styling voor de koppen van de spelregels */
+.rule h3 {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 30px 0;
+    background-color: #8aa07c;
+    color: #2b2f26;
+    border: none;
+    text-align: center;
+}
+
+/* De verborgen spelregels die uitklappen */
+.rule p {
+    display: none;
+    padding: 30px;
+    margin: 0;
+    background-color: #fafaf1;
+    border-left: 4px solid #4CAF50;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Actieve staat: uitklapbare tekst zichtbaar maken */
+.rule.active p {
+    display: block;
 }
