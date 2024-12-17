@@ -34,6 +34,12 @@ header div {
     background-color: var(--moss-light);
 }
 
+@media (prefers-color-scheme: dark) {
+    .werknemer {
+        background-color: var(--moss-dark);
+    }
+}
+
 #stories .articles-div, .buttons {
     display: flex;
     gap: 5vw;
@@ -76,6 +82,14 @@ article {
         flex-direction: column;
         gap: 1vw;
         background-color: var(--moss-light);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    #adminArticleContainer {
+        >article {
+            background-color: var(--moss-dark);
+        }
     }
 }
 
