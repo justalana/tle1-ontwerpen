@@ -9,7 +9,7 @@
         <div class="container">
             <div class="card">
                 <div class="text-center mb-8">
-                    <h1 class="heading">Welkom, {{ auth()->user()->name }}!</h1>
+                    <h2 role="heading" aria-level="2" aria-label="Subtitel" class="heading">Welkom, {{ auth()->user()->name }}!</h2>
                     <p class="subheading">Je bent ingelogd op je dashboard.</p>
                 </div>
 
