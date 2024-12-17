@@ -1,4 +1,5 @@
 <x-site-layout>
+    @vite(['resources/css/profile.css'])
     @if (auth()->user()->role === 2)
         <x-slot name="header">
             <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werkgever Profiel</h1>
