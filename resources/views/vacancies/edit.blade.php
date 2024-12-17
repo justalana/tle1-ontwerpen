@@ -40,7 +40,7 @@
 
 <x-site-layout title="Bewerk vacature">
 
-    <h1>Bewerk vacature</h1>
+    <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Bewerk vacature</h1>
 
     <form action="{{ route('vacancies.update', $vacancy) }}" method="POST" enctype="multipart/form-data"
           id="vacancyForm">

@@ -1,0 +1,45 @@
+
+.container {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Kaarten */
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+/* Hoofdtekst */
+.heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2E342A;
+}
+
+/* Subtekst */
+.subheading {
+    font-size: 1.125rem;
+    color: #4a5568;
+}
+
+
+.btn-profile-link {
+    display: inline-block;
+    background-color: #AA0160;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect voor de knop */
+.btn-profile-link:hover {
+    background-color: #8a0151; /* Donkerder bij hover */
+}

@@ -3,7 +3,7 @@
 <x-site-layout>
     <header>
         <div>
-            <h1 id="details-header">{{$vacancy->name}}</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina" id="details-header">{{$vacancy->name}}</h1>
         </div>
     </header>
 
@@ -32,7 +32,7 @@
 
                 <article class="timeSlotDetail">
 
-                    <h3>{{ $timeSlot->day->name }}</h3>
+                    <h3 role="heading" aria-level="3" aria-label="Titel van sectie">{{ $timeSlot->day->name }}</h3>
 
                     <div>
                         <p>Start tijd: {{ $timeSlot->start_time }}</p>

@@ -35,7 +35,7 @@
     @auth
         <div>
             @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
-            <a href="{{ route('employee') }}">Profiel</a>
+            <a href="{{ route('employer') }}">Profiel</a>
             @else
                 <a href="{{ route('profile.edit') }}">Profiel</a> <!-- Normaal profiel bewerken voor andere gebruikers -->
             @endif
