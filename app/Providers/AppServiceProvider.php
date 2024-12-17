@@ -37,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('view-application', function ($user, $application) {
-            return  $user->id === $application->user_id || $user->role === 2 || $user->role === 42;
+            return  $user->id === $application->user_id || $user->role === 42 || $user->role === 2 && $user->branch_id === $application->vacancy->branch_id;
         });
 
 //        ADMIN

@@ -20,7 +20,7 @@ class ApplicationController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('can:employee', only: ['create', 'store']),
-            new Middleware('can:view-application,application', only: ['show']),
+            new Middleware('can:view-application,application,vacancy', only: ['show']),
         ];
     }
     /**
