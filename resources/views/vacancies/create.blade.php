@@ -78,7 +78,7 @@
 
         @endcan
 
-        <div>
+        <div class="description-input">
             <label for="description">Beschrijving*</label>
             <x-trix-input id="description" name="description"
                           value="{!! old('description') ? old('description') : '' !!}"></x-trix-input>

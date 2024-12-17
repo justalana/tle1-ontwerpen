@@ -111,7 +111,7 @@
 
         @endcan
 
-        <div>
+        <div class="description-input">
             <label for="description">Beschrijving*</label>
             <x-trix-input id="description" name="description"
                           value="{!! old('description') ? old('description')->toTrixHtml() : $vacancy->description->toTrixHtml() !!}"></x-trix-input>
