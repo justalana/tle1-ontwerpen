@@ -3,7 +3,7 @@
 <x-site-layout>
     <header>
         <div>
-            <h1 id="details-header">{{$vacancy->name}}</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina" id="details-header">{{$vacancy->name}}</h1>
         </div>
     </header>
 
@@ -12,6 +12,7 @@
             <img id="vacancy-image" src="{{asset('storage/uploads/vacancyImages/' . $vacancy->image_file_path)}}"
                  alt="{{ $vacancy->image_alt_text }}">
         </div>
+
         <div>
             <ul id="detail-list">
                 <li>Werkuren: {{$vacancy->work_hours}} uur per week</li>
@@ -25,6 +26,28 @@
                 @endif
             </ul>
         </div>
+
+        <div id="timeSlotContainer">
+            @foreach($vacancy->timeSlots as $timeSlot)
+
+                <article class="timeSlotDetail">
+
+                    <h3 role="heading" aria-level="3" aria-label="Titel van sectie">{{ $timeSlot->day->name }}</h3>
+
+                    <div>
+                        <p>Start tijd: {{ $timeSlot->start_time }}</p>
+                        <p>Eind tijd: {{ $timeSlot->end_time }}</p>
+                    </div>
+
+                    @if($timeSlot->optional)
+                        <p>Optioneel</p>
+                    @endif
+
+                </article>
+
+            @endforeach
+        </div>
+
     </div>
 
     <div id="description">
@@ -57,10 +80,17 @@
         </form>
 
     @else
+        @auth
+            <div>
+                <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
+            </div>
+        @endauth
 
-        <div>
-            <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
-        </div>
+        @guest
+            <div>
+                <a class="button-pink" href="{{ route('login') }}">Log in om je in te schrijven!</a>
+            </div>
+        @endguest
 
     @endcan
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Day;
 use App\Models\Requirement;
+use App\Models\TimeSlot;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -11,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
+use Illuminate\Validation\ValidationException;
 use Log;
 
 class VacancyController extends Controller implements HasMiddleware
@@ -50,8 +53,9 @@ class VacancyController extends Controller implements HasMiddleware
     public function create()
     {
         $requirements = Requirement::all();
+        $days = Day::all();
 
-        return view('vacancies.create', ['requirements' => $requirements]);
+        return view('vacancies.create', ['requirements' => $requirements, 'days' => $days]);
     }
 
     /**
@@ -70,6 +74,35 @@ class VacancyController extends Controller implements HasMiddleware
             'image' => ['required', 'image', 'mimes:jpeg,png,webp,gif,avif,apng', 'max:5000'],
             'imageAltText' => ['required', 'max:255']
         ]);
+
+        //We are assuming the user hasn't fucked with the javascript so a day is always selected for every timeslot
+        //They can deal with a 500 server error, they know why they got it
+        $timeSlots = [];
+        if ($request->days) {
+
+            foreach ($request->days as $id => $day) {
+
+                $timeSlots[$id]['day'] = $day;
+                $timeSlots[$id]['startTime'] = $request->startTimes[$id] ?? null;
+                $timeSlots[$id]['endTime'] = $request->endTimes[$id] ?? null;
+                $timeSlots[$id]['optional'] = $request->optional[$id] ?? null;
+
+            }
+
+        }
+
+        //Manually validate the timeslots
+        foreach ($timeSlots as $timeSlot) {
+
+            if (!$timeSlot['startTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een start tijd nodig']);
+            }
+
+            if (!$timeSlot['endTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een eind tijd nodig']);
+            }
+
+        }
 
         //Double check to make sure that the branch id matches the one linked to the current user (unless they are an admin)
         $branchId = $request->branch;
@@ -105,6 +138,23 @@ class VacancyController extends Controller implements HasMiddleware
         //Bind the selected requirements to the created vacancy if there are any
         $vacancy->requirements()->sync($request->requirements ?? []);
 
+        //Add the time slots to the database if there are any
+        if (!empty($timeSlots)) {
+
+            foreach ($timeSlots as $timeSlot) {
+
+                TimeSlot::create([
+                    'day_id' => $timeSlot['day'],
+                    'vacancy_id' => $vacancy->id,
+                    'start_time' => $timeSlot['startTime'],
+                    'end_time' => $timeSlot['endTime'],
+                    'optional' => (bool)$timeSlot['optional']
+                ]);
+
+            }
+
+        }
+
         return to_route('vacancies.show', $vacancy);
     }
 
@@ -122,8 +172,9 @@ class VacancyController extends Controller implements HasMiddleware
     public function edit(Vacancy $vacancy)
     {
         $requirements = Requirement::all();
+        $days = Day::all();
 
-        return view('vacancies.edit', ['requirements' => $requirements, 'vacancy' => $vacancy]);
+        return view('vacancies.edit', ['requirements' => $requirements, 'vacancy' => $vacancy, 'days' => $days]);
     }
 
     /**
@@ -141,6 +192,35 @@ class VacancyController extends Controller implements HasMiddleware
             'image' => ['nullable', 'image', 'mimes:jpeg,png,webp,gif,avif,apng', 'max:5000'],
             'imageAltText' => ['required', 'max:255']
         ]);
+
+        //We are assuming the user hasn't fucked with the javascript so a day is always selected for every timeslot
+        //They can deal with a 500 server error, they know why they got it
+        $timeSlots = [];
+        if ($request->days) {
+
+            foreach ($request->days as $id => $day) {
+
+                $timeSlots[$id]['day'] = $day;
+                $timeSlots[$id]['startTime'] = $request->startTimes[$id] ?? null;
+                $timeSlots[$id]['endTime'] = $request->endTimes[$id] ?? null;
+                $timeSlots[$id]['optional'] = $request->optional[$id] ?? null;
+
+            }
+
+        }
+
+        //Manually validate the timeslots
+        foreach ($timeSlots as $timeSlot) {
+
+            if (!$timeSlot['startTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een start tijd nodig']);
+            }
+
+            if (!$timeSlot['endTime']) {
+                throw ValidationException::withMessages(['timeSlot' => 'Elk tijd slot heeft een eind tijd nodig']);
+            }
+
+        }
 
         //Store the image in the correct folder and get a random filename if one was uploaded
         if (isset($request->image)) {
@@ -176,6 +256,31 @@ class VacancyController extends Controller implements HasMiddleware
 
         //Detach and/or attach the relevant requirements
         $vacancy->requirements()->sync($request->requirements ?? []);
+
+        if (!empty($timeSlots)) {
+            //First, remove all existing time slots
+            $existingTimeSlots = $vacancy->timeSlots;
+
+            foreach ($existingTimeSlots as $existingTimeSlot) {
+                $existingTimeSlot->delete();
+            }
+
+            //Then replace them with new ones
+            //An employer can only edit the timeslots if there are no pending applications, so this is fine
+
+            foreach ($timeSlots as $timeSlot) {
+
+                TimeSlot::create([
+                    'day_id' => $timeSlot['day'],
+                    'vacancy_id' => $vacancy->id,
+                    'start_time' => $timeSlot['startTime'],
+                    'end_time' => $timeSlot['endTime'],
+                    'optional' => (bool)$timeSlot['optional']
+                ]);
+
+            }
+
+        }
 
         return to_route('vacancies.show', $vacancy);
     }

@@ -1,12 +1,12 @@
-@vite(['resources/css/vacanciesIndex.css'])
+@vite(['resources/css/vacancies.css'])
 
 <x-site-layout>
 
     <header>
         @can('create-vacancy', auth()->user())
-            <h1>Uw Vacatures</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Uw Vacatures</h1>
         @else
-            <h1>Open Vacatures</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
         @endcan
     </header>
 
@@ -25,7 +25,7 @@
 
                     <div class="column">
 
-                        <h2>{{$vacancy->name}}</h2>
+                        <h2 role="heading" aria-level="2" aria-label="Subtitel">{{$vacancy->name}}</h2>
 
                         <ul>
 
@@ -74,7 +74,7 @@
 
     @foreach ($vacancies as $vacancy)
         <div class="vacancy-item">
-            <h2>{{ $vacancy->name }}</h2>
+            <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ $vacancy->name }}</h2>
             <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
         </div>
     @endforeach
