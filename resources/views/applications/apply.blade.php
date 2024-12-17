@@ -27,7 +27,7 @@
             <div id="checkboxContainer">
                 @foreach($timeSlots as $timeSlot)
                     <label> {{ $timeSlot->day->name }} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}
-                        <input type="checkbox" name="timeSlots[]" value="{{ $timeSlot->day->id }}">
+                        <input type="checkbox" name="timeSlots[]" value="{{ $timeSlot->id }}">
                     </label>
                 @endforeach
             </div>
