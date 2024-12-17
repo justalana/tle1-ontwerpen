@@ -16,7 +16,7 @@ class ProfileController extends Controller
     }
 
     // Toon het profiel van de werkgever
-    public function employee()
+    public function employer()
     {
         $user = auth()->user();
 
@@ -25,7 +25,7 @@ class ProfileController extends Controller
             return redirect()->route('home')->with('error', 'Toegang geweigerd, alleen werkgevers kunnen deze pagina bekijken.');
         }
 
-        return view('profile.employee', compact('user'));
+        return view('profile.employer', compact('user'));
     }
 
     // Bewerk het profiel

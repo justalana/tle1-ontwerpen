@@ -19,7 +19,7 @@ class DashboardController extends Controller
         // Check if user has role 2 (Werkgever)
         elseif ($user->role == 2) {
             // Redirect Werkgever (employer) to the employee dashboard
-            return view('profile.employeedash');  // Employer's dashboard view
+            return view('profile.employerdash');  // Employer's dashboard view
         }
 
         // If user role is neither 1 nor 2, show an error message

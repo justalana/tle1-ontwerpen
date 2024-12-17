@@ -14,7 +14,7 @@
 
                 <!-- Werknemerspagina link -->
                 <div class="text-center mt-4">
-                    <a href="{{ route('profile.employee') }}" class="btn-profile-link">
+                    <a href="{{ route('profile.employer') }}" class="btn-profile-link">
                         Klik hier om naar je profiel te gaan
                     </a>
                 </div>

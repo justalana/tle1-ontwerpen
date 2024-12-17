@@ -28,8 +28,8 @@ Route::post('/profile/update-password', [ProfileController::class, 'updatePasswo
 Route::get('/dashboard', [DashboardController::class, 'redirectToDashboard'])->name('dashboard');
 // Employee profile route (Werkgever)
 // Employee Dashboard Route
-Route::get('/profile/employeedash', [ProfileController::class, 'showEmployeeDashboard'])->name('employee');
-Route::get('/profile/employee', [ProfileController::class, 'employee'])->name('profile.employee');
+Route::get('/profile/employerdash', [DashboardController::class, 'redirectToDashboard'])->name('employer');
+Route::get('/profile/employer', [ProfileController::class, 'employer'])->name('profile.employer');
 
 
 
