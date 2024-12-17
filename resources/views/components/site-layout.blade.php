@@ -17,7 +17,7 @@
 <nav>
     <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
-    <a href="">Over Open Hiring</a>
+    <a href="{{ route('about') }}">Over Open Hiring</a>
     <a href="">Contact</a>
 
     @can('admin')

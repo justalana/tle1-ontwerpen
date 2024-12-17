@@ -21,7 +21,7 @@
             </p>
         </div>
         <div class="image-section">
-            <img src="image2.png" alt="Open Hiring Foto">
+            <img src="images/aboutus.jpg" alt="Open Hiring Foto">
         </div>
     </div>
 

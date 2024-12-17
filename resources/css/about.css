@@ -8,7 +8,7 @@ body {
     color: #333;
 }
 
-/* Container met flexbox voor layout */
+/* Container styling */
 .container {
     display: flex;
     justify-content: space-between;
@@ -16,9 +16,9 @@ body {
     max-width: 1200px;
     margin: 50px auto;
     padding: 20px;
-    background: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: none;
+    box-shadow: none;
 }
 
 /* Tekst sectie styling */
@@ -27,13 +27,13 @@ body {
 }
 
 .text-section h1 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #2b2f26;
 }
 
 .text-section p {
-    font-size: 1rem;
+    font-size: 1.3rem;
     margin-top: 10px;
 }
 
@@ -41,6 +41,8 @@ body {
 .image-section img {
     max-width: 100%;
     border-radius: 8px;
+    margin-left: 10rem;
+    margin-top: 50px;
 }
 
 /* 3 Principes Styling */
@@ -76,7 +78,7 @@ body {
 }
 
 .principle h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
     margin-top: 10px;
 }
@@ -84,4 +86,86 @@ body {
 .principle p {
     font-size: 0.95rem;
     color: #555;
+}
+
+/* Media Queries */
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .text-section {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .text-section h1 {
+        font-size: 2rem;
+    }
+
+    .text-section p {
+        font-size: 1.1rem;
+    }
+
+    .image-section img {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .principles h2 {
+        font-size: 1.5rem;
+    }
+
+    .principle-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .principle {
+        max-width: 90%;
+        margin: 20px 0;
+    }
+
+    .principle h1 {
+        font-size: 4rem;
+    }
+
+    .principle h3 {
+        font-size: 1.1rem;
+    }
+
+    .principle p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablet schermen */
+@media (max-width: 1024px) {
+    .container {
+        padding: 15px;
+    }
+
+    .text-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .text-section p {
+        font-size: 1.2rem;
+    }
+
+    .image-section img {
+
+    }
+
+    .principles h2 {
+        font-size: 1.7rem;
+    }
+
+    .principle h1 {
+        font-size: 4.5rem;
+    }
 }
