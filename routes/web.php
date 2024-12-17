@@ -45,11 +45,12 @@ Route::resource('applications', ApplicationController::class)->except(['create',
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
 
-// Admin routes
-Route::get('/admin', function () {
-    return view('admin');
-})->name('admin');
+//Admin only routes
+Route::middleware('can:admin')->group(function () {
+    Route::get('/admin', function () {
+        return view('admin');
+    })->name('admin');
 
-Route::resource('companies', CompanyController::class);
-
+    Route::resource('companies', CompanyController::class);
+});
 require __DIR__ . '/auth.php';
