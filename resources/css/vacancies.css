@@ -39,6 +39,19 @@
 
 }
 
+#vacancystats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5vw;
+}
+
+.vacancy-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .timeSlot {
     padding: 0.5vw;
     display: flex;
@@ -167,7 +180,7 @@ header {
 }
 
 #description {
-    margin: 3vh 5vw;
+    margin: 5vh 16vw;
     padding: 1vh 2vw;
     border: solid #2E342A;
     border-radius: 15px;
@@ -175,6 +188,16 @@ header {
 
 #description-text {
     padding: 0 3vw;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.vacancy-details-img {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -215,6 +238,8 @@ header {
 
     .article {
         flex-direction: column;
+        width: 95vw;
+        padding: 5vw;
     }
 
     .essentials {
@@ -241,6 +266,10 @@ header {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    #description {
+        margin: 3vh 5vw;
     }
 
 }

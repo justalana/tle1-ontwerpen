@@ -8,7 +8,7 @@
     </header>
 
     <div id="detail-flexbox">
-        <div>
+        <div class="vacancy-details-img">
             <img id="vacancy-image" src="{{asset('storage/uploads/vacancyImages/' . $vacancy->image_file_path)}}"
                  alt="{{ $vacancy->image_alt_text }}">
         </div>
@@ -81,7 +81,7 @@
 
     @else
         @auth
-            <div>
+            <div class="button-container">
                 <a class="button-pink" href="{{ route('applications.create', $vacancy->id) }}">Schrijf je in!</a>
             </div>
         @endauth

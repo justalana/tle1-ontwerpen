@@ -53,7 +53,8 @@
 <main>{{ $slot }}</main>
 
 <footer>
-    <p>footer</p>
+    <a>Over Open Hiring</a>
+    <a>Contact</a>
 </footer>
 
 </body>

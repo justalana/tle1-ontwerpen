@@ -14,9 +14,9 @@
 
         <!-- Profiel Informatie -->
         <section>
-            <p>Je bent ingelogd als werkgever.</p>
             <header>
                 <h2>{{ __('Profiel') }}</h2>
+                <p class="note">Je bent ingelogd als werkgever.</p>
                 <p>{{ __("Hier kun je je profiel en bedrijfsinformatie beheren.") }}</p>
             </header>
             <form method="POST" action="{{ route('profile.update') }}">
@@ -62,7 +62,7 @@
                 <h2>Vacaturebeheer</h2>
             </header>
 
-            <a href="/vacancies/create" class="btn btn-primary">Nieuwe vacature toevoegen</a>
+            <a href="/vacancies/create" class="button-light">Nieuwe vacature toevoegen</a>
         </section>
 
     @else

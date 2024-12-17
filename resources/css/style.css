@@ -63,7 +63,11 @@ h2{
     font-size: 3rem;
 }
 
-p, button, label, input, li {
+h3{
+    font-size: 1.7rem;
+}
+
+p, button, label, input, li, textarea, select {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;
@@ -113,7 +117,7 @@ nav a:hover, nav button:hover {
     border-bottom: 3px solid var(--white);
 }
 
-input, textarea {
+input, textarea, select {
     border: 2px solid var(--stroke-thin);
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
@@ -135,6 +139,16 @@ footer {
     padding: 2vw;
     background-color: var(--moss-dark);
     color: var(--yellow);
+    display: flex;
+    justify-content: space-around;
+}
+
+footer a {
+    transition: ease-in-out 0.2s;
+}
+
+footer a:hover {
+    color: var(--moss-light);
 }
 
 .image-container {
@@ -236,5 +250,16 @@ trix-toolbar .trix-button-group--file-tools {
 
     nav img {
         width: 25vw;
+    }
+
+    .image-container {
+        >img {
+            width: 80vw;
+            height: 50vh;
+        }
+    }
+
+    .button-light {
+        padding: 4vw;
     }
 }
