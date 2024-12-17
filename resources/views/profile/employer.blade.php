@@ -1,7 +1,7 @@
 <x-site-layout>
     @if (auth()->user()->role === 2)
         <x-slot name="header">
-            <h2>Werkgever Profiel</h2>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werkgever Profiel</h1>
         </x-slot>
 
         <!-- Succesmelding -->
@@ -15,7 +15,7 @@
         <section>
             <p>Je bent ingelogd als werkgever.</p>
             <header>
-                <h2>{{ __('Profiel') }}</h2>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ __('Profiel') }}</h2>
                 <p>{{ __("Hier kun je je profiel en bedrijfsinformatie beheren.") }}</p>
             </header>
             <form method="POST" action="{{ route('profile.update') }}">
@@ -45,7 +45,7 @@
         <!-- Bedrijfsinformatie -->
         <section>
             <header>
-                <h2>Bedrijfsinformatie</h2>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">Bedrijfsinformatie</h2>
             </header>
             <ul>
                 <li><strong>Bedrijfsnaam:</strong> {{ auth()->user()->company_name ?? 'Bedrijf niet opgegeven' }}</li>
@@ -58,7 +58,7 @@
         <!-- Vacaturebeheer -->
         <section>
             <header>
-                <h2>Vacaturebeheer</h2>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">Vacaturebeheer</h2>
             </header>
 
             <a href="/vacancies/create" class="btn btn-primary">Nieuwe vacature toevoegen</a>
