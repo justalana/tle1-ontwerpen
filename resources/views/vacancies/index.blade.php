@@ -3,7 +3,11 @@
 <x-site-layout>
 
     <header>
-        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
+        @can('create-vacancy', auth()->user())
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Uw Vacatures</h1>
+        @else
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
+        @endcan
     </header>
 
     @if($vacancies->isNotEmpty())
