@@ -5,9 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class TimeSlot extends Model
+class ApplicationTimeSlot extends Model
 {
     use HasFactory;
 
@@ -19,6 +18,7 @@ class TimeSlot extends Model
     protected $fillable = [
         'day_id',
         'vacancy_id',
+        'application_id',
         'start_time',
         'end_time',
         'optional',
@@ -33,6 +33,7 @@ class TimeSlot extends Model
         'id' => 'integer',
         'day_id' => 'integer',
         'vacancy_id' => 'integer',
+        'application_id' => 'integer',
         'optional' => 'boolean',
     ];
 
@@ -46,8 +47,8 @@ class TimeSlot extends Model
         return $this->belongsTo(Vacancy::class);
     }
 
-    public function applications(): BelongsToMany
+    public function applications(): BelongsTo
     {
-        return $this->belongsToMany(Application::class);
+        return $this->belongsTo(Application::class);
     }
 }

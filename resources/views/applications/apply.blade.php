@@ -1,5 +1,6 @@
 @vite(['resources/css/vacancies.css'])
 @props(['requirements', 'vacancy', 'timeSlots'])
+{{--@dd($requirements)--}}
 
 <x-site-layout title="Apply {{ $vacancy->name }}">
     @auth
@@ -26,8 +27,8 @@
 
             <div id="checkboxContainer">
                 @foreach($timeSlots as $timeSlot)
-                    <label> {{ $timeSlot->day->name }}
-                        <input type="checkbox" name="requirements[]" value="{{ $timeSlot->day->id }}">
+                    <label> {{ $timeSlot->day->name }} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}
+                        <input type="checkbox" name="timeSlots[]" value="{{ $timeSlot->day->id }}">
                     </label>
                 @endforeach
             </div>

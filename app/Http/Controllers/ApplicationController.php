@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\ApplicationQueued;
 use App\Models\Application;
+use App\Models\ApplicationTimeSlot;
 use App\Models\Requirement;
+use App\Models\TimeSlot;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -51,9 +53,12 @@ class ApplicationController extends Controller implements HasMiddleware
             'status' => 1, //pending=1 accepted=2 denied=3
         ]);
 
+//        dd($request->requirements);
         $application->requirements()->sync($request->requirements ?? []);
 
-        $application->save();
+        $application->timeSlots()->sync($request->timeSlots ?? []);
+
+
 
         Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 
@@ -68,6 +73,7 @@ class ApplicationController extends Controller implements HasMiddleware
         $user = auth()->user();
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
+//        $timeSlots = $application->timeSlots;
 
         return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
     }
