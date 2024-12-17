@@ -1,7 +1,7 @@
 <x-site-layout>
     @if (auth()->user()->role === 2)
         <x-slot name="header">
-            <h2>Werkgever Profiel</h2>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werkgever Profiel</h1>
         </x-slot>
 
         <!-- Succesmelding -->

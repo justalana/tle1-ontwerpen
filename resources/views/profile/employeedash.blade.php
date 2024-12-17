@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2>
+        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">
             {{ __('Welkom op je Dashboard') }}
-        </h2>
+        </h1>
     </x-slot>
 
     <div class="py-12">

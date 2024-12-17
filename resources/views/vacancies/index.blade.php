@@ -3,7 +3,7 @@
 <x-site-layout>
 
     <header>
-        <h1>Open Vacatures</h1>
+        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
     </header>
 
     @if($vacancies->isNotEmpty())
@@ -21,7 +21,7 @@
 
                     <div class="column">
 
-                        <h2>{{$vacancy->name}}</h2>
+                        <h2 role="heading" aria-level="2" aria-label="Subtitel">{{$vacancy->name}}</h2>
 
                         <ul>
 

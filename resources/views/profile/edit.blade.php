@@ -2,7 +2,7 @@
 
 <x-site-layout>
     <x-slot name="header">
-        <h2>Profiel</h2>
+        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Profiel</h1>
     </x-slot>
     <!-- Succesmelding na profiel update -->
     @if (session('profile_updated'))
