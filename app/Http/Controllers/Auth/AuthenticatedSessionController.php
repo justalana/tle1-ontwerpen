@@ -26,8 +26,8 @@ $request->authenticate();
 
 $request->session()->regenerate();
 
-// Redirect naar profielpagina na succesvolle login
-return redirect()->intended(route('profile', absolute: false)); // Zorg ervoor dat de route 'profile' bestaat
+// Redirect naar dashboard na succesvolle login
+return redirect()->intended(route('dashboard', absolute: false));
 }
 
 /**

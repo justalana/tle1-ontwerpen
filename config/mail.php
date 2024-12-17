@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => 'smtp',
 
     /*
     |--------------------------------------------------------------------------
@@ -38,6 +38,7 @@ return [
     'mailers' => [
 
         'smtp' => [
+            'scheme' => env('MAIL_SCHEME', 'smtp'),
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
             'host' => env('MAIL_HOST', '127.0.0.1'),

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Application extends Model
 {
@@ -49,6 +50,11 @@ class Application extends Model
     public function requirements(): BelongsToMany
     {
         return $this->belongsToMany(Requirement::class);
+    }
+
+    public function timeSlots(): BelongsToMany
+    {
+        return $this->BelongsToMany(TimeSlot::class);
     }
 }
 

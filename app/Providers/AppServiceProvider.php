@@ -23,10 +23,24 @@ class AppServiceProvider extends ServiceProvider
 
         /*
         Role quick references:
-        1 = normal user
+        1 = employee
+        2 = employer
         42 = admin
         */
+//        EMPLOYEE
+        Gate::define('employee', function ($user) {
+            return $user->role === 1;
+        });
 
+        Gate::define('create-application', function ($user) {
+            return  $user->role === 1 || $user->role === 42;
+        });
+
+        Gate::define('view-application', function ($user, $application) {
+            return  $user->id === $application->user_id || $user->role === 42 || $user->role === 2 && $user->branch_id === $application->vacancy->branch_id;
+        });
+
+//        ADMIN
         Gate::define('admin', function ($user) {
             return $user->role === 42;
         });

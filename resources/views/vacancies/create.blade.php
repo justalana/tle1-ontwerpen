@@ -1,9 +1,35 @@
-@props(['requirements'])
-@vite(['resources/css/vacancies.css'])
+@props(['requirements', 'days'])
+@vite(['resources/css/vacancies.css', 'resources/js/vacancyTimeSlotManager.js'])
+
+@php
+
+    //Store all the old data in an array
+    $old = [];
+
+    //We are assuming the user hasn't fucked with the javascript so a day is always selected for every timeslot
+    if (old('days')) {
+
+        foreach (old('days') as $id => $day) {
+
+            $old[$id]['day'] = $day;
+            $old[$id]['startTime'] = old('startTimes')[$id];
+            $old[$id]['endTime'] = old('endTimes')[$id];
+            $old[$id]['optional'] = old('optional')[$id] ?? null;
+
+        }
+
+    }
+
+    //Json encode the array so javascript can use it as an object
+    $old = json_encode($old);
+
+@endphp
+
+<script>window.old = JSON.parse('{!! $old !!}')</script>
 
 <x-site-layout title="Maak nieuwe vacature aan">
 
-    <h1>Maak nieuwe vacature aan</h1>
+    <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Maak nieuwe vacature aan</h1>
 
     <form action="{{ route('vacancies.store') }}" method="POST" enctype="multipart/form-data" id="vacancyForm">
         @csrf
@@ -28,7 +54,8 @@
                     <select name="branch" id="branch" required>
 
                         @foreach($branches as $branch)
-                            <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                            <option
+                                value="{{ $branch->id }}" {{ old('branch') ? (strval($branch->id) === old('branch')) ? 'selected' : '' : '' }}>{{ $branch->name }}</option>
                         @endforeach
 
                     </select>
@@ -53,7 +80,8 @@
 
         <div>
             <label for="description">Beschrijving*</label>
-            <x-trix-input id="description" name="description" value="{!! old('description') ? old('description')->toTrixHtml() : '' !!}"></x-trix-input>
+            <x-trix-input id="description" name="description"
+                          value="{!! old('description') ? old('description') : '' !!}"></x-trix-input>
 
             @error('description')
             <p>{{ $message }}</p>
@@ -66,7 +94,8 @@
 
             @foreach($requirements as $requirement)
                 <label> {{ $requirement->name }}
-                    <input type="checkbox" name="requirements[]" value="{{ $requirement->id }}">
+                    <input type="checkbox" name="requirements[]"
+                           value="{{ $requirement->id }}" {{ old('requirements') ? in_array($requirement->id, old('requirements')) ? 'checked' : '' : '' }}>
                 </label>
             @endforeach
 
@@ -93,7 +122,8 @@
         </div>
 
         <div>
-            <label for="workHours">Werkuren per week (optioneel, laat dit vak leeg als de uren nog onbekend zijn)</label>
+            <label for="workHours">Werkuren per week (optioneel, laat dit vak leeg als de uren nog onbekend
+                zijn)</label>
             <input type="number" step="1" min="0" id="workHours" name="workHours" value="{{ old('workHours') ?? '' }}">
 
             @error('workHours')
@@ -110,6 +140,53 @@
             <p>{{ $message }}</p>
             @enderror
         </div>
+
+        <div id="timeSlotContainer">
+
+            <article class="timeSlot" id="timeSlot0" style="display: none">
+
+                <div class="timeSlotTitleContainer">
+                    <h3>Tijd slot 0</h3>
+                    <button class="deleteTimeSlot" id="deleteTimeSlot0">- Verwijder</button>
+                </div>
+
+                <div>
+
+                    <label for="days[0]">Selecteer een dag*</label>
+                    <select name="days[0]" id="days[0]" required>
+                        @foreach($days as $day)
+
+                            <option value="{{ $day->id }}">{{ $day->name }}</option>
+
+                        @endforeach
+                    </select>
+
+                </div>
+
+                <div>
+                    <label for="startTimes[0]">Start tijd*</label>
+                    <input type="time" name="startTimes[0]" id="startTimes[0]" required>
+                </div>
+
+                <div>
+                    <label for="endTimes[0]">Eind tijd*</label>
+                    <input type="time" name="endTimes[0]" id="endTimes[0]" required>
+                </div>
+
+                <div class="timeSlotCheckboxContainer">
+                    <label for="optional[0]">Optioneel</label>
+                    <input type="checkbox" name="optional[0]" id="optional[0]">
+                </div>
+
+            </article>
+
+        </div>
+
+        @error('timeSlot')
+        <p>{{ $message }}</p>
+        @enderror
+
+        <button id="addTimeSlot">+ Voeg een nieuw tijd slot toe</button>
 
         <div>
             <label for="image">Upload afbeelding*</label>
