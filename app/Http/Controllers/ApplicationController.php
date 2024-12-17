@@ -35,8 +35,9 @@ class ApplicationController extends Controller implements HasMiddleware
     public function create(Vacancy $vacancy)
     {
         $requirements = $vacancy->requirements;
+        $timeSlots = $vacancy->timeSlots;
 
-        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements, 'timeSlots' => $timeSlots]);
     }
 
     /**

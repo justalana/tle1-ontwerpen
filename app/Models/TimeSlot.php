@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TimeSlot extends Model
 {
@@ -43,5 +44,10 @@ class TimeSlot extends Model
     public function vacancy(): BelongsTo
     {
         return $this->belongsTo(Vacancy::class);
+    }
+
+    public function applications(): BelongsTo
+    {
+        return $this->belongsTo(Application::class);
     }
 }

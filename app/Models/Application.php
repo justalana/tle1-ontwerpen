@@ -50,6 +50,11 @@ class Application extends Model
     {
         return $this->belongsToMany(Requirement::class);
     }
+
+    public function time_slots(): BelongsToMany
+    {
+        return $this->belongsToMany(TimeSlot::class);
+    }
 }
 
 
