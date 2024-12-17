@@ -30,6 +30,13 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
+// Dashboard route - handled by DashboardController
+Route::get('/dashboard', [DashboardController::class, 'redirectToDashboard'])->name('dashboard');
+// Employee profile route (Werkgever)
+// Employee Dashboard Route
+Route::get('/profile/employerdash', [DashboardController::class, 'redirectToDashboard'])->name('employer');
+Route::get('/profile/employer', [ProfileController::class, 'employer'])->name('profile.employer');
+
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
@@ -40,17 +47,6 @@ Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'togg
 
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
-
-
-// werkgever profile
-Route::middleware('auth')->group(function () {
-    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
-});
-
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
-
-
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
