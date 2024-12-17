@@ -17,6 +17,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// about pagina view
+Route::get('/about', function () {
+    return view('about');
+});
+
+
 //A permanent redirect so no user can access Laravel's goofy ahh dashboard
 Route::permanentRedirect('/dashboard', '/');
 
