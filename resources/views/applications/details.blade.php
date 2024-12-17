@@ -1,5 +1,6 @@
 @vite(['resources/css/vacancies.css'])
 @props(['requirements', 'vacancy', 'user', 'application', 'timeSlots'])
+
 <x-site-layout title="Details {{ $vacancy->name }}">
 
     @can('show-application', $application)
@@ -25,20 +26,20 @@
 
         </div>
 
-{{--        <div id="checkboxContainer">--}}
-{{--            <h2>Werkdagen die je hebt aangegeven:</h2>--}}
+        <div id="checkboxContainer">
+            <h2>Werkdagen die je hebt aangegeven:</h2>
 
-{{--            @if($timeSlots->isNotEmpty())--}}
-{{--                <ul>--}}
-{{--                    @foreach($timeSlots as $timeSlot)--}}
-{{--                        <li>{{$timeSlot->day->name}} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}</li>--}}
-{{--                    @endforeach--}}
-{{--                </ul>--}}
-{{--            @else--}}
-{{--                <p>Je hebt geen eisen aangevinkt</p>--}}
-{{--            @endif--}}
+            @if($timeSlots->isNotEmpty())
+                <ul>
+                    @foreach($timeSlots as $timeSlot)
+                        <li>{{$timeSlot->day->name}} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}</li>
+                    @endforeach
+                </ul>
+            @else
+                <p>Je hebt geen werkdagen aangevinkt</p>
+            @endif
 
-{{--        </div>--}}
+        </div>
 
     @endcan
 

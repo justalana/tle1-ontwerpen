@@ -73,9 +73,9 @@ class ApplicationController extends Controller implements HasMiddleware
         $user = auth()->user();
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
-//        $timeSlots = $application->timeSlots;
+        $timeSlots = $application->timeSlots;
 
-        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application, 'timeSlots' => $timeSlots]);
     }
 
     /**
