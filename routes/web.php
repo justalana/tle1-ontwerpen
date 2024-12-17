@@ -45,9 +45,6 @@ Route::resource('applications', ApplicationController::class) ->except(['create'
 // Application-specific routes
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
 
-Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
-Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
-
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
     Route::get('/admin', function () {

@@ -261,3 +261,37 @@ trix-toolbar .trix-button-group--file-tools {
         width: 25vw;
     }
 }
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 15rem;
+    align-items: flex-start;
+    background-color: #2e362b;
+    color: #ffffff;
+    padding: 2rem;
+    font-family: radikal;
+    flex-wrap: wrap;
+    border-radius: 2px;
+}
+
+.footer-section {
+    text-align: center;
+    margin: 0;
+}
+
+.footer-section h3 {
+    color: #fdd835; /* Gele tekst voor titels */
+    margin-bottom: 1rem; /* Ruimte onder titel */
+    font-size: 1.1rem;
+}
+
+.footer-section ul {
+    list-style: none; /* Verwijder bolletjes van de lijst */
+    padding: 0; /* Verwijder padding */
+    margin: 0; /* Verwijder marges */
+}
+
+.footer-section li {
+    margin: 0.5rem 0; /* Ruimte tussen lijstitems */
+    color: #dcdcdc; /* Lichtgrijze tekstkleur */
+}
