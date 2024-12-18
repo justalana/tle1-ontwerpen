@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Day;
 use App\Models\Requirement;
 use App\Models\TimeSlot;
@@ -44,8 +45,7 @@ class VacancyController extends Controller implements HasMiddleware
         }
 
 
-
-        return view('vacancies.index', compact('vacancies'));
+        return view('vacancies.index', compact(['vacancies']));
     }
 
     /**
@@ -164,7 +164,9 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function show(Vacancy $vacancy)
     {
-        return view('vacancies.details', ['vacancy' => $vacancy]);
+        $applications = Application::where('vacancy_id', $vacancy->id)
+            ->where('status', 1)->get();
+        return view('vacancies.details', ['vacancy' => $vacancy, 'applications' => $applications]);
     }
 
     /**

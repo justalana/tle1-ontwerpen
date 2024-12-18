@@ -46,6 +46,10 @@
 
                             <li>{{$vacancy->contract_duration}} dagen</li>
 
+                            @can('create-vacancy', Auth::user())
+
+                            @endcan
+
                         </ul>
 
                     </div>
@@ -71,13 +75,5 @@
     @else
         <p>Helaas, geen open vacatures</p>
     @endif
-
-    @foreach ($vacancies as $vacancy)
-        <div class="vacancy-item">
-            <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ $vacancy->name }}</h2>
-            <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
-        </div>
-    @endforeach
-
 
 </x-site-layout>
