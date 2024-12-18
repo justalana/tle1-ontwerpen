@@ -1,8 +1,8 @@
 @vite(['resources/css/vacancies.css'])
-@props(['requirements', 'vacancy'])
+@props(['requirements', 'vacancy', 'timeSlots'])
 
 <x-site-layout title="Apply {{ $vacancy->name }}">
-    @auth
+    @can('create-application')
         <header>
             <div>
                 <h1 id="details-header">{{$vacancy->name}}</h1>
@@ -22,12 +22,18 @@
                 @endforeach
             </div>
 
+            <p>Vink alle dagen aan waarop je kan werken</p>
+
+            <div id="checkboxContainer">
+                @foreach($timeSlots as $timeSlot)
+                    <label> {{ $timeSlot->day->name }} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}
+                        <input type="checkbox" name="timeSlots[]" value="{{ $timeSlot->id }}">
+                    </label>
+                @endforeach
+            </div>
+
             <button type="submit" class="button-green">Bevestig aanmelding</button>
         </form>
-    @endauth
-
-    @guest
-        <h2>Je hebt geen toegang tot deze pagina</h2>
-    @endguest
+    @endcan
 
 </x-site-layout>

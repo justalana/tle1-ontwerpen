@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Mail\ApplicationQueued;
 use App\Models\Application;
+use App\Models\ApplicationTimeSlot;
 use App\Models\Requirement;
+use App\Models\TimeSlot;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
@@ -18,7 +20,7 @@ class ApplicationController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('can:employee', only: ['create', 'store']),
-            new Middleware('can:show-application,application', only: ['show']),
+            new Middleware('can:view-application,application,vacancy', only: ['show']),
         ];
     }
     /**
@@ -35,8 +37,9 @@ class ApplicationController extends Controller implements HasMiddleware
     public function create(Vacancy $vacancy)
     {
         $requirements = $vacancy->requirements;
+        $timeSlots = $vacancy->timeSlots;
 
-        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements, 'timeSlots' => $timeSlots]);
     }
 
     /**
@@ -52,7 +55,7 @@ class ApplicationController extends Controller implements HasMiddleware
 
         $application->requirements()->sync($request->requirements ?? []);
 
-        $application->save();
+        $application->timeSlots()->sync($request->timeSlots ?? []);
 
         Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 
@@ -67,8 +70,9 @@ class ApplicationController extends Controller implements HasMiddleware
         $user = auth()->user();
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
+        $timeSlots = $application->timeSlots;
 
-        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application, 'timeSlots' => $timeSlots]);
     }
 
     /**

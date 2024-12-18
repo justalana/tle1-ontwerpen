@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
@@ -34,7 +35,15 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $vacancies = Vacancy::where('active', '=', '1')->get();
+        if (Gate::allows('create-vacancy'))
+        {
+            $vacancies = Vacancy::where('branch_id', auth()->user()->branch_id)->get();
+        }
+        else {
+            $vacancies = Vacancy::where('active', '=', '1')->get();
+        }
+
+
 
         return view('vacancies.index', compact('vacancies'));
     }

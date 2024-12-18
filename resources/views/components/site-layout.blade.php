@@ -35,7 +35,7 @@
     @auth
         <div>
             @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
-            <a href="{{ route('employee') }}">Profiel</a>
+            <a href="{{ route('employer') }}">Profiel</a>
             @else
                 <a href="{{ route('profile.edit') }}">Profiel</a> <!-- Normaal profiel bewerken voor andere gebruikers -->
             @endif
@@ -51,9 +51,39 @@
 </nav>
 
 <main>{{ $slot }}</main>
+<footer class="footer">
+    <div class="footer-section">
+        <h3>Voor werkzoekenden</h3>
+        <ul>
+            <li>Vind een baan</li>
+            <li>Veelgestelde vragen</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Voor werkgevers</h3>
+        <ul>
+            <li>Spelregels</li>
+            <li>Veelgestelde vragen</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Over Open Hiring</h3>
+        <ul>
+            <li>Ontstaan</li>
+            <li>Privacybeleid</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Volg ons op</h3>
+        <ul>
+            <li>LinkedIn</li>
+            <li>Instagram</li>
+            <li>Facebook</li>
+        </ul>
+    </div>
+</footer>
 
-<footer>
-    <p>footer</p>
+
 </footer>
 
 </body>

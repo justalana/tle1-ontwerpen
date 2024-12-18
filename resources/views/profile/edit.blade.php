@@ -2,7 +2,7 @@
 
 <x-site-layout>
     <x-slot name="header">
-        <h2>Profiel</h2>
+        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Profiel</h1>
     </x-slot>
     <!-- Succesmelding na profiel update -->
     @if (session('profile_updated'))
@@ -14,7 +14,7 @@
     <!-- Profiel Informatie -->
     <section>
         <header>
-            <h2>
+            <h2 role="heading" aria-level="2" aria-label="Subtitel">
                 {{ __('Profiel') }}
             </h2>
 
@@ -50,7 +50,7 @@
     <!-- Wachtwoord Wijzigen -->
     <section>
         <header>
-            <h2>Wachtwoord Wijzigen</h2>
+            <h2 role="heading" aria-level="2" aria-label="Subtitel">Wachtwoord Wijzigen</h2>
         </header>
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
@@ -77,7 +77,7 @@
 
     <!-- Recente Activiteiten -->
     <section>
-        <h2>Recente activiteiten</h2>
+        <h2 role="heading" aria-level="2" aria-label="Subtitel">Recente activiteiten</h2>
         <ul>
             <li>Je bent geregistreerd op: {{ auth()->user()->created_at->format('d F Y') }}</li>
             <li>Aantal vacatures bekeken: 5 (voorbeeld)</li>
@@ -88,9 +88,17 @@
 
     <!-- Anonimiteit Uitleg -->
     <section>
-        <h2>Privacy</h2>
+        <h2 role="heading" aria-level="2" aria-label="Subtitel">Privacy</h2>
         <p>We respecteren je privacy en anonimiteit. Zelfs wanneer je je profielgegevens bijwerkt, blijven je gegevens
             anoniem en worden ze niet gedeeld met anderen. Alleen jij hebt toegang tot je eigen gegevens en ze blijven
             privé.</p>
     </section>
+
+    <!-- Account Deletion -->
+    <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+        <div class="max-w-xl">
+            @include('profile.partials.delete-user-form')
+        </div>
+    </div>
+
 </x-site-layout>

@@ -64,6 +64,12 @@
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    .timeSlot {
+        background-color: var(--moss-light);
+    }
+}
+
 #timeSlotContainer {
     display: flex;
     flex-direction: row;
@@ -85,6 +91,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .timeSlotDetail {
+        border: solid var(--moss-light) 1px;
     }
 }
 
@@ -161,6 +173,21 @@ header {
     padding: 1vh 2vw;
     border: solid #2E342A;
     border-radius: 15px;
+}
+
+.description-input {
+    background: var(--moss-dark);
+    color: #121212 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    #description {
+        border: solid var(--moss-light);
+    }
+
+    .description-input {
+        background: var(--moss-light);
+    }
 }
 
 #description-text {
