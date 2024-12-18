@@ -4,15 +4,14 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BranchController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

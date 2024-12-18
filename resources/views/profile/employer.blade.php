@@ -1,3 +1,4 @@
+@vite(['resources/css/profile.css'])
 <x-site-layout>
     @vite(['resources/css/profile.css'])
     @if (auth()->user()->role === 2)
@@ -14,7 +15,6 @@
 
         <!-- Profiel Informatie -->
         <section>
-            <p>Je bent ingelogd als werkgever.</p>
             <header>
                 <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ __('Profiel') }}</h2>
                 <p>{{ __("Hier kun je je profiel en bedrijfsinformatie beheren.") }}</p>
@@ -62,7 +62,7 @@
                 <h2 role="heading" aria-level="2" aria-label="Subtitel">Vacaturebeheer</h2>
             </header>
 
-            <a href="/vacancies/create" class="btn btn-primary">Nieuwe vacature toevoegen</a>
+            <a href="/vacancies/create" class="button-light">Nieuwe vacature toevoegen</a>
         </section>
 
     @else

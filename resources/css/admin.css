@@ -11,6 +11,21 @@
     --stroke-thin: #DFDFDF;
 }
 
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
 main {
     margin: 5vw 5vw 0 5vw;
     min-height: 70vh;
@@ -32,12 +47,6 @@ header div {
 
 .werknemer {
     background-color: var(--moss-light);
-}
-
-@media (prefers-color-scheme: dark) {
-    .werknemer {
-        background-color: var(--moss-dark);
-    }
 }
 
 #stories .articles-div, .buttons {
@@ -65,9 +74,6 @@ article {
     color: var(--violet);
 }
 
-
-/* This is not in the home page why is this here? */
-
 #adminArticleContainer {
     display: flex;
     flex-direction: row;
@@ -85,12 +91,13 @@ article {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    #adminArticleContainer {
-        >article {
-            background-color: var(--moss-dark);
-        }
-    }
+.table-link {
+    padding: 0.2vw 1vw;
+    border-radius: 10vw;
+    border: 3px solid var(--moss-dark);
+    color: var(--moss-dark);
+    transition: ease-in-out 0.2s;
+
 }
 
 #userContainer {

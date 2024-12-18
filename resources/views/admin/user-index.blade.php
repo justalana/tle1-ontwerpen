@@ -1,5 +1,5 @@
 @props(['users'])
-@vite(['resources/css/general.css'])
+@vite(['resources/css/admin.css'])
 
 <x-site-layout title="Gebruiker overzicht">
 
@@ -27,7 +27,7 @@
                 <td>{{ $user->role }}</td>
 
                 <td>
-                    <a class="button-pink" href="{{ route('admin.user-edit', $user) }}">Bewerk {{ $user->name }}</a>
+                    <a class="table-link" href="{{ route('admin.user-edit', $user) }}">Bewerk {{ $user->name }}</a>
                 </td>
             </tr>
 
