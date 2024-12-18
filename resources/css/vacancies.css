@@ -227,11 +227,6 @@ header {
     border-radius: 15px;
 }
 
-.description-input {
-    background: var(--moss-dark);
-    color: #121212 !important;
-}
-
 #description-text {
     padding: 0 3vw;
 }
