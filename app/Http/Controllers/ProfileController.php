@@ -64,7 +64,7 @@ class ProfileController extends Controller
 
         // Controleer de rol en stuur naar de juiste pagina
         if ($user->role == 2) {
-            return redirect()->route('profile.employee');  // Redirect naar de employee view voor role 2
+            return redirect()->route('profile.employer');  // Redirect naar de employer view voor role 2
         }
 
         return redirect()->route('profile.edit');
@@ -94,7 +94,7 @@ class ProfileController extends Controller
 
         // Controleer de rol en stuur naar de juiste pagina
         if ($user->role == 2) {
-            return redirect()->route('profile.employee');  // Redirect naar de employee view voor role 2
+            return redirect()->route('profile.employer');  // Redirect naar de employer view voor role 2
         }
 
         return redirect()->route('profile.show');  // Redirect naar de edit view voor role 1
