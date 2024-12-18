@@ -17,14 +17,13 @@
 <nav>
     <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
-    <a href="{{ route('about') }}">Over Open Hiring</a>
-    <a href="">Contact</a>
+
     @can('create-vacancy')
         <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
     @endcan
 
     @can('not-admin')
-        <a href="">Over Open Hiring</a>
+        <a href="{{ route('about') }}">Over Open Hiring</a>
         <a href="">Contact</a>
     @endcan
 
@@ -34,6 +33,8 @@
     @endcan
 
     @guest
+        <a href="{{ route('about') }}">Over Open Hiring</a>
+        <a href="">Contact</a>
         <div>
             <a href="{{ route('login') }}">Log in</a>
             <p>|</p>

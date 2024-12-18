@@ -58,7 +58,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('not-admin', function ($user) {
-            return $user->role !== 42 || $user->role === null;
+            return $user->role !== 42;
         });
 
 
