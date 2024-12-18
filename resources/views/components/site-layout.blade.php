@@ -17,10 +17,14 @@
 <nav>
     <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
+
+    @guest
     <a href="">Over Open Hiring</a>
     <a href="">Contact</a>
+    @endguest
 
     @can('admin')
+        <a href="{{ route('vacancies.create') }}">Vacature Aanmaken</a>
         <a href="{{ route('admin') }}">Admin</a>
     @endcan
 
@@ -33,6 +37,8 @@
     @endguest
 
     @auth
+        <a href="{{ route('dashboard') }}">Dashboard</a>
+
         <div>
             @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
             <a href="{{ route('employee') }}">Profiel</a>

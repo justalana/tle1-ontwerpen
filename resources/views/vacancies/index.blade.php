@@ -36,12 +36,20 @@
                                 @endif
 
                                 @if($vacancy->work_hours)
-                                    <li>{{$vacancy->work_hours}} werkuren</li>
+                                    <li>{{$vacancy->work_hours}} uur per week</li>
                                 @else
                                     <li>Werkuren niet bekend</li>
                                 @endif
 
-                                <li>{{$vacancy->contract_duration}} dagen</li>
+                                    @if($vacancy->contract_duration > 364)
+                                        <li>{{ round($vacancy->contract_duration / 356) }} Jaar</li>
+                                    @elseif($vacancy->contract_duration > 30)
+                                        <li>{{ round($vacancy->contract_duration / 30) }} maanden</li>
+                                    @elseif($vacancy->contract_duration > 7)
+                                        <li>{{ round($vacancy->contract_duration / 52) }} weken</li>
+                                    @else
+                                        <li>{{ $vacancy->contract_duration }} dagen</li>
+                                    @endif
 
                             </ul>
 

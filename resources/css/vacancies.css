@@ -22,7 +22,7 @@
     #timeSlotContainer {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 5%;
+        gap: 2vw;
     }
 
     >#checkboxContainer {
@@ -89,24 +89,46 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5%;
+    justify-content: center;
+    gap: 1vh;
 }
 
 .timeSlotDetail {
-    padding: 0.5vw;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    width: 15%;
     border: solid var(--moss-dark) 1px;
     border-radius: 6px;
     align-items: center;
+    width: 12vw;
 
     >div {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
+}
+
+.note {
+    font-size: 1rem;
+    color: var(--moss-medium);
+}
+
+#edit-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+
+    >form {
+        display: flex;
+        gap: 2vw;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+}
+
+#vacancies a {
+    margin-top: 1vh;
 }
 
 header {
@@ -179,7 +201,7 @@ header {
     object-fit: cover;
 }
 
-#description {
+ .description {
     margin: 5vh 16vw;
     padding: 1vh 2vw;
     border: solid #2E342A;
@@ -257,8 +279,8 @@ header {
 
     #vacancy-image {
         border-radius: 5px;
-        height: 25vh;
-        width: 35vw;
+        height: 50vh;
+        width: 90vw;
         object-fit: cover;
     }
 
@@ -271,5 +293,19 @@ header {
     #description {
         margin: 3vh 5vw;
     }
+
+    .timeSlotDetail {
+        width: 44vw;
+    }
+
+    #detail-flexbox {
+        flex-direction: column;
+    }
+
+    .vacancy-details-img {
+        justify-content: center;
+    }
+
+
 
 }

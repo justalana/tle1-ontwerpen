@@ -35,7 +35,7 @@
         </div>
         <div class="buttons">
             <a class="button-light" href="{{ route('vacancies.index') }}">Vind ook een baan</a>
-            <a class="button-light">Een vacature plaatsen</a>
+            <a class="button-light" href="{{ route('vacancies.create') }}">Een vacature plaatsen</a>
         </div>
 
     </section>

@@ -64,7 +64,7 @@ h2{
 }
 
 h3{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
 
 p, button, label, input, li, textarea, select {
@@ -81,6 +81,11 @@ b {
 
 a {
     text-decoration: none;
+}
+
+input[type="checkbox"] {
+    width: 1.5vw;
+    height: 1.5vw;
 }
 
 nav {
@@ -111,6 +116,10 @@ nav a, nav button {
 nav button, nav button:hover {
     all: unset;
     padding: 1vh 0;
+}
+
+button {
+    all:unset;
 }
 
 nav a:hover, nav button:hover {
@@ -261,5 +270,10 @@ trix-toolbar .trix-button-group--file-tools {
 
     .button-light {
         padding: 4vw;
+    }
+
+    input[type="checkbox"] {
+        width: 5vw;
+        height: 5vw;
     }
 }
