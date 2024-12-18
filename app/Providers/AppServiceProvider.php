@@ -57,6 +57,5 @@ class AppServiceProvider extends ServiceProvider
            return  $user->role === 42 || $user->branch_id === $vacancy->branch_id;
         });
 
-
     }
 }

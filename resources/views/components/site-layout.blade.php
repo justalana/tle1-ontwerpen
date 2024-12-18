@@ -17,8 +17,10 @@
 <nav>
     <a href="{{ route('home') }}"><img src="{{ asset('/images/logo.png') }}" alt="home"></a>
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
-    <a href="">Over Open Hiring</a>
-    <a href="">Contact</a>
+
+    @can('create-vacancy')
+        <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
+    @endcan
 
     @can('admin')
         <a href="{{ route('admin') }}">Admin</a>
@@ -51,6 +53,7 @@
 </nav>
 
 <main>{{ $slot }}</main>
+
 <footer class="footer">
     <div class="footer-section">
         <h3>Voor werkzoekenden</h3>
@@ -81,9 +84,6 @@
             <li>Facebook</li>
         </ul>
     </div>
-</footer>
-
-
 </footer>
 
 </body>
