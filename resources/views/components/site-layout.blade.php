@@ -20,8 +20,12 @@
     @can('create-vacancy')
         <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
     @endcan
-    <a href="">Over Open Hiring</a>
-    <a href="">Contact</a>
+
+    @can('not-admin')
+        <a href="">Over Open Hiring</a>
+        <a href="">Contact</a>
+    @endcan
+
 
     @can('admin')
         <a href="{{ route('admin') }}">Admin</a>

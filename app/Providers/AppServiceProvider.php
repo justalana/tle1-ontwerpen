@@ -57,6 +57,10 @@ class AppServiceProvider extends ServiceProvider
            return  $user->role === 42 || $user->branch_id === $vacancy->branch_id;
         });
 
+        Gate::define('not-admin', function ($user) {
+            return $user->role !== 42 || $user->role === null;
+        });
+
 
     }
 }
