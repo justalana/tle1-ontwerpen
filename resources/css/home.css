@@ -104,3 +104,18 @@ h3 {
     }
 }
 
+@media (max-width: 767px) {
+    header {
+        flex-direction: column;
+        margin: 5vw;
+    }
+
+    .articles-div, .buttons {
+        flex-direction: column;
+    }
+
+    header img {
+        width: 90vw;
+    }
+}
+

@@ -334,3 +334,10 @@ trix-toolbar .trix-button-group--file-tools {
     margin: 0.5rem 0; /* Ruimte tussen lijstitems */
     color: #dcdcdc; /* Lichtgrijze tekstkleur */
 }
+
+@media (prefers-color-scheme: dark) {
+    input, select, textarea {
+        background-color: #1e201d;
+        color: var(--white);
+    }
+}
