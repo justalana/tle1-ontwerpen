@@ -12,6 +12,21 @@
     --stroke-thin: #DFDFDF;
 }
 
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
 /* === FONT SIZES === */
 @font-face {
     font-family: 'radikal';
@@ -39,13 +54,6 @@ body {
     background-color: var(--cream);
     margin: 0;
     min-height: 100vh;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: #ffffff;
-    }
 }
 
 section {
@@ -195,19 +203,6 @@ footer a:hover {
     color: var(--white);
 }
 
-@media (prefers-color-scheme: dark) {
-    .button-light, button {
-        background: none;
-        border: 3px solid var(--moss-light);
-        color: var(--moss-light);
-    }
-
-    .button-light:hover, button:hover{
-        background-color: var(--moss-light);
-        color: #121212;
-    }
-}
-
 .button-pink {
         text-decoration: none;
         background: var(--violet);
@@ -317,6 +312,10 @@ trix-toolbar .trix-button-group--file-tools {
 .footer-section {
     text-align: center;
     margin: 0;
+}
+
+.column h2 {
+    max-width: 30vw;
 }
 
 .footer-section h3 {

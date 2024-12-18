@@ -1,3 +1,31 @@
+/* === COLORS === */
+:root {
+    --violet: #AA0160;
+    --violet-dark: #7C1A51;
+    --yellow: #FAEC02;
+    --moss-medium: #92AA83;
+    --moss-light: #E2ECC8;
+    --moss-dark: #2E342A;
+    --white: #FFFFFF;
+    --cream: #FBFCF6;
+    --stroke-thin: #DFDFDF;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
 #vacancies {
     margin: 2vw;
     display: flex;
@@ -38,13 +66,6 @@
     }
 }
 
-#vacancystats {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 5vw;
-}
-
 .vacancy-item {
     display: flex;
     flex-direction: column;
@@ -81,12 +102,6 @@
     .deleteTimeSlot {
         font-size: 1vw;
         padding: 0.5vw;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .timeSlot {
-        background-color: var(--moss-light);
     }
 }
 
@@ -136,15 +151,9 @@
     margin-top: 1vh;
 }
 
-@media (prefers-color-scheme: dark) {
-    .timeSlotDetail {
-        border: solid var(--moss-light) 1px;
-    }
-}
-
 header {
     text-align: center;
-    background: #aa0160;
+    background: var(--violet);
     color: white;
     display: flex;
     justify-content: center;
@@ -221,16 +230,6 @@ header {
 .description-input {
     background: var(--moss-dark);
     color: #121212 !important;
-}
-
-@media (prefers-color-scheme: dark) {
-    #description {
-        border: solid var(--moss-light);
-    }
-
-    .description-input {
-        background: var(--moss-light);
-    }
 }
 
 #description-text {

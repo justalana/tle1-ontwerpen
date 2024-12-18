@@ -11,6 +11,21 @@
     --stroke-thin: #DFDFDF;
 }
 
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
 main {
     margin: 5vw 5vw 0 5vw;
     min-height: 70vh;

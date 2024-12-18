@@ -82,14 +82,5 @@
         @endif
     </section>
 
-    <section id="vacancystats">
-        @foreach ($vacancies as $vacancy)
-            <div class="vacancy-item">
-                <h3>{{ $vacancy->name }}</h3>
-                <p>Aantal sollicitaties: {{ $vacancy->application_count }}</p>
-            </div>
-        @endforeach
-    </section>
-
 
 </x-site-layout>
