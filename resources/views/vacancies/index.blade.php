@@ -4,11 +4,7 @@
 <x-site-layout>
 
     <header>
-        @can('create-vacancy')
-            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Uw Vacatures</h1>
-        @else
-            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
-        @endcan
+        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Vacatures</h1>
     </header>
 
     <section id="vacancies">
@@ -71,7 +67,8 @@
 
                             <a class="button-pink" href="{{ route('vacancies.edit', $vacancy) }}">Bewerk vacature</a>
 
-                            <form action="{{ route('vacancies.toggle-active', $vacancy) }}" method="POST" id="vacancy-toggle">
+                            <form action="{{ route('vacancies.toggle-active', $vacancy) }}" method="POST"
+                                  id="vacancy-toggle">
                                 @csrf
                                 @method('PUT')
 
