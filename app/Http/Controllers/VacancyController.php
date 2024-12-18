@@ -34,7 +34,7 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        if (\Gate::allows('manage-vacancy', Vacancy::class))
+        if (\Gate::allows('create-vacancy'))
         {
             $vacancies = Vacancy::where('branch_id', auth()->user()->branch_id)->get();
         }

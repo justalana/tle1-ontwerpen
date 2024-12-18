@@ -57,7 +57,9 @@ class ApplicationController extends Controller implements HasMiddleware
 
         $application->timeSlots()->sync($request->timeSlots ?? []);
 
-        Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
+        $applications = Application::where('vacancy_id', $vacancy->id && 'status', 1)->get();
+
+        Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy, $applications));
 
         return to_route('applications.show', $application);
     }

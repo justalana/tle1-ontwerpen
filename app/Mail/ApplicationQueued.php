@@ -18,9 +18,10 @@ use Storage;
     /**
      * Create a new message instance.
      */
-    public function __construct($vacancy)
+    public function __construct($vacancy, $applications)
     {
         $this->vacancy = $vacancy;
+        $this->application = $applications;
     }
 
     /**
@@ -41,7 +42,8 @@ use Storage;
 
         return new Content(
             markdown: 'mail.vacancy.queued',
-            with: ['vacancy' => $this->vacancy]
+            with: ['vacancy' => $this->vacancy,
+                'application' => $this->applications,]
             );
     }
 
