@@ -1,0 +1,160 @@
+/* Algemene reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: radikal;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container */
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #FBFCF6;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Contactgegevens */
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1, h2 {
+    margin-bottom: 15px;
+
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #333;
+    font-weight: bold;
+    border-bottom: 2px solid #d63384;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #2E342A;
+    margin-top: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #555;
+    text-align: center;
+}
+
+a {
+    color: #2E342A;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+}
+
+a:hover {
+    color: #b8286c;
+    text-decoration: underline;
+}
+
+/* Afbeelding */
+.image {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Contactformulier */
+.form {
+    flex: 1;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FBFCF6;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    text-align: center;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #FBFCF6;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    text-align: center;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #b8286c;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content, .form, .image {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+}

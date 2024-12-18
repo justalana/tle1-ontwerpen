@@ -60,4 +60,8 @@ Route::middleware('can:admin')->group(function () {
     Route::put('admin/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user-update');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
 require __DIR__ . '/auth.php';
