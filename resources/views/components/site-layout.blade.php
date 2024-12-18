@@ -22,19 +22,16 @@
         <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
     @endcan
 
-    @can('not-admin')
+    @cannot('admin')
         <a href="{{ route('about') }}">Over Open Hiring</a>
         <a href="">Contact</a>
     @endcan
-
 
     @can('admin')
         <a href="{{ route('admin') }}">Admin</a>
     @endcan
 
     @guest
-        <a href="{{ route('about') }}">Over Open Hiring</a>
-        <a href="">Contact</a>
         <div>
             <a href="{{ route('login') }}">Log in</a>
             <p>|</p>
@@ -61,6 +58,7 @@
 </nav>
 
 <main>{{ $slot }}</main>
+
 <footer class="footer">
     <div class="footer-section">
         <h3>Voor werkzoekenden</h3>
@@ -91,9 +89,6 @@
             <li>Facebook</li>
         </ul>
     </div>
-</footer>
-
-
 </footer>
 
 </body>
