@@ -20,13 +20,7 @@ use Storage;
      */
     public function __construct($application)
     {
-        $this->application = $application->vacancy->name;
-
-        if ($application->status == 2) {
-            $this->application->status = "Geaccepteerd";
-        } else if ($application->status == 3) {
-            $this->application->status = "Geannuleerd";
-        }
+        $this->application = $application;
     }
 
     /**
@@ -47,8 +41,7 @@ use Storage;
 
         return new Content(
             markdown: 'mail.vacancy.email',
-            with: ['vacancy' => $this->application->vacancy,
-                'status' => $this->application->status],
+            with: ['vacancy' => $this->application],
 
         );
     }
