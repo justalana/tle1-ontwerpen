@@ -35,15 +35,7 @@ class VacancyController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        if (Gate::allows('create-vacancy'))
-        {
-            $vacancies = Vacancy::where('branch_id', auth()->user()->branch_id)->get();
-        }
-        else {
-            $vacancies = Vacancy::where('active', '=', '1')->get();
-        }
-
-
+        $vacancies = Vacancy::where('active', '=', '1')->get();
 
         return view('vacancies.index', compact('vacancies'));
     }
@@ -298,7 +290,7 @@ class VacancyController extends Controller implements HasMiddleware
     {
 
         $request->validate([
-           'vacancyId' => ['required']
+            'vacancyId' => ['required']
         ]);
 
         if ($vacancy->active) {
@@ -313,7 +305,19 @@ class VacancyController extends Controller implements HasMiddleware
 
         $vacancy->update();
 
-        return to_route('vacancies.show', $vacancy);
+        return back();
+    }
+
+    public function private()
+    {
+
+        if (Gate::allows('admin')) {
+            $vacancies = Vacancy::all();
+        } else {
+            $vacancies = Vacancy::whereBranchId(Auth::user()->branch_id)->get();
+        }
+
+        return view('vacancies.index', ['vacancies' => $vacancies]);
     }
 
 }

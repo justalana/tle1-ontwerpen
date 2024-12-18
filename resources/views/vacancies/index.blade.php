@@ -1,9 +1,10 @@
 @vite(['resources/css/vacancies.css'])
+@props(['vacancies' => collect()])
 
 <x-site-layout>
 
     <header>
-        @can('create-vacancy', auth()->user())
+        @can('create-vacancy')
             <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Uw Vacatures</h1>
         @else
             <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
@@ -35,7 +36,8 @@
                                         €{{ number_format((float)$vacancy->salary_max, 2) }},- euro per uur
                                     </li>
                                 @else
-                                    <li>Minimum salaris: €{{ number_format((float)$vacancy->salary_min, 2) }} euro per uur
+                                    <li>Minimum salaris: €{{ number_format((float)$vacancy->salary_min, 2) }} euro per
+                                        uur
                                     </li>
                                 @endif
 
@@ -45,15 +47,15 @@
                                     <li>Werkuren niet bekend</li>
                                 @endif
 
-                                    @if($vacancy->contract_duration > 364)
-                                        <li>{{ round($vacancy->contract_duration / 356) }} Jaar</li>
-                                    @elseif($vacancy->contract_duration > 30)
-                                        <li>{{ round($vacancy->contract_duration / 30) }} maanden</li>
-                                    @elseif($vacancy->contract_duration > 7)
-                                        <li>{{ round($vacancy->contract_duration / 52) }} weken</li>
-                                    @else
-                                        <li>{{ $vacancy->contract_duration }} dagen</li>
-                                    @endif
+                                @if($vacancy->contract_duration > 364)
+                                    <li>{{ round($vacancy->contract_duration / 356) }} Jaar</li>
+                                @elseif($vacancy->contract_duration > 30)
+                                    <li>{{ round($vacancy->contract_duration / 30) }} maanden</li>
+                                @elseif($vacancy->contract_duration > 7)
+                                    <li>{{ round($vacancy->contract_duration / 52) }} weken</li>
+                                @else
+                                    <li>{{ $vacancy->contract_duration }} dagen</li>
+                                @endif
 
                             </ul>
 
@@ -69,6 +71,25 @@
 
                             <a class="button-pink" href="{{ route('vacancies.edit', $vacancy) }}">Bewerk vacature</a>
 
+                            <form action="{{ route('vacancies.toggle-active', $vacancy) }}" method="POST" id="vacancy-toggle">
+                                @csrf
+                                @method('PUT')
+
+                                <input type="hidden" name="vacancyId" id="vacancyId" value="{{ $vacancy->id }}">
+
+                                @if($vacancy->active)
+
+                                    <h3 class="vacancy-shown">Deze vacature is nu publiek zichtbaar</h3>
+                                    <button class="button-pink" type="submit">Maak onzichtbaar</button>
+
+                                @else
+
+                                    <h3 class="vacancy-hidden">Deze vacature is nu niet zichtbaar</h3>
+                                    <button class="button-pink" type="submit">Maak zichtbaar</button>
+
+                                @endif
+                            </form>
+
                         @endcan
 
                     </div>
@@ -78,9 +99,8 @@
             @endforeach
 
         @else
-            <p>Helaas, geen open vacatures</p>
+            <p>Helaas, er zijn geen open vacatures</p>
         @endif
     </section>
-
 
 </x-site-layout>

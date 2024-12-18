@@ -161,6 +161,24 @@ header {
     word-wrap: break-word;
 }
 
+.vacancy-shown {
+    color: var(--moss-medium);
+}
+
+.vacancy-hidden {
+    color: var(--violet-dark);
+}
+
+#vacancy-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        width: 90%;
+    }
+}
+
 .article {
     width: 59vw;
     display: flex;
