@@ -55,6 +55,17 @@ article {
     align-items: center;
 }
 
+#jobs-preview div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#jobs-preview article {
+    background-color: var(--moss-light);
+    margin: 1vw;
+}
+
 .violet {
     color: var(--violet);
 }

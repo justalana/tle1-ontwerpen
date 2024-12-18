@@ -41,7 +41,19 @@
     </section>
     <section id="jobs-preview">
         <h2>Openstaande vacatures voor iedereen</h2>
-        <p>Momenteel zijn er geen openstaande vacatures beschikbaar.</p>
+        @if($vacancies->isNotEmpty())
+            <div>
+                @foreach($vacancies as $vacancy)
+                    <article>
+                        <h3>{{$vacancy->name}}</h3>
+                        <p>{!!$vacancy->description!!}</p>
+                        <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
+                    </article>
+                @endforeach
+            </div>
+        @else
+            <p>Momenteel zijn er geen vacatures beschikbaar.</p>
+        @endif
         <a class="button-light" href="{{ route('vacancies.index') }}">Bekijk alle vacatures</a>
     </section>
 
