@@ -15,19 +15,6 @@ class ProfileController extends Controller
         return view('profile.edit', compact('user'));
     }
 
-    // Toon het profiel van de werkgever
-    public function employer()
-    {
-        $user = auth()->user();
-
-        // Check of de gebruiker role 2 heeft (werkgever)
-        if ($user->role !== 2) {
-            return redirect()->route('home')->with('error', 'Toegang geweigerd, alleen werkgevers kunnen deze pagina bekijken.');
-        }
-
-        return view('profile.employer', compact('user'));
-    }
-
     // Bewerk het profiel
     public function edit()
     {

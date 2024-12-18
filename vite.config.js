@@ -13,7 +13,7 @@ export default defineConfig({
                 'resources/css/branches.css',
                 'resources/css/companies.css',
                 'resources/css/contact.css',
-                'resources/css/dashboard.css',
+                'resources/css/general.css',
                 'resources/css/home.css',
                 'resources/css/profile.css',
                 'resources/css/style.css',

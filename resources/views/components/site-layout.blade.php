@@ -1,6 +1,7 @@
 @props(['title' => 'Open Hiring'])
+@vite(['resources/css/style.css'])
 
-<!doctype html>
+    <!doctype html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +11,6 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
     <title>{{ $title }}</title>
-    @vite(['resources/css/style.css'])
 </head>
 <body>
 
@@ -19,8 +19,8 @@
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
 
     @guest
-    <a href="">Over Open Hiring</a>
-    <a href="">Contact</a>
+        <a href="">Over Open Hiring</a>
+        <a href="">Contact</a>
     @endguest
 
     @can('create-vacancy')
@@ -29,6 +29,12 @@
 
     @can('admin')
         <a href="{{ route('admin') }}">Admin</a>
+    @else
+
+        @auth
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+        @endauth
+
     @endcan
 
     @guest
@@ -40,20 +46,18 @@
     @endguest
 
     @auth
-        <a href="{{ route('dashboard') }}">Dashboard</a>
 
         <div>
-            @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
-            <a href="{{ route('employer') }}">Profiel</a>
-            @else
-                <a href="{{ route('profile.edit') }}">Profiel</a> <!-- Normaal profiel bewerken voor andere gebruikers -->
-            @endif
+
+            <a href="{{ route('profile.edit') }}">Profiel</a>
 
             <p>|</p>
+
             <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <button type="submit">Log uit</button>
             </form>
+
         </div>
     @endauth
 

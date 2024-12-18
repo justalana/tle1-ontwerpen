@@ -1,28 +1,55 @@
-@vite(['resources/css/dashboard.css'])
-<x-site-layout>
+@vite(['resources/css/general.css'])
 
-    <x-slot name="header">
-        <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">
-            {{ __('Welkom op je Dashboard') }}
-        </h1>
-    </x-slot>
+<x-site-layout title="Dashboard">
 
-    <div class="py-12">
-        <div class="container">
-            <div class="card">
-                <div class="text-center mb-8">
-                    <h1 class="heading">Welkom, {{ auth()->user()->name }}!</h1>
-                    <p class="subheading">Je bent ingelogd op je dashboard.</p>
-                </div>
+    <article id="dashboardContainer">
 
-                <!-- Profiel link -->
-                <div class="text-center">
-                    <a href="{{ route('profile.edit') }}" class="btn-profile-link">
-                        Ga naar je profiel
-                    </a>
-                </div>
+        <article id="dashboardProfileContainer">
+
+            <h2>Profiel</h2>
+
+            <div>
+                <a href="{{ route('profile') }}">Ga naar jouw profiel</a>
             </div>
-        </div>
-    </div>
 
-    </x-site-layout>
+            @can('create-vacancy')
+
+                <div>
+                    <a href="{{ route('branches.show', Auth::user()->branch) }}">Ga naar jouw filiaal</a>
+                </div>
+
+            @endcan
+
+        </article>
+
+        @can('create-vacancy')
+
+            <article>
+
+                <h2>Vacatures</h2>
+
+                <div>
+                    <a href="{{ route('vacancies.private') }}">Bekijk jouw vacatures</a>
+                </div>
+
+            </article>
+
+        @else
+
+            <article>
+
+                <h2>Reacties</h2>
+
+                <div>
+                    <a href="{{ route('applications.index') }}">Bekijk jouw applicaties</a>
+                </div>
+
+            </article>
+
+        @endcan
+
+
+    </article>
+
+
+</x-site-layout>
