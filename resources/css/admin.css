@@ -34,6 +34,12 @@ header div {
     background-color: var(--moss-light);
 }
 
+@media (prefers-color-scheme: dark) {
+    .werknemer {
+        background-color: var(--moss-dark);
+    }
+}
+
 #stories .articles-div, .buttons {
     display: flex;
     gap: 5vw;
@@ -82,6 +88,12 @@ article {
     border: 3px solid var(--moss-dark);
     color: var(--moss-dark);
     transition: ease-in-out 0.2s;
+@media (prefers-color-scheme: dark) {
+    #adminArticleContainer {
+        >article {
+            background-color: var(--moss-dark);
+        }
+    }
 }
 
 #userContainer {

@@ -9,12 +9,21 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\VacancyController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// about pagina view
+// routes/web.php
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+
 
 //A permanent redirect so no user can access Laravel's goofy ahh dashboard
 Route::permanentRedirect('/dashboard', '/');
@@ -28,26 +37,23 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 });
 
+// Dashboard route - handled by DashboardController
+Route::get('/dashboard', [DashboardController::class, 'redirectToDashboard'])->name('dashboard');
+// Employee profile route (Werkgever)
+// Employee Dashboard Route
+Route::get('/profile/employerdash', [DashboardController::class, 'redirectToDashboard'])->name('employer');
+Route::get('/profile/employer', [ProfileController::class, 'employer'])->name('profile.employer');
+
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
 Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
 
+// Application-specific routes
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
 
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
-
-
-// werkgever profile
-Route::middleware('auth')->group(function () {
-    Route::get('/employee', [ProfileController::class, 'showProfile'])->name('employee.profile');
-});
-
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::get('/employee/profile', [ProfileController::class, 'showProfile'])->name('employee');
-
-
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
@@ -60,5 +66,9 @@ Route::middleware('can:admin')->group(function () {
     Route::get('admin/user-edit/{user}', [AdminController::class, 'userEdit'])->name('admin.user-edit');
     Route::put('admin/user-update/{user}', [AdminController::class, 'userUpdate'])->name('admin.user-update');
 });
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 require __DIR__ . '/auth.php';

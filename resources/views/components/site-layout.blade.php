@@ -23,8 +23,11 @@
     <a href="">Contact</a>
     @endguest
 
+    @can('create-vacancy')
+        <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
+    @endcan
+
     @can('admin')
-        <a href="{{ route('vacancies.create') }}">Vacature Aanmaken</a>
         <a href="{{ route('admin') }}">Admin</a>
     @endcan
 
@@ -41,7 +44,7 @@
 
         <div>
             @if (auth()->user()->role === 2) <!-- Controleer of de gebruiker een werkgever is -->
-            <a href="{{ route('employee') }}">Profiel</a>
+            <a href="{{ route('employer') }}">Profiel</a>
             @else
                 <a href="{{ route('profile.edit') }}">Profiel</a> <!-- Normaal profiel bewerken voor andere gebruikers -->
             @endif
@@ -58,9 +61,36 @@
 
 <main>{{ $slot }}</main>
 
-<footer>
-    <a>Over Open Hiring</a>
-    <a>Contact</a>
+<footer class="footer">
+    <div class="footer-section">
+        <h3>Voor werkzoekenden</h3>
+        <ul>
+            <li>Vind een baan</li>
+            <li>Veelgestelde vragen</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Voor werkgevers</h3>
+        <ul>
+            <li>Spelregels</li>
+            <li>Veelgestelde vragen</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Over Open Hiring</h3>
+        <ul>
+            <li>Ontstaan</li>
+            <li>Privacybeleid</li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Volg ons op</h3>
+        <ul>
+            <li>LinkedIn</li>
+            <li>Instagram</li>
+            <li>Facebook</li>
+        </ul>
+    </div>
 </footer>
 
 </body>

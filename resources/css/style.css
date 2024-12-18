@@ -41,6 +41,13 @@ body {
     min-height: 100vh;
 }
 
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #ffffff;
+    }
+}
+
 section {
     margin: 10vw;
 }
@@ -71,6 +78,11 @@ p, button, label, input, li, textarea, select {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;
+}
+
+button:focus, input:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
 }
 
 b {
@@ -131,7 +143,6 @@ input, textarea, select {
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
     outline: none;
-    height: 5vh;
     padding: 1vh;
 }
 
@@ -182,6 +193,19 @@ footer a:hover {
 .button-light:hover, button:hover{
     background-color: var(--moss-dark);
     color: var(--white);
+}
+
+@media (prefers-color-scheme: dark) {
+    .button-light, button {
+        background: none;
+        border: 3px solid var(--moss-light);
+        color: var(--moss-light);
+    }
+
+    .button-light:hover, button:hover{
+        background-color: var(--moss-light);
+        color: #121212;
+    }
 }
 
 .button-pink {
@@ -276,4 +300,38 @@ trix-toolbar .trix-button-group--file-tools {
         width: 5vw;
         height: 5vw;
     }
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 15rem;
+    align-items: flex-start;
+    background-color: #2e362b;
+    color: #ffffff;
+    padding: 2rem;
+    font-family: radikal;
+    flex-wrap: wrap;
+    border-radius: 2px;
+}
+
+.footer-section {
+    text-align: center;
+    margin: 0;
+}
+
+.footer-section h3 {
+    color: #fdd835; /* Gele tekst voor titels */
+    margin-bottom: 1rem; /* Ruimte onder titel */
+    font-size: 1.1rem;
+}
+
+.footer-section ul {
+    list-style: none; /* Verwijder bolletjes van de lijst */
+    padding: 0; /* Verwijder padding */
+    margin: 0; /* Verwijder marges */
+}
+
+.footer-section li {
+    margin: 0.5rem 0; /* Ruimte tussen lijstitems */
+    color: #dcdcdc; /* Lichtgrijze tekstkleur */
 }

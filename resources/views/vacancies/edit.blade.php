@@ -40,7 +40,7 @@
 
 <x-site-layout title="Bewerk vacature">
 
-    <h1>Bewerk vacature</h1>
+    <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Bewerk vacature</h1>
 
     <form action="{{ route('vacancies.update', $vacancy) }}" method="POST" enctype="multipart/form-data"
           id="vacancyForm">
@@ -111,7 +111,7 @@
 
         @endcan
 
-        <div>
+        <div class="description-input">
             <label for="description">Beschrijving*</label>
             <x-trix-input id="description" name="description"
                           value="{!! old('description') ? old('description')->toTrixHtml() : $vacancy->description->toTrixHtml() !!}"></x-trix-input>

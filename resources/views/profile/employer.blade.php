@@ -1,8 +1,9 @@
 @vite(['resources/css/profile.css'])
 <x-site-layout>
+    @vite(['resources/css/profile.css'])
     @if (auth()->user()->role === 2)
         <x-slot name="header">
-            <h2>Werkgever Profiel</h2>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werkgever Profiel</h1>
         </x-slot>
 
         <!-- Succesmelding -->
@@ -15,8 +16,7 @@
         <!-- Profiel Informatie -->
         <section>
             <header>
-                <h2>{{ __('Profiel') }}</h2>
-                <p class="note">Je bent ingelogd als werkgever.</p>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">{{ __('Profiel') }}</h2>
                 <p>{{ __("Hier kun je je profiel en bedrijfsinformatie beheren.") }}</p>
             </header>
             <form method="POST" action="{{ route('profile.update') }}">
@@ -46,7 +46,7 @@
         <!-- Bedrijfsinformatie -->
         <section>
             <header>
-                <h2>Bedrijfsinformatie</h2>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">Bedrijfsinformatie</h2>
             </header>
             <ul>
                 <li><strong>Bedrijfsnaam:</strong> {{ auth()->user()->company_name ?? 'Bedrijf niet opgegeven' }}</li>
@@ -59,7 +59,7 @@
         <!-- Vacaturebeheer -->
         <section>
             <header>
-                <h2>Vacaturebeheer</h2>
+                <h2 role="heading" aria-level="2" aria-label="Subtitel">Vacaturebeheer</h2>
             </header>
 
             <a href="/vacancies/create" class="button-light">Nieuwe vacature toevoegen</a>

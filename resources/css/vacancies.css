@@ -14,7 +14,7 @@
     margin: auto;
     padding: 1vw;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
     }
@@ -25,18 +25,17 @@
         gap: 2vw;
     }
 
-    >#checkboxContainer {
+    > #checkboxContainer {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1vw;
 
-        >label {
+        > label {
             padding: 0.3vw;
             border: solid black 1px;
             border-radius: 6px;
         }
     }
-
 }
 
 #vacancystats {
@@ -62,7 +61,7 @@
     border-radius: 6px;
     align-items: center;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -85,6 +84,12 @@
     }
 }
 
+@media (prefers-color-scheme: dark) {
+    .timeSlot {
+        background-color: var(--moss-light);
+    }
+}
+
 #timeSlotContainer {
     display: flex;
     flex-direction: row;
@@ -101,7 +106,7 @@
     align-items: center;
     width: 12vw;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -119,7 +124,7 @@
     justify-content: center;
     gap: 2vw;
 
-    >form {
+    > form {
         display: flex;
         gap: 2vw;
         align-items: center;
@@ -131,13 +136,19 @@
     margin-top: 1vh;
 }
 
+@media (prefers-color-scheme: dark) {
+    .timeSlotDetail {
+        border: solid var(--moss-light) 1px;
+    }
+}
+
 header {
     text-align: center;
-    background: #AA0160;
+    background: #aa0160;
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;  /* Centers items vertically */
+    align-items: center; /* Centers items vertically */
     word-wrap: break-word;
 }
 
@@ -166,7 +177,6 @@ header {
     display: flex;
     flex-direction: column;
 }
-
 
 /* Base styles - default for larger screens (1920+) */
 .container {
@@ -201,11 +211,26 @@ header {
     object-fit: cover;
 }
 
- .description {
+.description {
     margin: 5vh 16vw;
     padding: 1vh 2vw;
-    border: solid #2E342A;
+    border: solid #2e342a;
     border-radius: 15px;
+}
+
+.description-input {
+    background: var(--moss-dark);
+    color: #121212 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    #description {
+        border: solid var(--moss-light);
+    }
+
+    .description-input {
+        background: var(--moss-light);
+    }
 }
 
 #description-text {
@@ -221,7 +246,6 @@ header {
     display: flex;
     align-items: center;
 }
-
 
 /* For 1440 - 1919px screens */
 @media (max-width: 1919px) {
@@ -271,7 +295,6 @@ header {
 
 /*Mobile view CSS*/
 @media only screen and (max-width: 480px) {
-
     #vacancyForm {
         width: 95vw;
         gap: 8vw;
@@ -305,7 +328,4 @@ header {
     .vacancy-details-img {
         justify-content: center;
     }
-
-
-
 }

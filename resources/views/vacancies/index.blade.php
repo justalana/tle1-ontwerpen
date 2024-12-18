@@ -3,7 +3,11 @@
 <x-site-layout>
 
     <header>
-        <h1>Open Vacatures</h1>
+        @can('create-vacancy', auth()->user())
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Uw Vacatures</h1>
+        @else
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Open Vacatures</h1>
+        @endcan
     </header>
 
     <section id="vacancies">
@@ -58,7 +62,7 @@
                     </div>
 
                     <div class="column">
-                        <p>{!! $vacancy->description !!}</p>
+                        <p>{!! Str::limit($vacancy->description, 250, '...') !!}</p>
                         <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
 
                         @can('manage-vacancy', $vacancy)

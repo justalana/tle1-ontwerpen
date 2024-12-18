@@ -29,7 +29,7 @@
 
 <x-site-layout title="Maak nieuwe vacature aan">
 
-    <h1>Maak nieuwe vacature aan</h1>
+    <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Maak nieuwe vacature aan</h1>
 
     <form action="{{ route('vacancies.store') }}" method="POST" enctype="multipart/form-data" id="vacancyForm">
         @csrf
@@ -78,7 +78,7 @@
 
         @endcan
 
-        <div>
+        <div class="description-input">
             <label for="description">Beschrijving*</label>
             <x-trix-input id="description" name="description"
                           value="{!! old('description') ? old('description') : '' !!}"></x-trix-input>

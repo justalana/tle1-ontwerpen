@@ -3,7 +3,7 @@
 <x-site-layout>
     <header>
         <div>
-            <h1 id="details-header">{{$vacancy->name}}</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina" id="details-header">{{$vacancy->name}}</h1>
         </div>
     </header>
 

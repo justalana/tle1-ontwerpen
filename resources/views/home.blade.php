@@ -3,7 +3,7 @@
 <x-site-layout>
     <header>
         <div>
-            <h1>Werk voor wie wil werken</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werk voor wie wil werken</h1>
             <p>Met Open Hiring heeft iedereen een eerlijke kans op een baan. Wie wil én kan werken, kan zó aan de slag.
                 Zonder sollicitatiegesprek, zonder brief, zonder vragen. Met één druk op de knop. Open Hiring draait
                 namelijk niet om diploma’s, maar om mensen. Niet om praatjes, maar om aanpakken.</p>
@@ -12,7 +12,7 @@
     </header>
 
     <section id="stories">
-        <h2>Hoe jouw verhaal het verschil maakt</h2>
+        <h2 role="heading" aria-level="2" aria-label="Subtitel">Hoe jouw verhaal het verschil maakt</h2>
         <div class="articles-div">
             <article class="werknemer">
                 <b class="violet">WERKNEMER</b>
