@@ -22,11 +22,6 @@
         <a href="{{ route('vacancies.create') }}">Maak Vacature</a>
     @endcan
 
-    @cannot('admin')
-        <a href="{{ route('about') }}">Over Open Hiring</a>
-        <a href="">Contact</a>
-    @endcan
-
     @can('admin')
         <a href="{{ route('admin') }}">Admin</a>
     @endcan
