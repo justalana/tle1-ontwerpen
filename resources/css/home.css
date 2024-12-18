@@ -81,3 +81,11 @@ article {
 h3 {
     margin: 0;
 }
+
+@media (max-width: 767px) {
+    #jobs-preview article {
+        margin: 3vw;
+        width: 80vw;
+    }
+}
+
