@@ -7,15 +7,18 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/css/about.css',
+                'resources/css/admin.css',
+                'resources/css/auth.css',
                 'resources/css/branches.css',
                 'resources/css/companies.css',
+                'resources/css/contact.css',
+                'resources/css/dashboard.css',
                 'resources/css/home.css',
                 'resources/css/profile.css',
                 'resources/css/style.css',
                 'resources/css/vacancies.css',
-                'resources/js/vacancyTimeSlotManager.js',
-                'resources/css/admin.css',
-                'resources/css/auth.css'
+                'resources/js/vacancyTimeSlotManager.js'
             ],
             refresh: true,
         }),
