@@ -9,8 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        //$vacancies = Vacancy::all()->take(3)->get();
-        $vacancies = Vacancy::all();
+        $vacancies = Vacancy::all()->take(2);
+        //$vacancies = Vacancy::all();
         return view('home', compact('vacancies'));
     }
 }

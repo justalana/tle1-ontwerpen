@@ -64,8 +64,20 @@ article {
 #jobs-preview article {
     background-color: var(--moss-light);
     margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25vw;
 }
 
 .violet {
     color: var(--violet);
+}
+
+.button-pink {
+    padding: 1.5vh !important;
+}
+
+h3 {
+    margin: 0;
 }

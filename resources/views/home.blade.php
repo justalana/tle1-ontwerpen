@@ -46,7 +46,7 @@
                 @foreach($vacancies as $vacancy)
                     <article>
                         <h3>{{$vacancy->name}}</h3>
-                        <p>{!!$vacancy->description!!}</p>
+                        <p>{!!Str::limit($vacancy->description, 250), $end="..."!!}</p>
                         <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
                     </article>
                 @endforeach
