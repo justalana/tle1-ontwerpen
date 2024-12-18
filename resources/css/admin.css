@@ -98,6 +98,8 @@ article {
     color: var(--moss-dark);
     transition: ease-in-out 0.2s;
 
+}
+
 #userContainer {
     width: 90vw;
     margin: auto;
@@ -154,5 +156,4 @@ article {
     header img {
         width: 90vw;
     }
-}
 }
