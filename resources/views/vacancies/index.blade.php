@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="column">
-                    <p>{!! $vacancy->description !!}</p>
+                    <p>{!! Str::limit($vacancy->description, 250, '...') !!}</p>
                     <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
 
                     @can('manage-vacancy', $vacancy)
