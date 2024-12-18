@@ -4,13 +4,11 @@
     <div class="container">
         <div class="content">
             <h1>Contact ons</h1>
-            <p>
-                Ga je starten met Open Hiring, ben je al begonnen of heb je een heel andere vraag?
+            <p>Ga je starten met Open Hiring, ben je al begonnen of heb je een heel andere vraag?
                 We helpen je graag verder. Hier vind je onze contactgegevens.
-            <div class="image">
+                <div class="image">
                     <img src="images/contact.jpg" alt="Klokgebouw">
-            </div>
-
+                </div>
             </p>
 
             <h2>Contactgegevens</h2>
@@ -20,7 +18,6 @@
             <p><strong>Klokgebouw 188, 7e etage</strong></p>
             <p>5617 AB, Eindhoven</p>
         </div>
-
 
         <div class="form">
             <h2>Stuur ons een bericht</h2>
