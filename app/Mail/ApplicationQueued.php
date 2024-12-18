@@ -21,7 +21,7 @@ use Storage;
     public function __construct($vacancy, $applications)
     {
         $this->vacancy = $vacancy;
-        $this->application = $applications;
+        $this->applications = $applications;
     }
 
     /**
@@ -43,7 +43,7 @@ use Storage;
         return new Content(
             markdown: 'mail.vacancy.queued',
             with: ['vacancy' => $this->vacancy,
-                'application' => $this->applications,]
+                'applications' => $this->applications,]
             );
     }
 
