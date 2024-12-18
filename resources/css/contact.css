@@ -1,18 +1,11 @@
-/* Algemene reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: radikal;
-    background-color: #f7f7f7;
-    color: #333;
-    line-height: 1.6;
-}
 
-/* Container */
 .container {
     display: flex;
     flex-direction: row;
@@ -26,7 +19,7 @@ body {
     border-radius: 10px;
 }
 
-/* Contactgegevens */
+
 .content {
     flex: 1;
     padding: 20px;
@@ -92,7 +85,7 @@ a:hover {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Contactformulier */
+
 .form {
     flex: 1;
     margin-top: 10px;
@@ -146,7 +139,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
