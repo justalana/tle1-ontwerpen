@@ -1,12 +1,6 @@
 @vite(['resources/css/about.css'])
 
-<x-site-layout>
-    <!DOCTYPE html>
-    <html lang="nl">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Open Hiring</title>
-
+<x-site-layout title="About us">
     <body>
     <div class="container">
         <div class="text-section">
