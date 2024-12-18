@@ -2,23 +2,31 @@
 
 namespace App\Mail;
 
+use AllowDynamicProperties;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Storage;
 
-class ApplicationEmail extends Mailable
+#[AllowDynamicProperties] class ApplicationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($application)
     {
-        //
+        $this->application = $application->vacancy->name;
+
+        if ($application->status == 2) {
+            $this->application->status = "Geaccepteerd";
+        } else if ($application->status == 3) {
+            $this->application->status = "Geannuleerd";
+        }
     }
 
     /**
@@ -27,7 +35,7 @@ class ApplicationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Application Email',
+            subject: 'Vacancy Queued',
         );
     }
 
@@ -36,8 +44,12 @@ class ApplicationEmail extends Mailable
      */
     public function content(): Content
     {
+
         return new Content(
-            markdown: 'mail.vacancies.confirmation',
+            markdown: 'mail.vacancy.email',
+            with: ['vacancy' => $this->application->vacancy,
+                'status' => $this->application->status],
+
         );
     }
 

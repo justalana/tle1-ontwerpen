@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ApplicationEmail;
 use App\Mail\ApplicationQueued;
 use App\Models\Application;
 use App\Models\ApplicationTimeSlot;
@@ -80,7 +81,7 @@ class ApplicationController extends Controller implements HasMiddleware
      */
     public function edit(Application $application)
     {
-        //
+
     }
 
     /**
@@ -97,6 +98,33 @@ class ApplicationController extends Controller implements HasMiddleware
     public function destroy(Application $application)
     {
         //
+    }
+
+    public function hire(Vacancy $vacancy)
+    {
+        $application = Application::where('vacancy_id', $vacancy->id)
+        ->where('status', 1)->first();
+
+        return view('applications.hire', ['application' => $application, 'vacancy' => $vacancy]);
+    }
+
+    public function hireUpdate(Request $request, Application $application, $action)
+    {
+
+        if($action == 'accept') {
+
+            $application->status = 2;
+
+        } else if($action == 'decline') {
+
+            $application->status = 3;
+
+        }
+        $application->update();
+
+        Mail::to($application->user->email)->send(new ApplicationEmail($application->vacancy->name));
+
+        return to_route('vacancies.index');
     }
 
 }

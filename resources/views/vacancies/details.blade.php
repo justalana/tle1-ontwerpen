@@ -58,7 +58,7 @@
     @can('manage-vacancy', $vacancy)
 
         <div>
-            <a class="button-pink" href="{{ route('applications.') }}">Huur mensen in</a>
+            <a class="button-pink" href="{{ route('applications.hire', $vacancy) }}">Huur mensen in</a>
         </div>
 
         <div>

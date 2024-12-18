@@ -50,6 +50,9 @@ Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
 Route::resource('applications', ApplicationController::class) ->except(['create', 'store']);
 
+Route::get('applications/hire/{vacancy}', [ApplicationController::class, 'hire'])->name('applications.hire');
+Route::put('applications/{application}/hire/{action}', [ApplicationController::class, 'hireUpdate'])->name('applications.hireUpdate');
+
 // Application-specific routes
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
 
