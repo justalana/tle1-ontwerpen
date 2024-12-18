@@ -2,20 +2,22 @@
 
 <x-site-layout title="Dashboard">
 
+    <h1>Dashboard</h1>
+
     <article id="dashboardContainer">
 
-        <article id="dashboardProfileContainer">
+        <article>
 
             <h2>Profiel</h2>
 
             <div>
-                <a href="{{ route('profile') }}">Ga naar jouw profiel</a>
+                <a class="button-pink" href="{{ route('profile') }}">Ga naar jouw profiel</a>
             </div>
 
             @can('create-vacancy')
 
                 <div>
-                    <a href="{{ route('branches.show', Auth::user()->branch) }}">Ga naar jouw filiaal</a>
+                    <a class="button-pink" href="{{ route('branches.show', Auth::user()->branch) }}">Ga naar jouw filiaal</a>
                 </div>
 
             @endcan
@@ -29,7 +31,7 @@
                 <h2>Vacatures</h2>
 
                 <div>
-                    <a href="{{ route('vacancies.private') }}">Bekijk jouw vacatures</a>
+                    <a class="button-pink" href="{{ route('vacancies.private') }}">Bekijk jouw vacatures</a>
                 </div>
 
             </article>
@@ -41,7 +43,7 @@
                 <h2>Reacties</h2>
 
                 <div>
-                    <a href="{{ route('applications.index') }}">Bekijk jouw applicaties</a>
+                    <a class="button-pink" href="{{ route('applications.index') }}">Bekijk jouw reacties</a>
                 </div>
 
             </article>
