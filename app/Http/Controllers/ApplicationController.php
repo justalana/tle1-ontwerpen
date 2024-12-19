@@ -11,6 +11,7 @@ use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Mail;
 
@@ -23,12 +24,31 @@ class ApplicationController extends Controller implements HasMiddleware
             new Middleware('can:view-application,application,vacancy', only: ['show']),
         ];
     }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(?Vacancy $vacancy = null)
     {
-        //
+        if (!$vacancy) {
+
+            if (Gate::allows('admin')) {
+                $applications = Application::all();
+            } else {
+                $applications = Auth::user()->applications->where('status', '=', 1);
+            }
+
+        } else {
+
+            if (Gate::allows('manage-vacancy', $vacancy)) {
+                $applications = Application::where('vacancy_id', '=', $vacancy->id)->get();
+            } else {
+                abort(403, 'Verboden toegang');
+            }
+
+        }
+
+        return view('applications.index', ['applications' => $applications, 'vacancy' => $vacancy]);
     }
 
     /**

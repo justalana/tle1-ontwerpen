@@ -58,9 +58,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Requirement::class);
     }
 
-    public function applications(): BelongsToMany
+    public function applications(): HasMany
     {
-        return $this->belongsToMany(Application::class);
+        return $this->hasMany(Application::class);
     }
 
     public function reviews(): BelongsToMany

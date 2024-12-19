@@ -1,0 +1,50 @@
+.met {
+    border-color: var(--moss-medium);
+}
+
+.not-met {
+    border-color: var(--violet-dark);
+}
+
+#applicationContainer {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5%;
+    margin: auto;
+
+}
+
+.application {
+    width: 45%;
+    height: fit-content;
+    padding: 1vw;
+    border-radius: 1vw;
+    background-color: var(--moss-light);
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 0.5vw;
+}
+
+.requirementContainer,
+.timeSlotContainer {
+    width: 90%;
+    display: flex;
+    gap: 0.5vw;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 1vw;
+    background-color: var(--white);
+    padding: 1vw;
+
+    >article {
+        width: fit-content;
+        height: fit-content;
+        border: solid var(--moss-dark) 1px;
+        padding: 0.3vw;
+        border-radius: 0.5vw;
+        background-color: var(--moss-light);
+    }
+}

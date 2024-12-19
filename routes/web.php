@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 //Routes that implement middleware in their controller
 Route::resource('vacancies', VacancyController::class);
 Route::resource('branches', BranchController::class);
-Route::resource('applications', ApplicationController::class)->except(['create', 'store']);
+Route::resource('applications', ApplicationController::class)->only(['show']);
 
 Route::get('private/vacancies', [VacancyController::class, 'private'])->name('vacancies.private');
 Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'toggleActive'])->name('vacancies.toggle-active');
@@ -52,6 +52,8 @@ Route::put('vacancies/{vacancy}/toggle-active', [VacancyController::class, 'togg
 // Application-specific routes
 Route::get('applications/create/{vacancy}', [ApplicationController::class, 'create'])->name('applications.create');
 Route::post('applications/store/{vacancy}', [ApplicationController::class, 'store'])->name('applications.store');
+Route::get('applications/index/{vacancy?}', [ApplicationController::class, 'index'])->name('applications.index');
+Route::get('applications', [ApplicationController::class, 'index'])->name('applications.index');
 
 //Admin only routes
 Route::middleware('can:admin')->group(function () {
