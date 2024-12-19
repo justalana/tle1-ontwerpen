@@ -149,6 +149,7 @@
 
 #vacancies a {
     margin-top: 1vh;
+    padding: 1vw;
 }
 
 header {
@@ -183,7 +184,6 @@ header {
     width: 59vw;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     padding: 1vw;
     border-radius: 1vw;
     justify-content: space-evenly;
