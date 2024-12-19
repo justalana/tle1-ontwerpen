@@ -19,8 +19,8 @@
     <a href="{{ route('vacancies.index') }}">Vacatures</a>
 
     @guest
-        <a href="">Over Open Hiring</a>
-        <a href="">Contact</a>
+        <a href="{{ route('about') }}">Over Open Hiring</a>
+        <a href="{{ route('contact') }}">Contact</a>
     @endguest
 
     @can('create-vacancy')
