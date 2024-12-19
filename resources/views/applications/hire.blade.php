@@ -7,7 +7,7 @@
             <h1 id="details-header">{{$vacancy->name}}</h1>
         </div>
     </header>
-
+@if($application)
     <div class="article">
         <p>wilt u iemand inhuren met de volgende vereisten?:</p>
         @if($vacancy->requirements->isNotEmpty())
@@ -42,4 +42,7 @@
         <button>Weiger</button>
 
     </form>
+    @else
+    <p>wachtrij is leeg</p>
+    @endif
 </x-site-layout>
