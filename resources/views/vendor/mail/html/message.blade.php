@@ -1,7 +1,7 @@
 <x-mail::layout>
 {{-- Header --}}
 <x-slot:header>
-<x-mail::header :url="config('http://127.0.0.1:8000')">
+<x-mail::header :url="route('home')">
 </x-mail::header>
 </x-slot:header>
 
