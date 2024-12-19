@@ -122,7 +122,7 @@ class ApplicationController extends Controller implements HasMiddleware
         }
         $application->update();
 
-        Mail::to($application->user->email)->send(new ApplicationEmail($application->vacancy->name));
+        Mail::to($application->user->email)->send(new ApplicationEmail($application));
 
         return to_route('vacancies.index');
     }

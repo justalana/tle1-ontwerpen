@@ -15,12 +15,22 @@ use Storage;
 {
     use Queueable, SerializesModels;
 
+    private $status;
+
     /**
      * Create a new message instance.
      */
     public function __construct($application)
     {
+
+
         $this->application = $application;
+
+        if ($application->status == 2) {
+            $this->status = "Geaccepteerd";
+        } else if ($application->status == 3) {
+            $this->status = "Geannuleerd";
+        }
     }
 
     /**
@@ -41,7 +51,8 @@ use Storage;
 
         return new Content(
             markdown: 'mail.vacancy.email',
-            with: ['vacancy' => $this->application],
+            with: ['vacancy' => $this->application->vacancy,
+                'status' => $this->status],
 
         );
     }
