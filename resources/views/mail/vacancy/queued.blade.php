@@ -6,7 +6,7 @@
                             <h1 style="text-align: center;">U hebt succesvol gereageerd!</h1>
                             <h2>U heeft gereageerd op {{$vacancy}}</h2>
                             <p style="font-size: 16px; color: #333333;">
-                                u staat nu op plek: (voorbeeld) in de wachtrij, veel succes
+                                U staat nu op plek: (voorbeeld) in de wachtrij, veel succes!
                             </p>
                             <a class="button-pink" href="http://127.0.0.1:8000">Ga naar website</a>
                         </td>

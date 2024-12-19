@@ -9,7 +9,7 @@
     </header>
 @if($application)
     <div class="article">
-        <p>wilt u iemand inhuren met de volgende vereisten?:</p>
+        <p>Wilt u iemand inhuren met de volgende vereisten?:</p>
         @if($vacancy->requirements->isNotEmpty())
             <ul>
                 @foreach($vacancy->requirements as $requirement)
@@ -17,15 +17,15 @@
                 @endforeach
             </ul>
         @else
-            <p>geen eisen aangevinkt</p>
+            <p>Geen eisen aangevinkt</p>
         @endif
-        <p>en beschikbaar is op de volgende tijdsloten?:</p>
+        <p>En beschikbaar is op de volgende tijdsloten?:</p>
         @if($vacancy->timeSlots->isNotEmpty())
             @foreach($vacancy->timeSlots as $timeSlot)
                 <li>{{$timeSlot->day->name}} <br> {{$timeSlot->start_time}} t/m {{$timeSlot->end_time}}</li>
             @endforeach
         @else
-            <p>geen tijdslot aangevinkt</p>
+            <p>Geen tijdslot aangevinkt</p>
         @endif
     </div>
 
@@ -43,6 +43,6 @@
 
     </form>
     @else
-    <p>wachtrij is leeg</p>
+    <p>De wachtrij is leeg</p>
     @endif
 </x-site-layout>

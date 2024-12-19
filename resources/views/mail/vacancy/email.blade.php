@@ -6,7 +6,7 @@
                 <h1 style="text-align: center;">Uw sollicitatie voor {{$vacancy->name}} is bekeken</h1>
                 <h2>U bent {{$status}}</h2>
                 <p style="font-size: 16px; color: #333333;">
-                    veel succes met uw nieuwe werkplek
+                    Veel succes met uw nieuwe werkplek!
                 </p>
                 <a class="button-pink" href="http://127.0.0.1:8000">Ga naar website</a>
             </td>
