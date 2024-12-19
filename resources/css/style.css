@@ -12,6 +12,21 @@
     --stroke-thin: #DFDFDF;
 }
 
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
 /* === FONT SIZES === */
 @font-face {
     font-family: 'radikal';
@@ -63,10 +78,19 @@ h2{
     font-size: 3rem;
 }
 
-p, button, label, input, li {
+h3{
+    font-size: 1.5rem;
+}
+
+p, button, label, input, li, textarea, select {
     font-family: 'radikal-light', sans-serif;
     line-height: 1.6;
     font-size: 1.2rem;
+}
+
+button:focus, input:focus {
+    outline: 3px solid #3b82f6;
+    outline-offset: 2px;
 }
 
 b {
@@ -77,6 +101,11 @@ b {
 
 a {
     text-decoration: none;
+}
+
+input[type="checkbox"] {
+    width: 1.5vw;
+    height: 1.5vw;
 }
 
 nav {
@@ -109,16 +138,19 @@ nav button, nav button:hover {
     padding: 1vh 0;
 }
 
+button {
+    all:unset;
+}
+
 nav a:hover, nav button:hover {
     border-bottom: 3px solid var(--white);
 }
 
-input, textarea {
+input, textarea, select {
     border: 2px solid var(--stroke-thin);
     border-radius: 2vh;
     transition: ease-in-out 0.2s;
     outline: none;
-    height: 5vh;
     padding: 1vh;
 }
 
@@ -135,15 +167,26 @@ footer {
     padding: 2vw;
     background-color: var(--moss-dark);
     color: var(--yellow);
+    display: flex;
+    justify-content: space-around;
+}
+
+footer a {
+    transition: ease-in-out 0.2s;
+}
+
+footer a:hover {
+    color: var(--moss-light);
 }
 
 .image-container {
-    width: 40vw;
-    height: 40vw;
-    object-fit: cover;
+    /*width: 40vw;*/
 
     >img {
-        width: 100%;
+        width: 26vw;
+        height: 35vh;
+        border-radius: 1vw;
+        object-fit: cover;
     }
 }
 
@@ -163,9 +206,9 @@ footer {
 .button-pink {
         text-decoration: none;
         background: var(--violet);
-        border-radius: 4px;
+        border-radius: 2vh;
         text-align: center;
-        padding: 1vh;
+        padding: 3vh;
         color: var(--white);
 }
 
@@ -235,5 +278,66 @@ trix-toolbar .trix-button-group--file-tools {
 
     nav img {
         width: 25vw;
+    }
+
+    .image-container {
+        >img {
+            width: 80vw;
+            height: 50vh;
+        }
+    }
+
+    .button-light {
+        padding: 4vw;
+    }
+
+    input[type="checkbox"] {
+        width: 5vw;
+        height: 5vw;
+    }
+}
+.footer {
+    display: flex;
+    justify-content: center;
+    gap: 15rem;
+    align-items: flex-start;
+    background-color: #2e362b;
+    color: #ffffff;
+    padding: 2rem;
+    font-family: radikal;
+    flex-wrap: wrap;
+    border-radius: 2px;
+}
+
+.footer-section {
+    text-align: center;
+    margin: 0;
+}
+
+.column h2 {
+    max-width: 30vw;
+}
+
+.footer-section h3 {
+    color: #fdd835; /* Gele tekst voor titels */
+    margin-bottom: 1rem; /* Ruimte onder titel */
+    font-size: 1.1rem;
+}
+
+.footer-section ul {
+    list-style: none; /* Verwijder bolletjes van de lijst */
+    padding: 0; /* Verwijder padding */
+    margin: 0; /* Verwijder marges */
+}
+
+.footer-section li {
+    margin: 0.5rem 0; /* Ruimte tussen lijstitems */
+    color: #dcdcdc; /* Lichtgrijze tekstkleur */
+}
+
+@media (prefers-color-scheme: dark) {
+    input, select, textarea {
+        background-color: #1e201d;
+        color: var(--white);
     }
 }

@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -56,9 +58,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Requirement::class);
     }
 
-    public function applications(): BelongsToMany
+    public function applications(): HasMany
     {
-        return $this->belongsToMany(Application::class);
+        return $this->hasMany(Application::class);
     }
 
     public function reviews(): BelongsToMany

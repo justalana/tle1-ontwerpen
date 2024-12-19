@@ -1,5 +1,5 @@
 @props(['user'])
-@vite(['resources/css/general.css'])
+@vite(['resources/css/admin.css'])
 
 <x-site-layout title="Bewerk gebruiker">
 

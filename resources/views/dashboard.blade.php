@@ -1,67 +1,57 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2>
-            {{ __('Welkom op je Dashboard') }}
-        </h2>
-    </x-slot>
+@vite(['resources/css/general.css'])
 
-    <div class="py-12">
-        <div class="container">
-            <div class="card">
-                <div class="text-center mb-8">
-                    <h1 class="heading">Welkom, {{ auth()->user()->name }}!</h1>
-                    <p class="subheading">Je bent ingelogd op je dashboard.</p>
-                </div>
+<x-site-layout title="Dashboard">
 
-                <!-- Profiel link -->
-                <div class="text-center">
-                    <a href="{{ route('profile.edit') }}" class="btn-profile-link">
-                        Ga naar je profiel
-                    </a>
-                </div>
+    <h1>Dashboard</h1>
+
+    <article id="dashboardContainer">
+
+        <article>
+
+            <h2>Profiel</h2>
+
+            <div>
+                <a class="button-pink" href="{{ route('profile') }}">Ga naar jouw profiel</a>
             </div>
-        </div>
-    </div>
 
-    <style>
-        .container {
-            max-width: 40rem;
-            margin: 0 auto;
-            padding: 1rem;
-        }
+            @can('create-vacancy')
 
-        .card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            text-align: center;
-        }
+                <div>
+                    <a class="button-pink" href="{{ route('branches.show', Auth::user()->branch) }}">Ga naar jouw filiaal</a>
+                </div>
 
-        .heading {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #1a202c;
-        }
+            @endcan
 
-        .subheading {
-            font-size: 1.125rem;
-            color: #4a5568;
-        }
+        </article>
 
-        .btn-profile-link {
-            display: inline-block;
-            background-color: #3b82f6;
-            color: white;
-            padding: 0.75rem 2rem;
-            border-radius: 0.375rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
+        @can('create-vacancy')
 
-        .btn-profile-link:hover {
-            background-color: #2563eb;
-        }
-    </style>
-</x-app-layout>
+            <article>
+
+                <h2>Vacatures</h2>
+
+                <div>
+                    <a class="button-pink" href="{{ route('vacancies.private') }}">Bekijk jouw vacatures</a>
+                </div>
+
+            </article>
+
+        @else
+
+            <article>
+
+                <h2>Reacties</h2>
+
+                <div>
+                    <a class="button-pink" href="{{ route('applications.index') }}">Bekijk jouw reacties</a>
+                </div>
+
+            </article>
+
+        @endcan
+
+
+    </article>
+
+
+</x-site-layout>

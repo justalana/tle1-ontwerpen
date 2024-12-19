@@ -1,3 +1,39 @@
+/* === COLORS === */
+:root {
+    --violet: #AA0160;
+    --violet-dark: #7C1A51;
+    --yellow: #FAEC02;
+    --moss-medium: #92AA83;
+    --moss-light: #E2ECC8;
+    --moss-dark: #2E342A;
+    --white: #FFFFFF;
+    --cream: #FBFCF6;
+    --stroke-thin: #DFDFDF;
+}
+
+@media (prefers-color-scheme: dark) {
+    /* === DARK MODE COLORS === */
+    :root {
+        --violet: #7C1A51;
+        --violet-dark: #AA0160;
+        --yellow: #605c18;
+        --moss-medium: #92AA83;
+        --moss-light: #2E342A;
+        --moss-dark: #E2ECC8;
+        --white: #FFFFFF;
+        --cream: #1e201d;
+        --stroke-thin: #DFDFDF;
+    }
+}
+
+#vacancies {
+    margin: 2vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    justify-content: center;
+}
+
 #vacancyForm {
     display: flex;
     flex-direction: column;
@@ -6,7 +42,7 @@
     margin: auto;
     padding: 1vw;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
     }
@@ -14,21 +50,26 @@
     #timeSlotContainer {
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 5%;
+        gap: 2vw;
     }
 
-    >#checkboxContainer {
+    > #checkboxContainer {
         flex-direction: row;
         flex-wrap: wrap;
         gap: 1vw;
 
-        >label {
+        > label {
             padding: 0.3vw;
             border: solid black 1px;
             border-radius: 6px;
         }
     }
+}
 
+.vacancy-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .timeSlot {
@@ -41,7 +82,7 @@
     border-radius: 6px;
     align-items: center;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -68,43 +109,84 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 5%;
+    justify-content: center;
+    gap: 1vh;
 }
 
 .timeSlotDetail {
-    padding: 0.5vw;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
-    width: 15%;
     border: solid var(--moss-dark) 1px;
     border-radius: 6px;
     align-items: center;
+    width: 12vw;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 }
 
+.note {
+    font-size: 1rem;
+    color: var(--moss-medium);
+}
+
+#edit-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2vw;
+
+    > form {
+        display: flex;
+        gap: 2vw;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+}
+
+#vacancies a {
+    margin-top: 1vh;
+}
+
 header {
     text-align: center;
-    background: #AA0160;
+    background: var(--violet);
     color: white;
     display: flex;
     justify-content: center;
-    align-items: center;  /* Centers items vertically */
+    align-items: center; /* Centers items vertically */
     word-wrap: break-word;
 }
 
+.vacancy-shown {
+    color: var(--moss-medium);
+}
+
+.vacancy-hidden {
+    color: var(--violet-dark);
+}
+
+#vacancy-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+        width: 90%;
+    }
+}
+
 .article {
-    margin: 16px;
+    width: 59vw;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    padding: 16px;
-    border-radius: 3vw;
+    padding: 1vw;
+    border-radius: 1vw;
+    justify-content: space-evenly;
 }
 
 .item ul {
@@ -112,16 +194,16 @@ header {
 }
 
 .essentials {
-    flex: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
 }
 
 .column {
     display: flex;
     flex-direction: column;
 }
-
 
 /* Base styles - default for larger screens (1920+) */
 .container {
@@ -156,10 +238,10 @@ header {
     object-fit: cover;
 }
 
-#description {
-    margin: 3vh 5vw;
+.description {
+    margin: 5vh 16vw;
     padding: 1vh 2vw;
-    border: solid #2E342A;
+    border: solid #2e342a;
     border-radius: 15px;
 }
 
@@ -167,6 +249,15 @@ header {
     padding: 0 3vw;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.vacancy-details-img {
+    display: flex;
+    align-items: center;
+}
 
 /* For 1440 - 1919px screens */
 @media (max-width: 1919px) {
@@ -205,6 +296,8 @@ header {
 
     .article {
         flex-direction: column;
+        width: 95vw;
+        padding: 5vw;
     }
 
     .essentials {
@@ -214,7 +307,6 @@ header {
 
 /*Mobile view CSS*/
 @media only screen and (max-width: 480px) {
-
     #vacancyForm {
         width: 95vw;
         gap: 8vw;
@@ -222,9 +314,30 @@ header {
 
     #vacancy-image {
         border-radius: 5px;
-        height: 25vh;
-        width: 35vw;
+        height: 50vh;
+        width: 90vw;
         object-fit: cover;
     }
 
+    .essentials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #description {
+        margin: 3vh 5vw;
+    }
+
+    .timeSlotDetail {
+        width: 44vw;
+    }
+
+    #detail-flexbox {
+        flex-direction: column;
+    }
+
+    .vacancy-details-img {
+        justify-content: center;
+    }
 }

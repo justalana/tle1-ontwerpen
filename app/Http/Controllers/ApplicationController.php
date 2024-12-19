@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Mail\ApplicationQueued;
 use App\Models\Application;
+use App\Models\ApplicationTimeSlot;
 use App\Models\Requirement;
+use App\Models\TimeSlot;
 use App\Models\Vacancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Mail;
 
@@ -18,15 +21,34 @@ class ApplicationController extends Controller implements HasMiddleware
     {
         return [
             new Middleware('can:employee', only: ['create', 'store']),
-            new Middleware('can:show-application,application', only: ['show']),
+            new Middleware('can:view-application,application,vacancy', only: ['show']),
         ];
     }
+
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(?Vacancy $vacancy = null)
     {
-        //
+        if (!$vacancy) {
+
+            if (Gate::allows('admin')) {
+                $applications = Application::all();
+            } else {
+                $applications = Auth::user()->applications->where('status', '=', 1);
+            }
+
+        } else {
+
+            if (Gate::allows('manage-vacancy', $vacancy)) {
+                $applications = Application::where('vacancy_id', '=', $vacancy->id)->get();
+            } else {
+                abort(403, 'Verboden toegang');
+            }
+
+        }
+
+        return view('applications.index', ['applications' => $applications, 'vacancy' => $vacancy]);
     }
 
     /**
@@ -35,8 +57,9 @@ class ApplicationController extends Controller implements HasMiddleware
     public function create(Vacancy $vacancy)
     {
         $requirements = $vacancy->requirements;
+        $timeSlots = $vacancy->timeSlots;
 
-        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements]);
+        return view('applications.apply', ['vacancy' => $vacancy, 'requirements' => $requirements, 'timeSlots' => $timeSlots]);
     }
 
     /**
@@ -52,7 +75,7 @@ class ApplicationController extends Controller implements HasMiddleware
 
         $application->requirements()->sync($request->requirements ?? []);
 
-        $application->save();
+        $application->timeSlots()->sync($request->timeSlots ?? []);
 
         Mail::to(auth()->user()->email)->send(new ApplicationQueued($vacancy->name));
 
@@ -67,8 +90,9 @@ class ApplicationController extends Controller implements HasMiddleware
         $user = auth()->user();
         $requirements = $application->requirements;
         $vacancy = $application->vacancy;
+        $timeSlots = $application->timeSlots;
 
-        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application]);
+        return view('applications.details', ['requirements' => $requirements, 'vacancy' => $vacancy, 'user' => $user, 'application' => $application, 'timeSlots' => $timeSlots]);
     }
 
     /**

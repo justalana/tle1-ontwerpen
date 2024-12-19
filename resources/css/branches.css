@@ -1,5 +1,4 @@
 #branchForm {
-
     padding: 1vw;
     display: flex;
     flex-direction: column;
@@ -7,16 +6,14 @@
     width: 20vw;
     margin: auto;
 
-    >div {
+    > div {
         display: flex;
         flex-direction: column;
         gap: 0.2vw;
     }
-
 }
 
 #branchArticleContainer {
-
     width: 70vw;
     margin: auto;
     padding: 1vw;
@@ -31,18 +28,48 @@
     }
 }
 
+#branchNameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        margin-bottom: 0.5vw;
+    }
+}
+
 #branchDetailContainer {
     display: flex;
     flex-direction: column;
     gap: 2vw;
     padding: 1vw;
+    width: 70%;
+    margin: 2vw auto;
+    border-radius: 1vw;
+    background-color: var(--moss-light);
 
-    >div {
+    > div {
         padding: 1vw;
         display: flex;
         flex-direction: column;
     }
 
+    > #branchDescription {
+        background-color: var(--white);
+        border-radius: 1vw;
+        padding: 2vw;
+    }
+
+    #branchDetailAdressContainer {
+        display: flex;
+        flex-direction: row;
+        gap: 1vw;
+
+        p {
+            margin: 0;
+            width: fit-content;
+        }
+    }
 }
 
 
@@ -56,5 +83,4 @@
         width: 95vw;
         gap: 1vw;
     }
-
 }

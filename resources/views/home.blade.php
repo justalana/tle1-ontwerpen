@@ -1,9 +1,9 @@
-@vite(['resources/css/general.css'])
+@vite(['resources/css/home.css'])
 
 <x-site-layout>
     <header>
         <div>
-            <h1>Werk voor wie wil werken</h1>
+            <h1 role="heading" aria-level="1" aria-label="Hoofdtitel van de pagina">Werk voor wie wil werken</h1>
             <p>Met Open Hiring heeft iedereen een eerlijke kans op een baan. Wie wil én kan werken, kan zó aan de slag.
                 Zonder sollicitatiegesprek, zonder brief, zonder vragen. Met één druk op de knop. Open Hiring draait
                 namelijk niet om diploma’s, maar om mensen. Niet om praatjes, maar om aanpakken.</p>
@@ -12,7 +12,7 @@
     </header>
 
     <section id="stories">
-        <h2>Hoe jouw verhaal het verschil maakt</h2>
+        <h2 role="heading" aria-level="2" aria-label="Subtitel">Hoe jouw verhaal het verschil maakt</h2>
         <div class="articles-div">
             <article class="werknemer">
                 <b class="violet">WERKNEMER</b>
@@ -35,13 +35,25 @@
         </div>
         <div class="buttons">
             <a class="button-light" href="{{ route('vacancies.index') }}">Vind ook een baan</a>
-            <a class="button-light">Een vacature plaatsen</a>
+            <a class="button-light" href="{{ route('vacancies.create') }}">Een vacature plaatsen</a>
         </div>
 
     </section>
     <section id="jobs-preview">
         <h2>Openstaande vacatures voor iedereen</h2>
-        <p>Momenteel zijn er geen openstaande vacatures beschikbaar.</p>
+        @if($vacancies->isNotEmpty())
+            <div>
+                @foreach($vacancies as $vacancy)
+                    <article>
+                        <h3>{{$vacancy->name}}</h3>
+                        <p>{!!Str::limit($vacancy->description, 250), $end="..."!!}</p>
+                        <a class="button-pink" href="{{ route('vacancies.show', $vacancy) }}">Bekijk vacature</a>
+                    </article>
+                @endforeach
+            </div>
+        @else
+            <p>Momenteel zijn er geen vacatures beschikbaar.</p>
+        @endif
         <a class="button-light" href="{{ route('vacancies.index') }}">Bekijk alle vacatures</a>
     </section>
 

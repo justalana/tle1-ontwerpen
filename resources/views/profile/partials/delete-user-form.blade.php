@@ -20,7 +20,7 @@
             @method('delete')
 
             <h2>
-                {{ __('Weet je zeker dat jeje account wilt verwijderen?') }}
+                {{ __('Weet je zeker dat je je account wilt verwijderen?') }}
             </h2>
 
             <p>

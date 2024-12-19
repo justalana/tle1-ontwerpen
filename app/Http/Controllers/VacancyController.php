@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizer;
 use Symfony\Component\HtmlSanitizer\HtmlSanitizerConfig;
@@ -289,7 +290,7 @@ class VacancyController extends Controller implements HasMiddleware
     {
 
         $request->validate([
-           'vacancyId' => ['required']
+            'vacancyId' => ['required']
         ]);
 
         if ($vacancy->active) {
@@ -304,7 +305,19 @@ class VacancyController extends Controller implements HasMiddleware
 
         $vacancy->update();
 
-        return to_route('vacancies.show', $vacancy);
+        return back();
+    }
+
+    public function private()
+    {
+
+        if (Gate::allows('admin')) {
+            $vacancies = Vacancy::all();
+        } else {
+            $vacancies = Vacancy::whereBranchId(Auth::user()->branch_id)->get();
+        }
+
+        return view('vacancies.index', ['vacancies' => $vacancies]);
     }
 
 }

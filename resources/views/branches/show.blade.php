@@ -13,9 +13,7 @@
 
         </div>
 
-        <div>
-            <p>{!! $branch->description !!}</p>
-        </div>
+        <div id="branchDescription">{!! $branch->description !!}</div>
 
         <div id="branchDetailAdressContainer">
 
@@ -24,6 +22,13 @@
 
         </div>
 
+        @can('edit-branch', $branch)
+            <div>
+                <a class="button-pink" href="{{ route('branches.edit', $branch) }}">Bewerk filiaal</a>
+            </div>
+        @endcan
+
     </div>
+
 
 </x-site-layout>
