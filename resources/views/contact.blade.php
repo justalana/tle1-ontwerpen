@@ -19,42 +19,6 @@
             <p>5617 AB, Eindhoven</p>
         </div>
 
-        <div class="form">
-            <h2>Stuur ons een bericht</h2>
-            <form action="/contact" method="POST">
-
-                <div class="form-group">
-                    <label for="name">Naam</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="subject">Onderwerp</label>
-                    <select id="subject" name="subject" required>
-                        <option value="" disabled selected>Kies een onderwerp</option>
-                        <option value="klacht">Klacht over werkgever</option>
-                        <option value="algemeen">Algemene vraag</option>
-                        <option value="technisch">Technisch probleem</option>
-                        <option value="suggestie">Suggestie</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Bericht</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit">Verstuur bericht</button>
-                </div>
-            </form>
-        </div>
-
     </div>
     </body>
 </x-site-layout>
